@@ -18,6 +18,28 @@ const FirewalldBuilder = {
     zones: ['public', 'trusted', 'home', 'work', 'internal', 'external', 'dmz', 'block', 'drop'],
 
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'firewall',
+            title: 'ファイアウォール設定の使い方',
+            description: 'Linux各ディストリビューション向けのファイアウォールコマンドを生成します。firewalld、ufw、iptablesに対応。',
+            steps: [
+                'ディストリビューションを選択（RHEL, Ubuntu等）',
+                'アクション（ポート許可、サービス許可等）を選択',
+                'ポート番号、サービス名、送信元IPを入力',
+                '「コマンド生成」でコピー可能なコマンドを出力'
+            ],
+            tips: [
+                'firewalld: --permanent オプションで永続化',
+                'ufw: シンプルな構文でDebian/Ubuntu向け',
+                'iptables: 汎用的だが永続化には別途保存が必要',
+                'クイックリファレンスで各コマンドを確認'
+            ],
+            example: {
+                title: 'コマンド例',
+                code: 'firewalld: firewall-cmd --add-port=80/tcp --permanent'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -113,6 +135,8 @@ const FirewalldBuilder = {
                     <button class="btn btn-primary" id="fw-generate-btn">
                         <i data-lucide="terminal" class="w-4 h-4"></i> コマンド生成
                     </button>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card" id="fw-result-panel" style="display: none;">

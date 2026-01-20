@@ -32,6 +32,28 @@ const CidrReference = {
     ],
 
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'cidr',
+            title: 'CIDRリファレンスの使い方',
+            description: 'CIDR表記、サブネットマスク、ホスト数の一覧表と、サブネット分割計算機能を提供します。',
+            steps: [
+                '上部の検索欄でCIDR、マスク、ホスト数を検索',
+                '下部でサブネット分割計算が可能',
+                'ネットワークアドレスと現在のCIDRを入力',
+                '分割数を選択して計算実行'
+            ],
+            tips: [
+                '/24 = 254ホスト（一般的なLAN）',
+                '/30 = 2ホスト（ポイントツーポイント）',
+                '/32 = 1ホスト（単一ホストルート）',
+                'プライベートIP範囲も一覧表示'
+            ],
+            example: {
+                title: '分割例',
+                code: '192.168.0.0/24 を 4分割 → /26 x 4 (各62ホスト)'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -61,6 +83,8 @@ const CidrReference = {
                             <tbody id="cidr-table-body"></tbody>
                         </table>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <!-- プライベートIPレンジ -->

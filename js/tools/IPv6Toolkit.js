@@ -4,6 +4,28 @@
 
 const IPv6Toolkit = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'ipv6',
+            title: 'IPv6ツールキットの使い方',
+            description: 'IPv6アドレスの展開（フル表記）と圧縮（省略表記）を相互変換します。ネットワークアドレスの計算も可能です。',
+            steps: [
+                'IPv6アドレスを入力（CIDR付きも可）',
+                '「変換実行」をクリック',
+                '縮小表記、展開表記、ネットワークアドレスが表示',
+                '各値はクリックでコピー可能'
+            ],
+            tips: [
+                '::は連続する0のグループを省略した表記',
+                '先頭の0も省略可能（0db8 → db8）',
+                'fe80::/10 はリンクローカルアドレス',
+                '2001:db8::/32 はドキュメント用の予約範囲'
+            ],
+            example: {
+                title: '変換例',
+                code: '2001:db8::1 ↔ 2001:0db8:0000:0000:0000:0000:0000:0001'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -27,6 +49,8 @@ const IPv6Toolkit = {
                     </div>
                     
                     <div id="ipv6-results" class="result-grid" style="display: none;"></div>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card">

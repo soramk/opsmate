@@ -50,6 +50,28 @@ const PortReference = {
     render() {
         const categories = [...new Set(this.ports.map(p => p.category))];
 
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'port',
+            title: 'ポートリファレンスの使い方',
+            description: 'ネットワークでよく使われるポート番号とサービスの一覧です。ファイアウォール設定やトラブルシューティングに便利です。',
+            steps: [
+                '検索欄でポート番号、サービス名、キーワードを検索',
+                'カテゴリ（Web、メール、VPN等）でフィルタリング',
+                '個別ポート照会で特定のポート情報を確認',
+                'ウェルノウン、登録済、動的ポートの範囲も表示'
+            ],
+            tips: [
+                'ウェルノウンポート: 0-1023（管理者権限が必要）',
+                '登録済ポート: 1024-49151',
+                '動的/プライベートポート: 49152-65535',
+                'TCP/UDPの両方で使用されるポートもあり'
+            ],
+            example: {
+                title: 'よく使うポート',
+                code: '22=SSH, 80=HTTP, 443=HTTPS, 3306=MySQL'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -85,6 +107,8 @@ const PortReference = {
                             <tbody id="port-table-body"></tbody>
                         </table>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <!-- ポート検索 -->

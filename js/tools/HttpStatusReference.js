@@ -47,6 +47,29 @@ const HttpStatusReference = {
     ],
 
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'http',
+            title: 'HTTPステータスコードの使い方',
+            description: 'HTTPレスポンスのステータスコードとその意味の一覧です。API開発やWebサーバーのトラブルシューティングに便利です。',
+            steps: [
+                '検索欄でコード番号または名前を検索',
+                'カテゴリ（1xx〜5xx）でフィルタリング',
+                'カードをクリックして詳細を確認',
+                'よく使うHTTPヘッダーも下部に一覧表示'
+            ],
+            tips: [
+                '1xx: 情報（処理継続中）',
+                '2xx: 成功（200 OK が最も一般的）',
+                '3xx: リダイレクト（301, 302）',
+                '4xx: クライアントエラー（404 Not Found）',
+                '5xx: サーバーエラー（500, 503）'
+            ],
+            example: {
+                title: 'よく遭遇するコード',
+                code: '200=成功, 301=恒久リダイレクト, 404=未発見, 500=サーバーエラー'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -73,6 +96,8 @@ const HttpStatusReference = {
                     </div>
                     
                     <div class="http-cards-grid" id="http-cards"></div>
+
+                    ${helpSection}
                 </div>
                 
                 <!-- HTTP Headers Reference -->

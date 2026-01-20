@@ -4,6 +4,28 @@
 
 const SshConfigGen = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'ssh',
+            title: 'SSH Config生成の使い方',
+            description: '複数のホストに対するSSH設定（~/.ssh/config）を一括生成します。踏み台サーバー（ProxyJump）にも対応。',
+            steps: [
+                'ホスト名を1行ずつ入力',
+                '共通オプション（ユーザー、ポート、秘密鍵）を設定',
+                '踏み台サーバーを使う場合はチェックを入れて設定',
+                '「設定生成」をクリックして結果をコピー'
+            ],
+            tips: [
+                '生成した設定は ~/.ssh/config に追記',
+                'ホスト名はワイルドカード（web-*）も使用可能',
+                'ProxyJumpで多段SSHを簡単に設定',
+                'IdentityFileは鍵ファイルのフルパスを指定'
+            ],
+            example: {
+                title: '生成例',
+                code: 'Host web-01\\n    User admin\\n    Port 22\\n    IdentityFile ~/.ssh/id_rsa'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -51,6 +73,8 @@ const SshConfigGen = {
                     <button class="btn btn-primary" id="ssh-generate-btn">
                         <i data-lucide="file-code" class="w-4 h-4"></i> 設定生成
                     </button>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card" id="ssh-result-panel" style="display: none;">

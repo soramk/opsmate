@@ -4,6 +4,28 @@
 
 const DataCenterCalc = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'datacenter',
+            title: 'データセンター計算の使い方',
+            description: '電力（W/VA）、発熱量（BTU/h）、ラック電力の計算ができます。データセンターの設計やキャパシティプランニングに便利です。',
+            steps: [
+                '【電力変換】WattsまたはBTU/hを入力すると自動変換',
+                '【電力計算】電圧、電流、力率、相を入力して計算',
+                '【ラック電力】デバイスの電力を1行ずつ入力して合計を計算',
+                '各結果はコピー可能'
+            ],
+            tips: [
+                '1W = 3.41214 BTU/h',
+                '三相電力: √3 × V × A',
+                'PUE 1.4 = IT機器電力の1.4倍が設備全体の電力',
+                '42Uラックは通常5〜20kWの電力容量'
+            ],
+            example: {
+                title: '電力計算例',
+                code: '100V × 10A × PF0.9 = 900W = 3,071 BTU/h'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <!-- Watts ⇔ BTU/h 変換 -->
@@ -29,6 +51,8 @@ const DataCenterCalc = {
                         </div>
                     </div>
                     <p class="dc-formula">1 W = 3.41214 BTU/h</p>
+
+                    ${helpSection}
                 </div>
                 
                 <!-- 電力計算 -->

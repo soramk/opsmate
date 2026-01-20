@@ -4,6 +4,28 @@
 
 const SystemdUnitGen = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'systemd',
+            title: 'Systemdユニット生成の使い方',
+            description: 'Linuxのsystemdサービスユニットファイル（.service）を生成します。アプリケーションのデーモン化に便利です。',
+            steps: [
+                'サービス名と説明を入力',
+                '起動コマンド（ExecStart）を入力',
+                '作業ディレクトリ、実行ユーザー、環境変数などを設定',
+                '生成されたファイルを /etc/systemd/system/ に保存'
+            ],
+            tips: [
+                'Restart=always でプロセス終了時に自動再起動',
+                'After=network.target でネットワーク起動後に開始',
+                '環境変数は Environment="KEY=value" 形式で設定',
+                'systemctl daemon-reload で変更を反映'
+            ],
+            example: {
+                title: '使用コマンド',
+                code: 'systemctl enable --now myapp.service'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -69,6 +91,8 @@ const SystemdUnitGen = {
                     <button class="btn btn-primary" id="sd-generate-btn">
                         <i data-lucide="file-code" class="w-4 h-4"></i> ユニットファイル生成
                     </button>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card" id="sd-result-panel" style="display: none;">

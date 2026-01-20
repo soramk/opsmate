@@ -4,6 +4,28 @@
 
 const NginxSnippetGen = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'nginx',
+            title: 'Nginx設定生成の使い方',
+            description: 'Nginxの設定スニペット（リバースプロキシ、SSL、CORS等）を生成します。Webサーバー設定の雛形として利用できます。',
+            steps: [
+                'スニペット種別（リバースプロキシ、静的サイト等）を選択',
+                'ドメイン名、バックエンドURLを入力',
+                '「スニペット生成」をクリック',
+                '生成された設定をnginx.confやsites-availableに追記'
+            ],
+            tips: [
+                'リバースプロキシ: アプリケーションサーバーへ転送',
+                'SSL基本設定: Let\'s Encrypt証明書を想定',
+                'Gzip: テキスト系コンテンツを圧縮して転送',
+                'レート制限: DDoS対策やAPI保護に有効'
+            ],
+            example: {
+                title: '設定反映',
+                code: 'nginx -t && systemctl reload nginx'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -43,6 +65,8 @@ const NginxSnippetGen = {
                     <button class="btn btn-primary" id="nginx-generate-btn">
                         <i data-lucide="file-code" class="w-4 h-4"></i> スニペット生成
                     </button>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card" id="nginx-result-panel" style="display: none;">
