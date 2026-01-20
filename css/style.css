@@ -2,14 +2,14 @@
    OpsMate - Custom Styles
    ======================================== */
 
-/* CSS Custom Properties */
+/* CSS Custom Properties (Default - Emerald Theme) */
 :root {
     --sidebar-width: 280px;
     --sidebar-collapsed-width: 0px;
     --header-height: 64px;
     --transition-speed: 0.3s;
 
-    /* Colors */
+    /* Colors - Default values (overridden by theme files) */
     --bg-primary: #0a0f1a;
     --bg-secondary: #0f1629;
     --bg-tertiary: #1a2234;
@@ -31,6 +31,139 @@
     --warning-color: #f59e0b;
     --success-color: #10b981;
     --info-color: #3b82f6;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(16, 185, 129, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+    --nav-active-border: rgba(16, 185, 129, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #10b981, #34d399);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+}
+
+/* ========================================
+   Theme Selector Styles
+   ======================================== */
+.theme-selector {
+    position: relative;
+}
+
+.theme-toggle-btn {
+    transition: all var(--transition-speed);
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn.active {
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.theme-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    width: 220px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 200;
+}
+
+.theme-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.theme-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.theme-dropdown-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-primary);
+}
+
+.theme-grid {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.theme-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+}
+
+.theme-item:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
+}
+
+.theme-item.active {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-primary);
+}
+
+.theme-color {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-name {
+    flex: 1;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.theme-item:hover .theme-name,
+.theme-item.active .theme-name {
+    color: var(--text-primary);
+}
+
+.theme-check {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-primary);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.theme-item.active .theme-check {
+    opacity: 1;
 }
 
 /* Base Styles */
@@ -183,9 +316,9 @@ body {
 }
 
 .nav-link.active {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+    background: var(--nav-active-bg);
     color: var(--accent-primary);
-    border-color: rgba(16, 185, 129, 0.3);
+    border-color: var(--nav-active-border);
 }
 
 .nav-link.active .nav-icon {

@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Lavender Purple
+   A sophisticated, creative purple theme
+   ======================================== */
+
+:root[data-theme="lavender"] {
+    /* Background Colors */
+    --bg-primary: #0d0a14;
+    --bg-secondary: #14101f;
+    --bg-tertiary: #1e1830;
+    --bg-card: #2a2240;
+    --bg-hover: #3d3460;
+
+    /* Accent Colors */
+    --accent-primary: #a78bfa;
+    --accent-secondary: #c4b5fd;
+    --accent-glow: rgba(167, 139, 250, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #a78bfa, #c4b5fd);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(167, 139, 250, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(244, 114, 182, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #f5f3ff;
+    --text-secondary: #a5b4c8;
+    --text-muted: #6b7994;
+
+    /* Border Colors */
+    --border-color: #3d3460;
+    --border-focus: #a78bfa;
+
+    /* Status Colors */
+    --error-color: #f43f5e;
+    --warning-color: #fbbf24;
+    --success-color: #22c55e;
+    --info-color: #818cf8;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(167, 139, 250, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(167, 139, 250, 0.05));
+    --nav-active-border: rgba(167, 139, 250, 0.3);
+}

@@ -52,6 +52,14 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Theme Files -->
+    <link rel="stylesheet" href="css/themes/theme-emerald.css">
+    <link rel="stylesheet" href="css/themes/theme-ocean.css">
+    <link rel="stylesheet" href="css/themes/theme-sunset.css">
+    <link rel="stylesheet" href="css/themes/theme-lavender.css">
+    <link rel="stylesheet" href="css/themes/theme-crimson.css">
+    <link rel="stylesheet" href="css/themes/theme-rose.css">
 </head>
 
 <body class="dark bg-slate-950 text-slate-100 font-mono min-h-screen">
@@ -110,9 +118,7 @@
                 </div>
 
                 <div class="header-actions">
-                    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
-                        <i data-lucide="moon"></i>
-                    </button>
+                    <!-- Theme Selector will be dynamically inserted here by ThemeManager -->
                 </div>
             </header>
 
@@ -162,6 +168,7 @@
     <div id="toast-container" class="toast-container"></div>
 
     <!-- Scripts -->
+    <script src="js/components/ThemeManager.js"></script>
     <script src="js/utils/helpers.js"></script>
     <script src="js/components/Sidebar.js"></script>
     <script src="js/components/Header.js"></script>

@@ -1,0 +1,47 @@
+/* ========================================
+   OpsMate Theme: Emerald (Default)
+   A vibrant green theme for a fresh, professional look
+   ======================================== */
+
+:root[data-theme="emerald"],
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #0f1629;
+    --bg-tertiary: #1a2234;
+    --bg-card: #1e293b;
+    --bg-hover: #334155;
+
+    /* Accent Colors */
+    --accent-primary: #10b981;
+    --accent-secondary: #34d399;
+    --accent-glow: rgba(16, 185, 129, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #10b981, #34d399);
+    --gradient-bg: 
+        radial-gradient(ellipse at top, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Border Colors */
+    --border-color: #334155;
+    --border-focus: #10b981;
+
+    /* Status Colors */
+    --error-color: #ef4444;
+    --warning-color: #f59e0b;
+    --success-color: #10b981;
+    --info-color: #3b82f6;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(16, 185, 129, 0.4);
+    
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+    --nav-active-border: rgba(16, 185, 129, 0.3);
+}

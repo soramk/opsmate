@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Rose Pink
+   A modern, elegant pink theme
+   ======================================== */
+
+:root[data-theme="rose"] {
+    /* Background Colors */
+    --bg-primary: #0f0a0d;
+    --bg-secondary: #1a1018;
+    --bg-tertiary: #2a1825;
+    --bg-card: #3d2035;
+    --bg-hover: #4a2840;
+
+    /* Accent Colors */
+    --accent-primary: #f472b6;
+    --accent-secondary: #f9a8d4;
+    --accent-glow: rgba(244, 114, 182, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #f472b6, #f9a8d4);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(244, 114, 182, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(249, 168, 212, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #fdf2f8;
+    --text-secondary: #c8b4c0;
+    --text-muted: #8a7280;
+
+    /* Border Colors */
+    --border-color: #4a2840;
+    --border-focus: #f472b6;
+
+    /* Status Colors */
+    --error-color: #fbbf24;
+    --warning-color: #f97316;
+    --success-color: #22c55e;
+    --info-color: #38bdf8;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(244, 114, 182, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(244, 114, 182, 0.15), rgba(244, 114, 182, 0.05));
+    --nav-active-border: rgba(244, 114, 182, 0.3);
+}

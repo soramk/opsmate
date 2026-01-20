@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Ocean Blue
+   A calm, professional blue theme
+   ======================================== */
+
+:root[data-theme="ocean"] {
+    /* Background Colors */
+    --bg-primary: #0a0d14;
+    --bg-secondary: #0f1824;
+    --bg-tertiary: #162435;
+    --bg-card: #1e3045;
+    --bg-hover: #2a4365;
+
+    /* Accent Colors */
+    --accent-primary: #0ea5e9;
+    --accent-secondary: #38bdf8;
+    --accent-glow: rgba(14, 165, 233, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #0ea5e9, #38bdf8);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #f0f9ff;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Border Colors */
+    --border-color: #2a4365;
+    --border-focus: #0ea5e9;
+
+    /* Status Colors */
+    --error-color: #f43f5e;
+    --warning-color: #f59e0b;
+    --success-color: #22c55e;
+    --info-color: #0ea5e9;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(14, 165, 233, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.05));
+    --nav-active-border: rgba(14, 165, 233, 0.3);
+}

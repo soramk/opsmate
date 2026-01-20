@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Sunset Orange
+   A warm, energetic orange theme
+   ======================================== */
+
+:root[data-theme="sunset"] {
+    /* Background Colors */
+    --bg-primary: #120c0a;
+    --bg-secondary: #1a1210;
+    --bg-tertiary: #2a1f1a;
+    --bg-card: #3d2d25;
+    --bg-hover: #4a3830;
+
+    /* Accent Colors */
+    --accent-primary: #f97316;
+    --accent-secondary: #fb923c;
+    --accent-glow: rgba(249, 115, 22, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #f97316, #fb923c);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(251, 146, 60, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #fef3c7;
+    --text-secondary: #d1c4a7;
+    --text-muted: #92856d;
+
+    /* Border Colors */
+    --border-color: #4a3830;
+    --border-focus: #f97316;
+
+    /* Status Colors */
+    --error-color: #ef4444;
+    --warning-color: #fbbf24;
+    --success-color: #22c55e;
+    --info-color: #3b82f6;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(249, 115, 22, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(249, 115, 22, 0.05));
+    --nav-active-border: rgba(249, 115, 22, 0.3);
+}

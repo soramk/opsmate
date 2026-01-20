@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Crimson Red
+   A bold, powerful red theme
+   ======================================== */
+
+:root[data-theme="crimson"] {
+    /* Background Colors */
+    --bg-primary: #0f0a0a;
+    --bg-secondary: #1a1010;
+    --bg-tertiary: #2a1818;
+    --bg-card: #3d2020;
+    --bg-hover: #4a2828;
+
+    /* Accent Colors */
+    --accent-primary: #ef4444;
+    --accent-secondary: #f87171;
+    --accent-glow: rgba(239, 68, 68, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #ef4444, #f87171);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(239, 68, 68, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(251, 113, 133, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #fef2f2;
+    --text-secondary: #c8b4b4;
+    --text-muted: #8a7272;
+
+    /* Border Colors */
+    --border-color: #4a2828;
+    --border-focus: #ef4444;
+
+    /* Status Colors */
+    --error-color: #fbbf24;
+    --warning-color: #f97316;
+    --success-color: #22c55e;
+    --info-color: #38bdf8;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(239, 68, 68, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+    --nav-active-border: rgba(239, 68, 68, 0.3);
+}
