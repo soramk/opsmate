@@ -322,12 +322,15 @@
 }
 
 /* Base Styles */
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
+    font-family: var(--font-mono);
 }
 
 body {
@@ -336,6 +339,15 @@ body {
         radial-gradient(ellipse at top, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
         radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
     min-height: 100vh;
+    font-family: var(--font-mono);
+}
+
+/* Ensure font applies to all elements */
+body,
+input,
+button,
+select,
+textarea {
     font-family: var(--font-mono);
 }
 
