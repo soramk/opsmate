@@ -1,6 +1,6 @@
 /**
- * OpsMate Theme & Font Manager
- * Handles theme and font switching with persistence
+ * OpsMate Theme, Font & Mode Manager
+ * Handles theme, font, and light/dark mode switching with persistence
  */
 
 const ThemeManager = {
@@ -24,6 +24,7 @@ const ThemeManager = {
 
     currentTheme: 'emerald',
     currentFont: 'jetbrains',
+    currentMode: 'dark',
     themeDropdownOpen: false,
     fontDropdownOpen: false,
 
@@ -31,23 +32,29 @@ const ThemeManager = {
      * Initialize the theme manager
      */
     init() {
-        // Load saved theme
+        // Load saved settings
         const savedTheme = localStorage.getItem('opsmate-theme');
         if (savedTheme && this.themes.find(t => t.id === savedTheme)) {
             this.currentTheme = savedTheme;
         }
 
-        // Load saved font
         const savedFont = localStorage.getItem('opsmate-font');
         if (savedFont && this.fonts.find(f => f.id === savedFont)) {
             this.currentFont = savedFont;
         }
 
-        // Apply the theme and font
+        const savedMode = localStorage.getItem('opsmate-mode');
+        if (savedMode && ['dark', 'light'].includes(savedMode)) {
+            this.currentMode = savedMode;
+        }
+
+        // Apply settings
         this.applyTheme(this.currentTheme);
         this.applyFont(this.currentFont);
+        this.applyMode(this.currentMode);
 
-        // Render the selectors
+        // Render selectors
+        this.renderModeToggle();
         this.renderThemeSelector();
         this.renderFontSelector();
 
@@ -62,8 +69,6 @@ const ThemeManager = {
         document.documentElement.setAttribute('data-theme', themeId);
         this.currentTheme = themeId;
         localStorage.setItem('opsmate-theme', themeId);
-
-        // Update the theme button icon
         this.updateThemeButton();
     },
 
@@ -74,9 +79,67 @@ const ThemeManager = {
         document.documentElement.setAttribute('data-font', fontId);
         this.currentFont = fontId;
         localStorage.setItem('opsmate-font', fontId);
-
-        // Update the font button
         this.updateFontButton();
+    },
+
+    /**
+     * Apply mode (dark/light)
+     */
+    applyMode(mode) {
+        document.documentElement.setAttribute('data-mode', mode);
+        this.currentMode = mode;
+        localStorage.setItem('opsmate-mode', mode);
+        this.updateModeButton();
+    },
+
+    /**
+     * Toggle between dark and light mode
+     */
+    toggleMode() {
+        const newMode = this.currentMode === 'dark' ? 'light' : 'dark';
+        this.applyMode(newMode);
+
+        if (typeof OpsMateApp !== 'undefined' && OpsMateApp.showToast) {
+            const modeName = newMode === 'dark' ? 'ダークモード' : 'ライトモード';
+            OpsMateApp.showToast(`${modeName}に切り替えました`, 'success');
+        }
+    },
+
+    /**
+     * Render the mode toggle button
+     */
+    renderModeToggle() {
+        const headerActions = document.querySelector('.header-actions');
+        if (!headerActions) return;
+
+        const modeBtn = document.createElement('button');
+        modeBtn.className = 'icon-btn mode-toggle-btn';
+        modeBtn.id = 'mode-toggle-btn';
+        modeBtn.setAttribute('aria-label', 'モード切替');
+        modeBtn.innerHTML = this.currentMode === 'dark'
+            ? '<i data-lucide="sun"></i>'
+            : '<i data-lucide="moon"></i>';
+
+        headerActions.insertBefore(modeBtn, headerActions.firstChild);
+
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    },
+
+    /**
+     * Update the mode toggle button
+     */
+    updateModeButton() {
+        const btn = document.getElementById('mode-toggle-btn');
+        if (btn) {
+            btn.innerHTML = this.currentMode === 'dark'
+                ? '<i data-lucide="sun"></i>'
+                : '<i data-lucide="moon"></i>';
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
     },
 
     /**
@@ -86,24 +149,20 @@ const ThemeManager = {
         const headerActions = document.querySelector('.header-actions');
         if (!headerActions) return;
 
-        // Create theme selector container
         const themeSelector = document.createElement('div');
         themeSelector.className = 'theme-selector';
         themeSelector.id = 'theme-selector';
 
-        // Create the toggle button
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'icon-btn theme-toggle-btn';
         toggleBtn.id = 'theme-selector-btn';
         toggleBtn.setAttribute('aria-label', 'テーマを選択');
         toggleBtn.innerHTML = `<i data-lucide="palette"></i>`;
 
-        // Create the dropdown
         const dropdown = document.createElement('div');
         dropdown.className = 'theme-dropdown';
         dropdown.id = 'theme-dropdown';
 
-        // Create dropdown content
         const dropdownHeader = document.createElement('div');
         dropdownHeader.className = 'theme-dropdown-header';
         dropdownHeader.innerHTML = `
@@ -128,18 +187,19 @@ const ThemeManager = {
 
         dropdown.appendChild(dropdownHeader);
         dropdown.appendChild(themeGrid);
-
         themeSelector.appendChild(toggleBtn);
         themeSelector.appendChild(dropdown);
 
-        // Insert into header actions
         const existingToggle = document.getElementById('theme-toggle');
-        if (existingToggle) {
-            existingToggle.remove();
-        }
-        headerActions.insertBefore(themeSelector, headerActions.firstChild);
+        if (existingToggle) existingToggle.remove();
 
-        // Re-render Lucide icons
+        const modeBtn = document.getElementById('mode-toggle-btn');
+        if (modeBtn && modeBtn.nextSibling) {
+            headerActions.insertBefore(themeSelector, modeBtn.nextSibling);
+        } else {
+            headerActions.appendChild(themeSelector);
+        }
+
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
@@ -152,24 +212,20 @@ const ThemeManager = {
         const headerActions = document.querySelector('.header-actions');
         if (!headerActions) return;
 
-        // Create font selector container
         const fontSelector = document.createElement('div');
         fontSelector.className = 'font-selector';
         fontSelector.id = 'font-selector';
 
-        // Create the toggle button
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'icon-btn font-toggle-btn';
         toggleBtn.id = 'font-selector-btn';
         toggleBtn.setAttribute('aria-label', 'フォントを選択');
         toggleBtn.innerHTML = `<i data-lucide="type"></i>`;
 
-        // Create the dropdown
         const dropdown = document.createElement('div');
         dropdown.className = 'font-dropdown';
         dropdown.id = 'font-dropdown';
 
-        // Create dropdown content
         const dropdownHeader = document.createElement('div');
         dropdownHeader.className = 'font-dropdown-header';
         dropdownHeader.innerHTML = `
@@ -196,11 +252,9 @@ const ThemeManager = {
 
         dropdown.appendChild(dropdownHeader);
         dropdown.appendChild(fontGrid);
-
         fontSelector.appendChild(toggleBtn);
         fontSelector.appendChild(dropdown);
 
-        // Insert after theme selector
         const themeSelector = document.getElementById('theme-selector');
         if (themeSelector && themeSelector.nextSibling) {
             headerActions.insertBefore(fontSelector, themeSelector.nextSibling);
@@ -208,7 +262,6 @@ const ThemeManager = {
             headerActions.appendChild(fontSelector);
         }
 
-        // Re-render Lucide icons
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
@@ -246,9 +299,7 @@ const ThemeManager = {
      * Toggle the theme dropdown visibility
      */
     toggleThemeDropdown() {
-        // Close font dropdown if open
         this.closeFontDropdown();
-
         this.themeDropdownOpen = !this.themeDropdownOpen;
         const dropdown = document.getElementById('theme-dropdown');
         const btn = document.getElementById('theme-selector-btn');
@@ -266,9 +317,7 @@ const ThemeManager = {
      * Toggle the font dropdown visibility
      */
     toggleFontDropdown() {
-        // Close theme dropdown if open
         this.closeThemeDropdown();
-
         this.fontDropdownOpen = !this.fontDropdownOpen;
         const dropdown = document.getElementById('font-dropdown');
         const btn = document.getElementById('font-selector-btn');
@@ -289,7 +338,6 @@ const ThemeManager = {
         this.themeDropdownOpen = false;
         const dropdown = document.getElementById('theme-dropdown');
         const btn = document.getElementById('theme-selector-btn');
-
         if (dropdown) dropdown.classList.remove('open');
         if (btn) btn.classList.remove('active');
     },
@@ -301,7 +349,6 @@ const ThemeManager = {
         this.fontDropdownOpen = false;
         const dropdown = document.getElementById('font-dropdown');
         const btn = document.getElementById('font-selector-btn');
-
         if (dropdown) dropdown.classList.remove('open');
         if (btn) btn.classList.remove('active');
     },
@@ -318,8 +365,15 @@ const ThemeManager = {
      * Setup event listeners
      */
     setupEventListeners() {
-        // Click event delegation
         document.addEventListener('click', (e) => {
+            // Mode toggle
+            const modeBtn = e.target.closest('#mode-toggle-btn');
+            if (modeBtn) {
+                e.preventDefault();
+                this.toggleMode();
+                return;
+            }
+
             // Theme selector toggle
             const themeSelectorBtn = e.target.closest('#theme-selector-btn');
             if (themeSelectorBtn) {
@@ -344,7 +398,6 @@ const ThemeManager = {
                 this.applyTheme(themeId);
                 this.closeThemeDropdown();
 
-                // Show toast notification
                 if (typeof OpsMateApp !== 'undefined' && OpsMateApp.showToast) {
                     const theme = this.themes.find(t => t.id === themeId);
                     OpsMateApp.showToast(`テーマを「${theme.name}」に変更しました`, 'success');
@@ -360,7 +413,6 @@ const ThemeManager = {
                 this.applyFont(fontId);
                 this.closeFontDropdown();
 
-                // Show toast notification
                 if (typeof OpsMateApp !== 'undefined' && OpsMateApp.showToast) {
                     const font = this.fonts.find(f => f.id === fontId);
                     OpsMateApp.showToast(`フォントを「${font.name}」に変更しました`, 'success');

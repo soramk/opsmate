@@ -1,0 +1,141 @@
+/* ========================================
+   OpsMate - Light Mode Base
+   Light mode color overrides
+   ======================================== */
+
+:root[data-mode="light"] {
+    /* Background Colors - Light Mode */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-tertiary: #e2e8f0;
+    --bg-card: #ffffff;
+    --bg-hover: #cbd5e1;
+
+    /* Text Colors - Light Mode */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+
+    /* Border Colors - Light Mode */
+    --border-color: #cbd5e1;
+}
+
+/* Theme-specific light mode colors */
+:root[data-mode="light"][data-theme="emerald"] {
+    --accent-primary: #059669;
+    --accent-secondary: #10b981;
+    --accent-glow: rgba(5, 150, 105, 0.2);
+    --nav-active-bg: linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(5, 150, 105, 0.05));
+    --nav-active-border: rgba(5, 150, 105, 0.4);
+    --btn-shadow-hover: 0 4px 15px rgba(5, 150, 105, 0.3);
+}
+
+:root[data-mode="light"][data-theme="ocean"] {
+    --accent-primary: #0284c7;
+    --accent-secondary: #0ea5e9;
+    --accent-glow: rgba(2, 132, 199, 0.2);
+    --nav-active-bg: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(2, 132, 199, 0.05));
+    --nav-active-border: rgba(2, 132, 199, 0.4);
+    --btn-shadow-hover: 0 4px 15px rgba(2, 132, 199, 0.3);
+}
+
+:root[data-mode="light"][data-theme="sunset"] {
+    --accent-primary: #ea580c;
+    --accent-secondary: #f97316;
+    --accent-glow: rgba(234, 88, 12, 0.2);
+    --nav-active-bg: linear-gradient(135deg, rgba(234, 88, 12, 0.15), rgba(234, 88, 12, 0.05));
+    --nav-active-border: rgba(234, 88, 12, 0.4);
+    --btn-shadow-hover: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+:root[data-mode="light"][data-theme="lavender"] {
+    --accent-primary: #7c3aed;
+    --accent-secondary: #a78bfa;
+    --accent-glow: rgba(124, 58, 237, 0.2);
+    --nav-active-bg: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(124, 58, 237, 0.05));
+    --nav-active-border: rgba(124, 58, 237, 0.4);
+    --btn-shadow-hover: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+:root[data-mode="light"][data-theme="crimson"] {
+    --accent-primary: #dc2626;
+    --accent-secondary: #ef4444;
+    --accent-glow: rgba(220, 38, 38, 0.2);
+    --nav-active-bg: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(220, 38, 38, 0.05));
+    --nav-active-border: rgba(220, 38, 38, 0.4);
+    --btn-shadow-hover: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+:root[data-mode="light"][data-theme="rose"] {
+    --accent-primary: #db2777;
+    --accent-secondary: #f472b6;
+    --accent-glow: rgba(219, 39, 119, 0.2);
+    --nav-active-bg: linear-gradient(135deg, rgba(219, 39, 119, 0.15), rgba(219, 39, 119, 0.05));
+    --nav-active-border: rgba(219, 39, 119, 0.4);
+    --btn-shadow-hover: 0 4px 15px rgba(219, 39, 119, 0.3);
+}
+
+/* Light mode specific overrides */
+:root[data-mode="light"] body {
+    background-image:
+        radial-gradient(ellipse at top, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
+}
+
+:root[data-mode="light"] .main-header {
+    background: rgba(248, 250, 252, 0.9);
+}
+
+:root[data-mode="light"] .sidebar {
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-mode="light"] .toast {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-mode="light"] .panel-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-mode="light"] .result-item {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+:root[data-mode="light"] .form-input,
+:root[data-mode="light"] .form-select,
+:root[data-mode="light"] .form-textarea {
+    background: #ffffff;
+    border-color: #d1d5db;
+}
+
+:root[data-mode="light"] .form-input:focus,
+:root[data-mode="light"] .form-select:focus,
+:root[data-mode="light"] .form-textarea:focus {
+    background: #ffffff;
+}
+
+:root[data-mode="light"] .btn-primary {
+    color: #ffffff;
+}
+
+:root[data-mode="light"] .btn-secondary {
+    background: #ffffff;
+    border-color: #d1d5db;
+}
+
+:root[data-mode="light"] .btn-secondary:hover {
+    background: #f1f5f9;
+}
+
+:root[data-mode="light"] ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+:root[data-mode="light"] ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+}
+
+:root[data-mode="light"] ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
