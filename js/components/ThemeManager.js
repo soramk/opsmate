@@ -1,6 +1,6 @@
 /**
- * OpsMate Theme Manager
- * Handles theme switching and persistence
+ * OpsMate Theme & Font Manager
+ * Handles theme and font switching with persistence
  */
 
 const ThemeManager = {
@@ -13,8 +13,19 @@ const ThemeManager = {
         { id: 'rose', name: 'ローズ', icon: 'flower-2', color: '#f472b6' }
     ],
 
+    fonts: [
+        { id: 'jetbrains', name: 'JetBrains Mono', family: "'JetBrains Mono'", sample: 'AaBbCc 123' },
+        { id: 'firacode', name: 'Fira Code', family: "'Fira Code'", sample: 'AaBbCc 123' },
+        { id: 'sourcecodepro', name: 'Source Code Pro', family: "'Source Code Pro'", sample: 'AaBbCc 123' },
+        { id: 'ibmplexmono', name: 'IBM Plex Mono', family: "'IBM Plex Mono'", sample: 'AaBbCc 123' },
+        { id: 'inconsolata', name: 'Inconsolata', family: "'Inconsolata'", sample: 'AaBbCc 123' },
+        { id: 'robotomono', name: 'Roboto Mono', family: "'Roboto Mono'", sample: 'AaBbCc 123' }
+    ],
+
     currentTheme: 'emerald',
-    dropdownOpen: false,
+    currentFont: 'jetbrains',
+    themeDropdownOpen: false,
+    fontDropdownOpen: false,
 
     /**
      * Initialize the theme manager
@@ -26,11 +37,19 @@ const ThemeManager = {
             this.currentTheme = savedTheme;
         }
 
-        // Apply the theme
-        this.applyTheme(this.currentTheme);
+        // Load saved font
+        const savedFont = localStorage.getItem('opsmate-font');
+        if (savedFont && this.fonts.find(f => f.id === savedFont)) {
+            this.currentFont = savedFont;
+        }
 
-        // Render the theme selector
+        // Apply the theme and font
+        this.applyTheme(this.currentTheme);
+        this.applyFont(this.currentFont);
+
+        // Render the selectors
         this.renderThemeSelector();
+        this.renderFontSelector();
 
         // Setup event listeners
         this.setupEventListeners();
@@ -46,6 +65,18 @@ const ThemeManager = {
 
         // Update the theme button icon
         this.updateThemeButton();
+    },
+
+    /**
+     * Apply a font by ID
+     */
+    applyFont(fontId) {
+        document.documentElement.setAttribute('data-font', fontId);
+        this.currentFont = fontId;
+        localStorage.setItem('opsmate-font', fontId);
+
+        // Update the font button
+        this.updateFontButton();
     },
 
     /**
@@ -101,12 +132,81 @@ const ThemeManager = {
         themeSelector.appendChild(toggleBtn);
         themeSelector.appendChild(dropdown);
 
-        // Insert before the existing theme toggle button
+        // Insert into header actions
         const existingToggle = document.getElementById('theme-toggle');
         if (existingToggle) {
             existingToggle.remove();
         }
         headerActions.insertBefore(themeSelector, headerActions.firstChild);
+
+        // Re-render Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    },
+
+    /**
+     * Render the font selector dropdown
+     */
+    renderFontSelector() {
+        const headerActions = document.querySelector('.header-actions');
+        if (!headerActions) return;
+
+        // Create font selector container
+        const fontSelector = document.createElement('div');
+        fontSelector.className = 'font-selector';
+        fontSelector.id = 'font-selector';
+
+        // Create the toggle button
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'icon-btn font-toggle-btn';
+        toggleBtn.id = 'font-selector-btn';
+        toggleBtn.setAttribute('aria-label', 'フォントを選択');
+        toggleBtn.innerHTML = `<i data-lucide="type"></i>`;
+
+        // Create the dropdown
+        const dropdown = document.createElement('div');
+        dropdown.className = 'font-dropdown';
+        dropdown.id = 'font-dropdown';
+
+        // Create dropdown content
+        const dropdownHeader = document.createElement('div');
+        dropdownHeader.className = 'font-dropdown-header';
+        dropdownHeader.innerHTML = `
+            <i data-lucide="type" class="font-dropdown-icon"></i>
+            <span>フォントを選択</span>
+        `;
+
+        const fontGrid = document.createElement('div');
+        fontGrid.className = 'font-grid';
+
+        this.fonts.forEach(font => {
+            const fontItem = document.createElement('button');
+            fontItem.className = `font-item ${font.id === this.currentFont ? 'active' : ''}`;
+            fontItem.setAttribute('data-font-id', font.id);
+            fontItem.innerHTML = `
+                <div class="font-preview">
+                    <span class="font-name" style="font-family: ${font.family}, monospace">${font.name}</span>
+                    <span class="font-sample" style="font-family: ${font.family}, monospace">${font.sample}</span>
+                </div>
+                <i data-lucide="check" class="font-check"></i>
+            `;
+            fontGrid.appendChild(fontItem);
+        });
+
+        dropdown.appendChild(dropdownHeader);
+        dropdown.appendChild(fontGrid);
+
+        fontSelector.appendChild(toggleBtn);
+        fontSelector.appendChild(dropdown);
+
+        // Insert after theme selector
+        const themeSelector = document.getElementById('theme-selector');
+        if (themeSelector && themeSelector.nextSibling) {
+            headerActions.insertBefore(fontSelector, themeSelector.nextSibling);
+        } else {
+            headerActions.appendChild(fontSelector);
+        }
 
         // Re-render Lucide icons
         if (typeof lucide !== 'undefined') {
@@ -129,14 +229,31 @@ const ThemeManager = {
     },
 
     /**
-     * Toggle the dropdown visibility
+     * Update the font button appearance
      */
-    toggleDropdown() {
-        this.dropdownOpen = !this.dropdownOpen;
+    updateFontButton() {
+        const activeItems = document.querySelectorAll('.font-item');
+        activeItems.forEach(item => {
+            if (item.getAttribute('data-font-id') === this.currentFont) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    },
+
+    /**
+     * Toggle the theme dropdown visibility
+     */
+    toggleThemeDropdown() {
+        // Close font dropdown if open
+        this.closeFontDropdown();
+
+        this.themeDropdownOpen = !this.themeDropdownOpen;
         const dropdown = document.getElementById('theme-dropdown');
         const btn = document.getElementById('theme-selector-btn');
 
-        if (this.dropdownOpen) {
+        if (this.themeDropdownOpen) {
             dropdown.classList.add('open');
             btn.classList.add('active');
         } else {
@@ -146,10 +263,30 @@ const ThemeManager = {
     },
 
     /**
-     * Close the dropdown
+     * Toggle the font dropdown visibility
      */
-    closeDropdown() {
-        this.dropdownOpen = false;
+    toggleFontDropdown() {
+        // Close theme dropdown if open
+        this.closeThemeDropdown();
+
+        this.fontDropdownOpen = !this.fontDropdownOpen;
+        const dropdown = document.getElementById('font-dropdown');
+        const btn = document.getElementById('font-selector-btn');
+
+        if (this.fontDropdownOpen) {
+            dropdown.classList.add('open');
+            btn.classList.add('active');
+        } else {
+            dropdown.classList.remove('open');
+            btn.classList.remove('active');
+        }
+    },
+
+    /**
+     * Close the theme dropdown
+     */
+    closeThemeDropdown() {
+        this.themeDropdownOpen = false;
         const dropdown = document.getElementById('theme-dropdown');
         const btn = document.getElementById('theme-selector-btn');
 
@@ -158,26 +295,54 @@ const ThemeManager = {
     },
 
     /**
+     * Close the font dropdown
+     */
+    closeFontDropdown() {
+        this.fontDropdownOpen = false;
+        const dropdown = document.getElementById('font-dropdown');
+        const btn = document.getElementById('font-selector-btn');
+
+        if (dropdown) dropdown.classList.remove('open');
+        if (btn) btn.classList.remove('active');
+    },
+
+    /**
+     * Close all dropdowns
+     */
+    closeAllDropdowns() {
+        this.closeThemeDropdown();
+        this.closeFontDropdown();
+    },
+
+    /**
      * Setup event listeners
      */
     setupEventListeners() {
-        // Toggle button click
+        // Click event delegation
         document.addEventListener('click', (e) => {
-            const toggleBtn = e.target.closest('#theme-selector-btn');
-            const themeItem = e.target.closest('.theme-item');
-            const themeSelector = e.target.closest('.theme-selector');
-
-            if (toggleBtn) {
+            // Theme selector toggle
+            const themeSelectorBtn = e.target.closest('#theme-selector-btn');
+            if (themeSelectorBtn) {
                 e.preventDefault();
-                this.toggleDropdown();
+                this.toggleThemeDropdown();
                 return;
             }
 
+            // Font selector toggle
+            const fontSelectorBtn = e.target.closest('#font-selector-btn');
+            if (fontSelectorBtn) {
+                e.preventDefault();
+                this.toggleFontDropdown();
+                return;
+            }
+
+            // Theme item selection
+            const themeItem = e.target.closest('.theme-item');
             if (themeItem) {
                 e.preventDefault();
                 const themeId = themeItem.getAttribute('data-theme-id');
                 this.applyTheme(themeId);
-                this.closeDropdown();
+                this.closeThemeDropdown();
 
                 // Show toast notification
                 if (typeof OpsMateApp !== 'undefined' && OpsMateApp.showToast) {
@@ -187,16 +352,38 @@ const ThemeManager = {
                 return;
             }
 
-            // Close dropdown when clicking outside
-            if (!themeSelector && this.dropdownOpen) {
-                this.closeDropdown();
+            // Font item selection
+            const fontItem = e.target.closest('.font-item');
+            if (fontItem) {
+                e.preventDefault();
+                const fontId = fontItem.getAttribute('data-font-id');
+                this.applyFont(fontId);
+                this.closeFontDropdown();
+
+                // Show toast notification
+                if (typeof OpsMateApp !== 'undefined' && OpsMateApp.showToast) {
+                    const font = this.fonts.find(f => f.id === fontId);
+                    OpsMateApp.showToast(`フォントを「${font.name}」に変更しました`, 'success');
+                }
+                return;
+            }
+
+            // Close dropdowns when clicking outside
+            const themeSelector = e.target.closest('.theme-selector');
+            const fontSelector = e.target.closest('.font-selector');
+
+            if (!themeSelector && this.themeDropdownOpen) {
+                this.closeThemeDropdown();
+            }
+            if (!fontSelector && this.fontDropdownOpen) {
+                this.closeFontDropdown();
             }
         });
 
-        // Close dropdown on escape key
+        // Close dropdowns on escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.dropdownOpen) {
-                this.closeDropdown();
+            if (e.key === 'Escape') {
+                this.closeAllDropdowns();
             }
         });
     }

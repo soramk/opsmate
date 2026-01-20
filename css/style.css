@@ -9,6 +9,10 @@
     --header-height: 64px;
     --transition-speed: 0.3s;
 
+    /* Font Family - Default (can be overridden by data-font attribute) */
+    --font-mono: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+    --font-sans: 'Inter', 'Noto Sans JP', system-ui, sans-serif;
+
     /* Colors - Default values (overridden by theme files) */
     --bg-primary: #0a0f1a;
     --bg-secondary: #0f1629;
@@ -44,6 +48,31 @@
     --gradient-bg:
         radial-gradient(ellipse at top, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
         radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+}
+
+/* Font Families - Dynamically applied via data-font attribute */
+:root[data-font="jetbrains"] {
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+:root[data-font="firacode"] {
+    --font-mono: 'Fira Code', 'Consolas', monospace;
+}
+
+:root[data-font="sourcecodepro"] {
+    --font-mono: 'Source Code Pro', 'Consolas', monospace;
+}
+
+:root[data-font="ibmplexmono"] {
+    --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+}
+
+:root[data-font="inconsolata"] {
+    --font-mono: 'Inconsolata', 'Consolas', monospace;
+}
+
+:root[data-font="robotomono"] {
+    --font-mono: 'Roboto Mono', 'Consolas', monospace;
 }
 
 /* ========================================
@@ -166,6 +195,132 @@
     opacity: 1;
 }
 
+/* ========================================
+   Font Selector Styles
+   ======================================== */
+.font-selector {
+    position: relative;
+}
+
+.font-toggle-btn {
+    transition: all var(--transition-speed);
+}
+
+.font-toggle-btn:hover,
+.font-toggle-btn.active {
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.font-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    width: 240px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 200;
+}
+
+.font-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.font-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.font-dropdown-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-primary);
+}
+
+.font-grid {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.font-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+}
+
+.font-item:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
+}
+
+.font-item.active {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-primary);
+}
+
+.font-preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.font-name {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.font-sample {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.font-item:hover .font-name,
+.font-item.active .font-name {
+    color: var(--text-primary);
+}
+
+.font-check {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-primary);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    flex-shrink: 0;
+}
+
+.font-item.active .font-check {
+    opacity: 1;
+}
+
 /* Base Styles */
 * {
     box-sizing: border-box;
@@ -181,6 +336,7 @@ body {
         radial-gradient(ellipse at top, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
         radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
     min-height: 100vh;
+    font-family: var(--font-mono);
 }
 
 /* Scrollbar Styling */
