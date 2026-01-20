@@ -6,150 +6,164 @@
 const SidebarComponent = {
     // Tool definitions
     tools: {
-        core: [
-            {
-                id: 'subnet-calculator',
-                name: 'IPサブネット計算機',
-                icon: 'network',
-                description: 'IPv4サブネット分割・ホスト数計算'
-            },
-            {
-                id: 'mac-converter',
-                name: 'MACアドレス変換',
-                icon: 'barcode',
-                description: '各種形式（コロン、ハイフン等）への変換'
-            },
-            {
-                id: 'transfer-calculator',
-                name: 'ファイル転送時間計算',
-                icon: 'clock',
-                description: '帯域とデータ量から転送時間を推定'
-            },
-            {
-                id: 'ipv6-toolkit',
-                name: 'IPv6 ツールキット',
-                icon: 'globe-2',
-                description: 'IPv6計算・短縮・展開'
-            }
-        ],
-        extended: [
-            {
-                id: 'base-converter',
-                name: '進数変換・ビット計算',
-                icon: 'binary',
-                description: '10進/16進/2進変換とビット操作'
-            },
-            {
-                id: 'cidr-reference',
-                name: 'CIDRリファレンス',
-                icon: 'table',
-                description: 'CIDR一覧・サブネット分割'
-            },
-            {
-                id: 'port-reference',
-                name: 'ポート番号検索',
-                icon: 'list',
-                description: '主要なTCP/UDPポート番号検索'
-            },
-            {
-                id: 'http-status',
-                name: 'HTTPステータス',
-                icon: 'globe',
-                description: 'HTTPステータスコード一覧'
-            },
-            {
-                id: 'regex-tester',
-                name: '正規表現テスター',
-                icon: 'regex',
-                description: '正規表現テスター'
-            }
-        ],
-        system: [
-            {
-                id: 'config-diff',
-                name: 'Config 差分比較',
-                icon: 'file-diff',
-                description: 'Config差分比較'
-            },
-            {
-                id: 'json-formatter',
-                name: 'JSON 整形',
-                icon: 'braces',
-                description: 'JSON整形・検証'
-            },
-            {
-                id: 'text-utility',
-                name: 'テキスト一括処理',
-                icon: 'type',
-                description: 'ソート、重複排除、プレフィックス一括付与'
-            },
-            {
-                id: 'hash-gen',
-                name: 'ハッシュ生成',
-                icon: 'hash',
-                description: 'SHA-256 / SHA-1 ハッシュ生成・比較'
-            },
-            {
-                id: 'cron-master',
-                name: 'Cron 設定作成',
-                icon: 'alarm-clock',
-                description: 'Cron設定解説・生成'
-            },
-            {
-                id: 'unix-timestamp',
-                name: '時刻・Unix時間変換',
-                icon: 'calendar-clock',
-                description: 'Unix Timestamp と日時の相互変換'
-            },
-            {
-                id: 'password-generator',
-                name: 'パスワード生成',
-                icon: 'key',
-                description: '強固なパスワード・PSKの一括生成'
-            },
-            {
-                id: 'datacenter-calc',
-                name: 'DC電力・熱量計算',
-                icon: 'server',
-                description: 'ラック電力・熱量変換計算'
-            },
-            {
-                id: 'ssh-config-gen',
-                name: 'SSH Config生成',
-                icon: 'terminal',
-                description: 'SSH設定（~/.ssh/config）のテンプレート生成'
-            },
-            {
-                id: 'firewalld-builder',
-                name: 'ファイアウォール構築',
-                icon: 'shield',
-                description: 'firewall-cmd / ufw / iptables コマンド生成'
-            },
-            {
-                id: 'systemd-unit-gen',
-                name: 'Systemdユニット生成',
-                icon: 'cog',
-                description: 'サービスユニットファイルの生成'
-            },
-            {
-                id: 'nginx-snippet',
-                name: 'Nginx設定スニペット',
-                icon: 'file-code',
-                description: 'プロキシ、SSL、CORS等の設定生成'
-            },
-            {
-                id: 'encoding-converter',
-                name: '文字エンコード変換',
-                icon: 'file-code-2',
-                description: 'Base64 / URL / Hex / HTML 変換'
-            },
-            {
-                id: 'uuid-generator',
-                name: 'UUID / ULID 生成',
-                icon: 'fingerprint',
-                description: 'UUID v4 / ULID の一括生成'
-            }
-        ]
+        network: {
+            title: 'ネットワーク管理',
+            items: [
+                {
+                    id: 'subnet-calculator',
+                    name: 'IPサブネット計算機',
+                    icon: 'network',
+                    description: 'IPv4サブネット分割・ホスト数計算'
+                },
+                {
+                    id: 'ipv6-toolkit',
+                    name: 'IPv6 ツールキット',
+                    icon: 'globe-2',
+                    description: 'IPv6計算・短縮・展開'
+                },
+                {
+                    id: 'cidr-reference',
+                    name: 'CIDRリファレンス',
+                    icon: 'table',
+                    description: 'CIDR一覧・サブネット分割'
+                },
+                {
+                    id: 'mac-converter',
+                    name: 'MACアドレス変換',
+                    icon: 'barcode',
+                    description: '各種形式（コロン、ハイフン等）への変換'
+                },
+                {
+                    id: 'port-reference',
+                    name: 'ポート番号検索',
+                    icon: 'list',
+                    description: '主要なTCP/UDPポート番号検索'
+                }
+            ]
+        },
+        infra: {
+            title: 'サーバー・インフラ設定',
+            items: [
+                {
+                    id: 'ssh-config-gen',
+                    name: 'SSH Config生成',
+                    icon: 'terminal',
+                    description: 'SSH設定（~/.ssh/config）のテンプレート生成'
+                },
+                {
+                    id: 'firewalld-builder',
+                    name: 'ファイアウォール構築',
+                    icon: 'shield',
+                    description: 'firewall-cmd / ufw / iptables コマンド生成'
+                },
+                {
+                    id: 'systemd-unit-gen',
+                    name: 'Systemdユニット生成',
+                    icon: 'cog',
+                    description: 'サービスユニットファイルの生成'
+                },
+                {
+                    id: 'nginx-snippet',
+                    name: 'Nginx設定スニペット',
+                    icon: 'file-code',
+                    description: 'プロキシ、SSL、CORS等の設定生成'
+                },
+                {
+                    id: 'datacenter-calc',
+                    name: 'DC電力・熱量計算',
+                    icon: 'server',
+                    description: 'ラック電力・熱量変換計算'
+                }
+            ]
+        },
+        dev: {
+            title: '開発ツール・データ処理',
+            items: [
+                {
+                    id: 'json-formatter',
+                    name: 'JSON 整形',
+                    icon: 'braces',
+                    description: 'JSON整形・検証'
+                },
+                {
+                    id: 'regex-tester',
+                    name: '正規表現テスター',
+                    icon: 'regex',
+                    description: '正規表現テスター'
+                },
+                {
+                    id: 'hash-gen',
+                    name: 'ハッシュ生成',
+                    icon: 'hash',
+                    description: 'SHA-256 / SHA-1 ハッシュ生成・比較'
+                },
+                {
+                    id: 'encoding-converter',
+                    name: '文字エンコード変換',
+                    icon: 'file-code-2',
+                    description: 'Base64 / URL / Hex / HTML 変換'
+                },
+                {
+                    id: 'base-converter',
+                    name: '進数変換・ビット計算',
+                    icon: 'binary',
+                    description: '10進/16進/2進変換とビット操作'
+                },
+                {
+                    id: 'uuid-generator',
+                    name: 'UUID / ULID 生成',
+                    icon: 'fingerprint',
+                    description: 'UUID v4 / ULID の一括生成'
+                }
+            ]
+        },
+        utils: {
+            title: '運用ユーティリティ',
+            items: [
+                {
+                    id: 'config-diff',
+                    name: 'Config 差分比較',
+                    icon: 'file-diff',
+                    description: 'Config差分比較'
+                },
+                {
+                    id: 'text-utility',
+                    name: 'テキスト一括処理',
+                    icon: 'type',
+                    description: 'ソート、重複排除、プレフィックス一括付与'
+                },
+                {
+                    id: 'unix-timestamp',
+                    name: '時刻・Unix時間変換',
+                    icon: 'calendar-clock',
+                    description: 'Unix Timestamp と日時の相互変換'
+                },
+                {
+                    id: 'cron-master',
+                    name: 'Cron 設定作成',
+                    icon: 'alarm-clock',
+                    description: 'Cron設定解説・生成'
+                },
+                {
+                    id: 'password-generator',
+                    name: 'パスワード生成',
+                    icon: 'key',
+                    description: '強固なパスワード・PSKの一括生成'
+                },
+                {
+                    id: 'transfer-calculator',
+                    name: 'ファイル転送時間計算',
+                    icon: 'clock',
+                    description: '帯域とデータ量から転送時間を推定'
+                },
+                {
+                    id: 'http-status',
+                    name: 'HTTPステータス',
+                    icon: 'globe',
+                    description: 'HTTPステータスコード一覧'
+                }
+            ]
+        }
     },
 
     currentTool: null,
@@ -166,34 +180,24 @@ const SidebarComponent = {
      * Render navigation items
      */
     renderNavigation() {
-        const coreNav = document.getElementById('core-tools-nav');
-        const extendedNav = document.getElementById('extended-tools-nav');
+        const navContainer = document.getElementById('sidebar-nav');
+        if (!navContainer) return;
 
-        // Add system tools container if it doesn't exist
-        let systemNav = document.getElementById('system-tools-nav');
-        if (!systemNav) {
-            const nav = document.querySelector('.sidebar-nav');
-            const section = document.createElement('div');
-            section.className = 'nav-section';
-            section.innerHTML = `
-                <span class="nav-section-title">システムツール</span>
-                <ul class="nav-list" id="system-tools-nav"></ul>
+        let html = '';
+
+        for (const categoryId in this.tools) {
+            const category = this.tools[categoryId];
+            html += `
+                <div class="nav-section">
+                    <span class="nav-section-title">${category.title}</span>
+                    <ul class="nav-list">
+                        ${category.items.map(tool => this.renderNavItem(tool)).join('')}
+                    </ul>
+                </div>
             `;
-            nav.appendChild(section);
-            systemNav = document.getElementById('system-tools-nav');
         }
 
-        if (coreNav) {
-            coreNav.innerHTML = this.tools.core.map(tool => this.renderNavItem(tool)).join('');
-        }
-
-        if (extendedNav) {
-            extendedNav.innerHTML = this.tools.extended.map(tool => this.renderNavItem(tool)).join('');
-        }
-
-        if (systemNav) {
-            systemNav.innerHTML = this.tools.system.map(tool => this.renderNavItem(tool)).join('');
-        }
+        navContainer.innerHTML = html;
 
         // Refresh Lucide icons
         lucide.createIcons();
@@ -293,7 +297,7 @@ const SidebarComponent = {
         }
 
         // Find tool info
-        const allTools = [...this.tools.core, ...this.tools.extended, ...this.tools.system];
+        const allTools = Object.values(this.tools).flatMap(category => category.items);
         const tool = allTools.find(t => t.id === toolId);
 
         if (tool) {
