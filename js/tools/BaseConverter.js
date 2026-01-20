@@ -173,15 +173,33 @@ const BaseConverter = {
         const bits = this.bitCount;
 
         let html = '<div class="bit-toggle-grid">';
-        for (let i = bits - 1; i >= 0; i--) {
-            const isOctetBoundary = bits === 32 && i % 8 === 0 && i !== 0;
-            html += `
-                <div class="bit-cell ${isOctetBoundary ? 'octet-boundary' : ''}">
-                    <span class="bit-position">${i}</span>
-                    <button class="bit-btn" data-bit="${i}" data-value="0">0</button>
-                </div>
-            `;
+
+        if (bits === 32) {
+            for (let group = 3; group >= 0; group--) {
+                html += '<div class="octet-group">';
+                for (let i = (group * 8) + 7; i >= group * 8; i--) {
+                    html += `
+                        <div class="bit-cell">
+                            <span class="bit-position">${i}</span>
+                            <button class="bit-btn" data-bit="${i}" data-value="0">0</button>
+                        </div>
+                    `;
+                }
+                html += '</div>';
+            }
+        } else {
+            html += '<div class="octet-group">';
+            for (let i = bits - 1; i >= 0; i--) {
+                html += `
+                    <div class="bit-cell">
+                        <span class="bit-position">${i}</span>
+                        <button class="bit-btn" data-bit="${i}" data-value="0">0</button>
+                    </div>
+                `;
+            }
+            html += '</div>';
         }
+
         html += '</div>';
 
         container.innerHTML = html;
