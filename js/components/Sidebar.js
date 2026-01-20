@@ -38,6 +38,12 @@ const SidebarComponent = {
                     name: 'ポート番号検索',
                     icon: 'list',
                     description: '主要なTCP/UDPポート番号検索'
+                },
+                {
+                    id: 'ip-list-gen',
+                    name: 'IPアドレスリスト生成',
+                    icon: 'list-ordered',
+                    description: 'CIDR/範囲から全IPを展開出力'
                 }
             ]
         },
@@ -69,6 +75,12 @@ const SidebarComponent = {
                     description: 'プロキシ、SSL、CORS等の設定生成'
                 },
                 {
+                    id: 'cert-tool',
+                    name: 'SSL/TLS 証明書ヘルパー',
+                    icon: 'lock',
+                    description: '証明書確認・opensslコマンド生成'
+                },
+                {
                     id: 'datacenter-calc',
                     name: 'DC電力・熱量計算',
                     icon: 'server',
@@ -96,6 +108,24 @@ const SidebarComponent = {
                     name: 'JSON 整形',
                     icon: 'braces',
                     description: 'JSON整形・検証'
+                },
+                {
+                    id: 'jwt-decoder',
+                    name: 'JWT デコーダー',
+                    icon: 'shield-check',
+                    description: 'JWTトークンのデコード・整形'
+                },
+                {
+                    id: 'yaml-json',
+                    name: 'YAML ↔ JSON 変換',
+                    icon: 'repeat',
+                    description: 'YAMLとJSONの相互変換'
+                },
+                {
+                    id: 'url-toolkit',
+                    name: 'URL 解析・構築',
+                    icon: 'link',
+                    description: 'URLの分解、パラメータ編集、再構築'
                 },
                 {
                     id: 'regex-tester',
@@ -173,6 +203,18 @@ const SidebarComponent = {
                     name: '運用ブックマーク',
                     icon: 'bookmark',
                     description: '管理画面やWikiのURL保存・整理'
+                },
+                {
+                    id: 'bulk-cmd-gen',
+                    name: '一括コマンド生成',
+                    icon: 'layers',
+                    description: 'リストとテンプレートから実行コマンドを量産'
+                },
+                {
+                    id: 'log-masker',
+                    name: 'ログ匿名化・マスク',
+                    icon: 'eye-off',
+                    description: 'ログ内のIPや個人情報を自動マスク'
                 },
                 {
                     id: 'http-status',

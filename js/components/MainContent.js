@@ -29,7 +29,14 @@ const MainContentComponent = {
         'uuid-generator': () => UuidGenerator.render(),
         'tera-term-macro': () => TeraTermMacroGen.render(),
         'rdp-config-gen': () => RdpConfigGen.render(),
-        'op-bookmarks': () => OpBookmarks.render()
+        'op-bookmarks': () => OpBookmarks.render(),
+        'jwt-decoder': () => JwtDecoder.render(),
+        'ip-list-gen': () => IpListGen.render(),
+        'bulk-cmd-gen': () => BulkCommandGen.render(),
+        'yaml-json': () => YamlJsonConverter.render(),
+        'log-masker': () => LogMasker.render(),
+        'url-toolkit': () => UrlToolkit.render(),
+        'cert-tool': () => CertTool.render()
     },
 
     init() {
@@ -79,6 +86,13 @@ const MainContentComponent = {
             case 'tera-term-macro': TeraTermMacroGen.init(); break;
             case 'rdp-config-gen': RdpConfigGen.init(); break;
             case 'op-bookmarks': OpBookmarks.init(); break;
+            case 'jwt-decoder': JwtDecoder.init(); break;
+            case 'ip-list-gen': IpListGen.init(); break;
+            case 'bulk-cmd-gen': BulkCommandGen.init(); break;
+            case 'yaml-json': YamlJsonConverter.init(); break;
+            case 'log-masker': LogMasker.init(); break;
+            case 'url-toolkit': UrlToolkit.init(); break;
+            case 'cert-tool': CertTool.init(); break;
         }
     },
 
