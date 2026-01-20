@@ -6,6 +6,28 @@ const UnixTimestamp = {
     clockInterval: null,
 
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'unix',
+            title: 'Unixタイムスタンプ変換の使い方',
+            description: 'Unixタイムスタンプ（エポック時間）と人間が読める日時形式を相互変換します。ログ解析やAPI開発に便利です。',
+            steps: [
+                '上部で現在のUnixタイムスタンプをリアルタイム表示',
+                '【Unix→日時】タイムスタンプを入力して変換',
+                '【日時→Unix】日時を選択してUnixタイムスタンプに変換',
+                '各値はクリックでコピー可能'
+            ],
+            tips: [
+                'Unixタイムスタンプは1970年1月1日からの経過秒数',
+                '秒とミリ秒（13桁）の両方に対応',
+                'JSTとUTCの両方で結果を表示',
+                'ISO 8601形式（2021-01-01T00:00:00Z）も出力'
+            ],
+            example: {
+                title: '変換例',
+                code: '1609459200 → 2021年1月1日 09:00:00 (JST) / 2021-01-01 00:00:00 (UTC)'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <!-- 現在時刻表示 -->
@@ -40,6 +62,8 @@ const UnixTimestamp = {
                             <span class="time-value" id="current-utc">-</span>
                         </div>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <!-- Unix → 日時変換 -->

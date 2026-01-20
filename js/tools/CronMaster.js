@@ -4,6 +4,28 @@
 
 const CronMaster = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'cron',
+            title: 'Cron設定ガイドの使い方',
+            description: 'Cron式（スケジュール設定）を人間が読める形式で解説します。定期実行タスクの設定確認に便利です。',
+            steps: [
+                'Cron式（5フィールド）を入力します',
+                '「解説」ボタンをクリックして意味を確認',
+                'プリセットから定番のスケジュールを選択可能',
+                '結果には実行タイミングの説明が表示されます'
+            ],
+            tips: [
+                'フォーマット: 分 時 日 月 曜日（5フィールド）',
+                '* は「すべて」、*/N は「N間隔」',
+                '1-5 は「1から5まで」（曜日なら月〜金）',
+                '曜日: 0=日曜、1=月曜、...、6=土曜'
+            ],
+            example: {
+                title: 'Cron式の例',
+                code: '*/15 9-17 * * 1-5 → 平日9時〜17時の15分おき'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -32,6 +54,8 @@ const CronMaster = {
                         <div class="password-display" id="cron-human-text"></div>
                         <div id="cron-next-dates" style="font-size: 0.8rem; color: var(--text-muted);"></div>
                     </div>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card">

@@ -4,6 +4,28 @@
 
 const HashGenerator = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'hash',
+            title: 'ハッシュ生成の使い方',
+            description: 'テキストからSHA-256、SHA-1、SHA-512のハッシュ値を生成します。ファイルの整合性確認やパスワードハッシュの学習に便利です。',
+            steps: [
+                '入力テキスト欄にハッシュ化したい文字列を入力',
+                '「ハッシュ生成」ボタンをクリック',
+                '各アルゴリズムのハッシュ値が表示されます',
+                '比較欄に期待するハッシュ値を貼り付けて一致確認も可能'
+            ],
+            tips: [
+                'SHA-256が現在最も一般的に使用されています',
+                'SHA-1は脆弱性があるため新規利用は非推奨',
+                '同じ入力からは常に同じハッシュ値が生成されます',
+                'ハッシュ値から元のテキストを復元することはできません'
+            ],
+            example: {
+                title: 'ハッシュの用途',
+                code: 'ファイル整合性確認、パスワード保存、デジタル署名'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -27,6 +49,8 @@ const HashGenerator = {
                     </div>
 
                     <div id="hash-results" class="result-grid" style="display: none;"></div>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card">

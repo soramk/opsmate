@@ -4,6 +4,28 @@
 
 const EncodingConverter = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'encoding',
+            title: 'エンコード変換の使い方',
+            description: 'Base64、URL、Hex、HTMLの各種エンコード・デコードを行います。API開発やデータ処理に便利です。',
+            steps: [
+                '入力欄に変換したいテキストを入力',
+                '実行したい変換ボタン（エンコード/デコード）をクリック',
+                '変換結果が下に表示されます',
+                '結果をコピーして利用'
+            ],
+            tips: [
+                'Base64: バイナリデータのテキスト化に使用',
+                'URL: URLの特殊文字をエスケープ',
+                'Hex: 文字を16進数表現に変換',
+                'HTML: HTMLタグをエスケープして表示用に変換'
+            ],
+            example: {
+                title: '変換例',
+                code: 'Hello → Base64: SGVsbG8= | URL: Hello | Hex: 48 65 6c 6c 6f'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -30,6 +52,8 @@ const EncodingConverter = {
                         <button class="btn btn-primary btn-sm" data-enc="html-enc">HTML エンコード</button>
                         <button class="btn btn-secondary btn-sm" data-enc="html-dec">HTML デコード</button>
                     </div>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card" id="enc-result-panel" style="display: none;">

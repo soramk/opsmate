@@ -5,6 +5,28 @@
 
 const RegexTester = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'regex',
+            title: '正規表現テスターの使い方',
+            description: '正規表現パターンをテストし、マッチした箇所を確認できます。ログ解析やデータ抽出に便利です。',
+            steps: [
+                '正規表現欄にパターンを入力します',
+                'フラグ（g=グローバル、i=大文字小文字無視、m=複数行）を設定',
+                'テスト文字列欄にログやテキストを貼り付けます',
+                '「テスト実行」をクリックしてマッチ結果を確認'
+            ],
+            tips: [
+                'よく使うパターンは「クイックパターン」から選択できます',
+                'IPアドレス、MACアドレス、URL等のプリセットあり',
+                'バックスラッシュは1つで入力（入力: \\d 表示: \\d）',
+                '最大500件までマッチを表示'
+            ],
+            example: {
+                title: 'パターン例',
+                code: 'IPv4: \\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -48,6 +70,8 @@ const RegexTester = {
                         <i data-lucide="alert-circle" class="w-4 h-4"></i>
                         <span id="regex-error-text"></span>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <div class="panel-card" id="regex-results" style="display: none;">

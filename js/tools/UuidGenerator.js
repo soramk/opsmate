@@ -4,6 +4,28 @@
 
 const UuidGenerator = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'uuid',
+            title: 'UUID/ULID生成の使い方',
+            description: '一意の識別子（UUID v4またはULID）を生成します。データベースの主キーやトランザクションIDに使用できます。',
+            steps: [
+                'タイプ（UUID v4 または ULID）を選択',
+                '生成する数（1〜100）を指定',
+                '必要に応じて大文字オプションをチェック',
+                '「Generate」をクリックしてIDを生成'
+            ],
+            tips: [
+                'UUID v4: ランダム生成、重複確率は極めて低い',
+                'ULID: 時刻ベースでソート可能、UUID互換',
+                'UUIDは36文字（ハイフン含む）の形式',
+                'ULIDは26文字で時系列ソートに対応'
+            ],
+            example: {
+                title: '形式の例',
+                code: 'UUID: 550e8400-e29b-41d4-a716-446655440000, ULID: 01ARZ3NDEKTSV4RRFFQ69G5FAV'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -38,6 +60,8 @@ const UuidGenerator = {
                     <button class="btn btn-primary" id="uuid-generate-btn">
                         <i data-lucide="refresh-cw" class="w-4 h-4"></i> Generate
                     </button>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card" id="uuid-result-panel" style="display: none;">

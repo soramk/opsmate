@@ -4,6 +4,28 @@
 
 const TextUtility = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'text',
+            title: 'テキスト一括処理の使い方',
+            description: 'IPアドレス一覧やホスト名リストなど、複数行のテキストを一括処理します。ソート、重複削除、接頭辞付与などが可能です。',
+            steps: [
+                'テキストを入力欄に貼り付け（1行1項目）',
+                'ユーティリティボタンから処理を選択（ソート、重複削除など）',
+                '接頭辞・接尾辞を入力して「適用」でコマンド生成にも対応',
+                '結果をコピーして利用'
+            ],
+            tips: [
+                'IPアドレス一覧を貼り付けてソートや重複削除',
+                '接頭辞に「ping 」を付けてpingコマンド一覧を生成',
+                '接尾辞に「 -c 4」を付けてオプションを追加',
+                '処理後の行数、文字数も表示'
+            ],
+            example: {
+                title: '一括処理例',
+                code: '192.168.1.1 + Prefix: "ping " → ping 192.168.1.1'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -52,6 +74,8 @@ const TextUtility = {
                             </div>
                         </div>
                     </div>
+
+                    ${helpSection}
                 </div>
 
                 <div class="panel-card" id="text-result-panel" style="display: none;">

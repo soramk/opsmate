@@ -4,6 +4,28 @@
 
 const ConfigDiff = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'diff',
+            title: 'Config差分比較の使い方',
+            description: '2つの設定ファイルやテキストの差分を比較表示します。変更前後の設定確認やレビューに便利です。',
+            steps: [
+                '「変更前」に元の設定を貼り付け',
+                '「変更後」に新しい設定を貼り付け',
+                '「比較実行」をクリックして差分を表示',
+                '追加行（緑）、削除行（赤）、変更なし（グレー）で表示'
+            ],
+            tips: [
+                '「入れ替え」ボタンで左右を入れ替え可能',
+                '「行頭・行末の空白を無視」で空白の違いを無視',
+                '変更統計（追加/削除/変更なしの行数）も表示',
+                'ネットワーク機器のrunning-configの比較に最適'
+            ],
+            example: {
+                title: '表示の意味',
+                code: '+ 緑の行 = 追加された行 | - 赤の行 = 削除された行'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -45,6 +67,8 @@ const ConfigDiff = {
                             行頭・行末の空白を無視
                         </label>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <div class="panel-card" id="diff-results" style="display: none;">

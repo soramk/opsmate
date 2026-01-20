@@ -4,6 +4,28 @@
 
 const JsonFormatter = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'json',
+            title: 'JSON整形・検証の使い方',
+            description: 'JSONデータの整形、圧縮、検証を行います。APIレスポンスの確認やJSON Path検索も可能です。',
+            steps: [
+                'JSONを入力欄に貼り付けます',
+                'インデント幅（スペース2/4/タブ）を選択',
+                '「整形実行」をクリックして見やすく整形',
+                '「圧縮」ボタンで1行に圧縮も可能'
+            ],
+            tips: [
+                '無効なJSONはエラーメッセージで問題箇所を表示',
+                'JSON Path検索で特定の値を抽出可能',
+                '例: data.users[0].name でネストした値を取得',
+                '統計情報（キー数、配列数、サイズ）も表示'
+            ],
+            example: {
+                title: 'JSON Path例',
+                code: 'users[0].name → 配列の最初のユーザーのname'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -46,6 +68,8 @@ const JsonFormatter = {
                         <i data-lucide="check-circle" class="w-4 h-4"></i>
                         <span>有効な JSON です</span>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <div class="panel-card" id="json-output-panel" style="display: none;">
