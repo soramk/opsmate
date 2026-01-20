@@ -10,7 +10,13 @@ const ThemeManager = {
         { id: 'sunset', name: 'サンセット', icon: 'sun', color: '#f97316' },
         { id: 'lavender', name: 'ラベンダー', icon: 'sparkles', color: '#a78bfa' },
         { id: 'crimson', name: 'クリムゾン', icon: 'flame', color: '#ef4444' },
-        { id: 'rose', name: 'ローズ', icon: 'flower-2', color: '#f472b6' }
+        { id: 'rose', name: 'ローズ', icon: 'flower-2', color: '#f472b6' },
+        { id: 'nord', name: 'ノルド', icon: 'snowflake', color: '#88c0d0' },
+        { id: 'dracula', name: 'ドラキュラ', icon: 'moon', color: '#bd93f9' },
+        { id: 'synthwave', name: 'シンセウェーブ', icon: 'music', color: '#ff7edb' },
+        { id: 'cyberpunk', name: 'サイバーパンク', icon: 'zap', color: '#f3e600' },
+        { id: 'forest', name: 'フォレスト', icon: 'tree-pine', color: '#228b22' },
+        { id: 'amber', name: 'アンバー', icon: 'terminal', color: '#ffbf00' }
     ],
 
     fonts: [
@@ -19,7 +25,13 @@ const ThemeManager = {
         { id: 'sourcecodepro', name: 'Source Code Pro', family: "'Source Code Pro'", sample: 'AaBbCc 123' },
         { id: 'ibmplexmono', name: 'IBM Plex Mono', family: "'IBM Plex Mono'", sample: 'AaBbCc 123' },
         { id: 'inconsolata', name: 'Inconsolata', family: "'Inconsolata'", sample: 'AaBbCc 123' },
-        { id: 'robotomono', name: 'Roboto Mono', family: "'Roboto Mono'", sample: 'AaBbCc 123' }
+        { id: 'robotomono', name: 'Roboto Mono', family: "'Roboto Mono'", sample: 'AaBbCc 123' },
+        { id: 'spacemono', name: 'Space Mono', family: "'Space Mono'", sample: 'AaBbCc 123' },
+        { id: 'ubuntumono', name: 'Ubuntu Mono', family: "'Ubuntu Mono'", sample: 'AaBbCc 123' },
+        { id: 'notomono', name: 'Noto Sans Mono', family: "'Noto Sans Mono'", sample: 'AaBbCc 123' },
+        { id: 'sharetech', name: 'Share Tech Mono', family: "'Share Tech Mono'", sample: 'AaBbCc 123' },
+        { id: 'majormono', name: 'Major Mono', family: "'Major Mono Display'", sample: 'AABBCC 123' },
+        { id: 'inter', name: 'Inter (Sans)', family: "'Inter'", sample: 'AaBbCc 123' }
     ],
 
     currentTheme: 'emerald',

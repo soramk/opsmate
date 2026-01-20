@@ -75,6 +75,30 @@
     --font-mono: 'Roboto Mono', 'Consolas', monospace;
 }
 
+:root[data-font="spacemono"] {
+    --font-mono: 'Space Mono', 'Consolas', monospace;
+}
+
+:root[data-font="ubuntumono"] {
+    --font-mono: 'Ubuntu Mono', 'Consolas', monospace;
+}
+
+:root[data-font="notomono"] {
+    --font-mono: 'Noto Sans Mono', 'Consolas', monospace;
+}
+
+:root[data-font="sharetech"] {
+    --font-mono: 'Share Tech Mono', 'Consolas', monospace;
+}
+
+:root[data-font="majormono"] {
+    --font-mono: 'Major Mono Display', 'Consolas', monospace;
+}
+
+:root[data-font="inter"] {
+    --font-mono: 'Inter', 'Noto Sans JP', sans-serif;
+}
+
 /* ========================================
    Theme Selector Styles
    ======================================== */

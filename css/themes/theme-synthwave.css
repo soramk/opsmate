@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Synthwave
+   Vibrant neon purple and pink aesthetics
+   ======================================== */
+
+:root[data-theme="synthwave"] {
+    /* Background Colors */
+    --bg-primary: #1a152d;
+    --bg-secondary: #241b2f;
+    --bg-tertiary: #31214a;
+    --bg-card: #34294f;
+    --bg-hover: #4d216d;
+
+    /* Accent Colors */
+    --accent-primary: #ff7edb;
+    --accent-secondary: #36f9f6;
+    --accent-glow: rgba(255, 126, 219, 0.4);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #ff7edb, #36f9f6);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(255, 126, 219, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(54, 249, 246, 0.1) 0%, transparent 60%);
+
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #ee82ee;
+    --text-muted: #72f1b8;
+
+    /* Border Colors */
+    --border-color: #ff7edb44;
+    --border-focus: #ff7edb;
+
+    /* Status Colors */
+    --error-color: #fe4450;
+    --warning-color: #fede5d;
+    --success-color: #72f1b8;
+    --info-color: #36f9f6;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 0 20px rgba(255, 126, 219, 0.6);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(255, 126, 219, 0.2), rgba(54, 249, 246, 0.1));
+    --nav-active-border: rgba(255, 126, 219, 0.5);
+}

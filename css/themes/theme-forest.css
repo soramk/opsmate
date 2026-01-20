@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Forest
+   Deep green and natural earth tones
+   ======================================== */
+
+:root[data-theme="forest"] {
+    /* Background Colors */
+    --bg-primary: #121a12;
+    --bg-secondary: #1b261b;
+    --bg-tertiary: #2a3a2a;
+    --bg-card: #324432;
+    --bg-hover: #455a45;
+
+    /* Accent Colors */
+    --accent-primary: #4ade80;
+    --accent-secondary: #34d399;
+    --accent-glow: rgba(74, 222, 128, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #4ade80, #34d399);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(74, 222, 128, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(20, 184, 166, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #ecfdf5;
+    --text-secondary: #a7f3d0;
+    --text-muted: #6ee7b7;
+
+    /* Border Colors */
+    --border-color: #324432;
+    --border-focus: #4ade80;
+
+    /* Status Colors */
+    --error-color: #f87171;
+    --warning-color: #fbbf24;
+    --success-color: #4ade80;
+    --info-color: #38bdf8;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(74, 222, 128, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.1));
+    --nav-active-border: rgba(74, 222, 128, 0.4);
+}

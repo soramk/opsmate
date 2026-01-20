@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Cyberpunk
+   High contrast yellow and black
+   ======================================== */
+
+:root[data-theme="cyberpunk"] {
+    /* Background Colors */
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-tertiary: #1a1a1a;
+    --bg-card: #222222;
+    --bg-hover: #333333;
+
+    /* Accent Colors */
+    --accent-primary: #f3e600;
+    --accent-secondary: #00edff;
+    --accent-glow: rgba(243, 230, 0, 0.4);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #f3e600, #00edff);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(243, 230, 0, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(0, 237, 255, 0.1) 0%, transparent 60%);
+
+    /* Text Colors */
+    --text-primary: #f3e600;
+    --text-secondary: #00edff;
+    --text-muted: #666666;
+
+    /* Border Colors */
+    --border-color: #f3e60088;
+    --border-focus: #f3e600;
+
+    /* Status Colors */
+    --error-color: #ff003c;
+    --warning-color: #f3e600;
+    --success-color: #00edff;
+    --info-color: #00edff;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 0 15px rgba(243, 230, 0, 0.8);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(243, 230, 0, 0.2), rgba(0, 237, 255, 0.1));
+    --nav-active-border: rgba(243, 230, 0, 0.8);
+}

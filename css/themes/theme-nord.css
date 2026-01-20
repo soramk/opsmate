@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Nord
+   Arctic, north-bluish color palette
+   ======================================== */
+
+:root[data-theme="nord"] {
+    /* Background Colors */
+    --bg-primary: #2e3440;
+    --bg-secondary: #3b4252;
+    --bg-tertiary: #434c5e;
+    --bg-card: #4c566a;
+    --bg-hover: #4c566a;
+
+    /* Accent Colors */
+    --accent-primary: #88c0d0;
+    --accent-secondary: #8fbcbb;
+    --accent-glow: rgba(136, 192, 208, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #88c0d0, #81a1c1);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(136, 192, 208, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(94, 129, 172, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #eceff4;
+    --text-secondary: #d8dee9;
+    --text-muted: #a3be8c;
+
+    /* Border Colors */
+    --border-color: #4c566a;
+    --border-focus: #88c0d0;
+
+    /* Status Colors */
+    --error-color: #bf616a;
+    --warning-color: #ebcb8b;
+    --success-color: #a3be8c;
+    --info-color: #81a1c1;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(136, 192, 208, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(136, 192, 208, 0.2), rgba(136, 192, 208, 0.1));
+    --nav-active-border: rgba(136, 192, 208, 0.4);
+}

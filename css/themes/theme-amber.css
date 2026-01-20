@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Amber
+   Classic amber monochrome terminal look
+   ======================================== */
+
+:root[data-theme="amber"] {
+    /* Background Colors */
+    --bg-primary: #0a0a00;
+    --bg-secondary: #131300;
+    --bg-tertiary: #1b1b00;
+    --bg-card: #222200;
+    --bg-hover: #333300;
+
+    /* Accent Colors */
+    --accent-primary: #ffbf00;
+    --accent-secondary: #ff9d00;
+    --accent-glow: rgba(255, 191, 0, 0.4);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #ffbf00, #ff9d00);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(255, 191, 0, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(255, 157, 0, 0.1) 0%, transparent 60%);
+
+    /* Text Colors */
+    --text-primary: #ffbf00;
+    --text-secondary: #cca000;
+    --text-muted: #806000;
+
+    /* Border Colors */
+    --border-color: #ffbf0044;
+    --border-focus: #ffbf00;
+
+    /* Status Colors */
+    --error-color: #ff4d4d;
+    --warning-color: #ffbf00;
+    --success-color: #ffbf00;
+    --info-color: #ffbf00;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 0 15px rgba(255, 191, 0, 0.8);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(255, 191, 0, 0.2), rgba(255, 191, 0, 0.1));
+    --nav-active-border: rgba(255, 191, 0, 0.8);
+}

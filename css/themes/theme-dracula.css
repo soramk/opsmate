@@ -1,0 +1,46 @@
+/* ========================================
+   OpsMate Theme: Dracula
+   A popular dark theme for developers
+   ======================================== */
+
+:root[data-theme="dracula"] {
+    /* Background Colors */
+    --bg-primary: #282a36;
+    --bg-secondary: #21222c;
+    --bg-tertiary: #44475a;
+    --bg-card: #3d3f4d;
+    --bg-hover: #6272a4;
+
+    /* Accent Colors */
+    --accent-primary: #bd93f9;
+    --accent-secondary: #ff79c6;
+    --accent-glow: rgba(189, 147, 249, 0.3);
+
+    /* Gradient */
+    --gradient-primary: linear-gradient(135deg, #bd93f9, #ff79c6);
+    --gradient-bg:
+        radial-gradient(ellipse at top, rgba(189, 147, 249, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(255, 121, 198, 0.05) 0%, transparent 50%);
+
+    /* Text Colors */
+    --text-primary: #f8f8f2;
+    --text-secondary: #bcbfc4;
+    --text-muted: #6272a4;
+
+    /* Border Colors */
+    --border-color: #44475a;
+    --border-focus: #bd93f9;
+
+    /* Status Colors */
+    --error-color: #ff5555;
+    --warning-color: #f1fa8c;
+    --success-color: #50fa7b;
+    --info-color: #8be9fd;
+
+    /* Button Hover Shadow */
+    --btn-shadow-hover: 0 4px 15px rgba(189, 147, 249, 0.4);
+
+    /* Active Nav Background */
+    --nav-active-bg: linear-gradient(135deg, rgba(189, 147, 249, 0.2), rgba(189, 147, 249, 0.1));
+    --nav-active-border: rgba(189, 147, 249, 0.4);
+}
