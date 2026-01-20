@@ -4,6 +4,28 @@
 
 const SubnetCalculator = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'subnet',
+            title: 'IPサブネット計算機の使い方',
+            description: 'IPアドレスとCIDR表記（プレフィックス長）を入力することで、サブネットに関する詳細情報を計算します。ネットワーク設計やトラブルシューティングに活用できます。',
+            steps: [
+                'IPアドレス欄に計算したいIPアドレスを入力します（例: 192.168.1.100）',
+                'CIDRプレフィックス長を入力します（例: /24 の場合は 24）',
+                '「計算実行」ボタンをクリックするか、Enterキーを押します',
+                '計算結果からネットワークアドレス、サブネットマスク、利用可能ホスト数などを確認できます'
+            ],
+            tips: [
+                '/24 は一般的なクラスCネットワーク（254ホスト）',
+                '/16 は大規模ネットワーク（65,534ホスト）',
+                '/32 は単一ホスト、/31 はポイントツーポイントリンク用',
+                '結果の各項目はクリックでクリップボードにコピーできます'
+            ],
+            example: {
+                title: '入力例',
+                code: '192.168.1.100 / 24 → ネットワーク: 192.168.1.0/24, ホスト範囲: .1 〜 .254'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -38,6 +60,8 @@ const SubnetCalculator = {
                         <i data-lucide="alert-circle" class="w-4 h-4"></i>
                         <span id="subnet-error-text"></span>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <div class="panel-card" id="subnet-results" style="display: none;">

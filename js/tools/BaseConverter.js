@@ -4,6 +4,28 @@
 
 const BaseConverter = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'base',
+            title: '進数変換・ビット計算の使い方',
+            description: '2進数、8進数、10進数、16進数の相互変換を行います。また、ビットトグル機能で視覚的にビット操作ができ、サブネットマスクの理解にも役立ちます。',
+            steps: [
+                '【進数変換】入力欄に数値を入力し、入力値の進数を選択します',
+                '「変換実行」ボタンをクリックするか、Enterキーを押します',
+                '【ビットトグル】8-bit または 32-bit モードを選択します',
+                '各ビットボタンをクリックして0と1を切り替えます'
+            ],
+            tips: [
+                '16進数は「FF」のように入力（0xプレフィックス不要）',
+                '2進数は「11111111」のように入力',
+                '32-bitモードはIPアドレスやサブネットマスクの理解に便利',
+                '例: /24 のサブネットマスクは上位24ビットが1'
+            ],
+            example: {
+                title: '変換例',
+                code: '255 (10進) = 11111111 (2進) = 0xFF (16進) = 0o377 (8進)'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <!-- 進数変換セクション -->
@@ -40,6 +62,8 @@ const BaseConverter = {
                     </div>
                     
                     <div class="result-grid" id="base-results" style="margin-top: 1.5rem; display: none;"></div>
+
+                    ${helpSection}
                 </div>
                 
                 <!-- ビットトグルUI -->

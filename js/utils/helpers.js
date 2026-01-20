@@ -223,8 +223,97 @@ const OpsMateHelpers = {
      */
     generateId() {
         return 'id_' + Math.random().toString(36).substr(2, 9);
+    },
+
+    /**
+     * Toggle help section visibility
+     * @param {string} toolId - Tool identifier
+     */
+    toggleHelp(toolId) {
+        const toggle = document.getElementById(`${toolId}-help-toggle`);
+        const content = document.getElementById(`${toolId}-help-content`);
+
+        if (toggle && content) {
+            toggle.classList.toggle('active');
+            content.classList.toggle('open');
+        }
+    },
+
+    /**
+     * Render help section HTML
+     * @param {Object} config - Help configuration
+     * @param {string} config.toolId - Tool identifier
+     * @param {string} config.title - Help title
+     * @param {string} config.description - Tool description
+     * @param {Array} config.steps - Usage steps array
+     * @param {Array} config.tips - Tips array
+     * @param {Object} config.example - Example object with title and code
+     * @returns {string} - Help section HTML
+     */
+    renderHelpSection(config) {
+        const { toolId, title, description, steps = [], tips = [], example = null } = config;
+
+        let stepsHtml = '';
+        if (steps.length > 0) {
+            stepsHtml = `
+                <ul class="help-steps">
+                    ${steps.map((step, index) => `
+                        <li class="help-step">
+                            <span class="help-step-number">${index + 1}</span>
+                            <span class="help-step-text">${step}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+        }
+
+        let tipsHtml = '';
+        if (tips.length > 0) {
+            tipsHtml = `
+                <div class="help-tips">
+                    <div class="help-tips-title">
+                        <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                        ヒント
+                    </div>
+                    <ul class="help-tips-list">
+                        ${tips.map(tip => `<li>${tip}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        let exampleHtml = '';
+        if (example) {
+            exampleHtml = `
+                <div class="help-example">
+                    <div class="help-example-title">${example.title}</div>
+                    <div class="help-example-code">${example.code}</div>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="help-section">
+                <button class="help-toggle" id="${toolId}-help-toggle" onclick="OpsMateHelpers.toggleHelp('${toolId}')">
+                    <i data-lucide="help-circle" class="help-toggle-icon"></i>
+                    <span>使い方・ヘルプ</span>
+                    <i data-lucide="chevron-down" class="help-toggle-icon" style="margin-left: auto;"></i>
+                </button>
+                <div class="help-content" id="${toolId}-help-content">
+                    <div class="help-title">
+                        <i data-lucide="book-open" class="w-4 h-4"></i>
+                        ${title}
+                    </div>
+                    <div class="help-description">${description}</div>
+                    ${stepsHtml}
+                    ${tipsHtml}
+                    ${exampleHtml}
+                </div>
+            </div>
+        `;
     }
 };
 
 // Make available globally
 window.OpsMateHelpers = OpsMateHelpers;
+

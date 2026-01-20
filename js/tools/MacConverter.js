@@ -4,6 +4,28 @@
 
 const MacConverter = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'mac',
+            title: 'MACアドレス変換の使い方',
+            description: 'MACアドレスを様々な形式に変換します。ネットワーク機器ごとに異なる表記形式に対応するため、入力されたMACアドレスを複数の形式で出力します。',
+            steps: [
+                'MACアドレス欄に変換したいMACアドレスを入力します',
+                '入力形式はコロン区切り、ハイフン区切り、ドット区切り、区切りなしのいずれかに対応',
+                '「変換実行」ボタンをクリックするか、Enterキーを押します',
+                '各形式の結果をクリックしてクリップボードにコピーできます'
+            ],
+            tips: [
+                'Linux/Unix系: コロン区切り (00:1A:2B:3C:4D:5E)',
+                'Windows: ハイフン区切り (00-1A-2B-3C-4D-5E)',
+                'Cisco機器: ドット区切り (001a.2b3c.4d5e)',
+                'MACアドレスは大文字/小文字を区別しません'
+            ],
+            example: {
+                title: '入力例',
+                code: '00:1A:2B:3C:4D:5E, 00-1A-2B-3C-4D-5E, 001a.2b3c.4d5e, 001a2b3c4d5e'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -32,6 +54,8 @@ const MacConverter = {
                         <i data-lucide="alert-circle" class="w-4 h-4"></i>
                         <span id="mac-error-text"></span>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <div class="panel-card" id="mac-results" style="display: none;">

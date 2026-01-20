@@ -4,6 +4,28 @@
 
 const TransferCalculator = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'transfer',
+            title: '転送時間計算機の使い方',
+            description: 'ファイルサイズと転送速度から、データ転送にかかる時間を計算します。バックアップ計画やデータ移行の見積もりに活用できます。',
+            steps: [
+                'ファイルサイズを入力し、単位（B/KB/MB/GB/TB）を選択します',
+                '転送速度を入力し、単位（bps/Kbps/Mbps/Gbps）を選択します',
+                '「計算実行」ボタンをクリックするか、Enterキーを押します',
+                '推定転送時間が表示されます'
+            ],
+            tips: [
+                '結果は理論値です。実際はプロトコルオーバーヘッドで10-20%長くなります',
+                '100Mbps回線で1GBのファイルは約80秒（理論値）',
+                '1Gbps回線で1TBのファイルは約2.2時間（理論値）',
+                'ネットワーク速度はbps（ビット/秒）、ストレージはB（バイト）なので注意'
+            ],
+            example: {
+                title: '計算例',
+                code: '1GB @ 100Mbps → 約80秒 (1GB × 8 = 8Gb ÷ 100Mbps = 80秒)'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -52,6 +74,8 @@ const TransferCalculator = {
                         <i data-lucide="alert-circle" class="w-4 h-4"></i>
                         <span id="transfer-error-text"></span>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <div class="panel-card" id="transfer-results" style="display: none;">

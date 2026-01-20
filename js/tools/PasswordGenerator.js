@@ -4,6 +4,28 @@
 
 const PasswordGenerator = {
     render() {
+        const helpSection = OpsMateHelpers.renderHelpSection({
+            toolId: 'password',
+            title: 'パスワード・鍵生成の使い方',
+            description: 'セキュアなパスワードや事前共有鍵（PSK）を生成します。暗号学的に安全な乱数生成器（crypto.getRandomValues）を使用しています。',
+            steps: [
+                '【パスワード】スライダーで長さを設定（8〜128文字）',
+                '使用する文字種（大文字、小文字、数字、記号）を選択',
+                '「パスワード生成」ボタンをクリック',
+                '【PSK】キー形式を選択し、「PSK生成」ボタンをクリック'
+            ],
+            tips: [
+                '16文字以上で記号を含むパスワードが推奨されます',
+                '「紛らわしい文字を除外」で I/l/1/O/0 を除外可能',
+                'WPA2のパスワードは63文字ASCIIまたは64文字Hex',
+                'すべての生成はブラウザ内で完結し、外部に送信されません'
+            ],
+            example: {
+                title: '強度の目安',
+                code: '8文字 = 脆弱 | 12文字 = 普通 | 16文字以上 = 強い | 20文字以上+記号 = 非常に強い'
+            }
+        });
+
         return `
             <div class="tool-panel">
                 <div class="panel-card">
@@ -58,6 +80,8 @@ const PasswordGenerator = {
                         </div>
                         <div class="password-strength" id="pwd-strength"></div>
                     </div>
+
+                    ${helpSection}
                 </div>
                 
                 <!-- Pre-Shared Key生成 -->
