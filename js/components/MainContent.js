@@ -26,7 +26,10 @@ const MainContentComponent = {
         'systemd-unit-gen': () => SystemdUnitGen.render(),
         'nginx-snippet': () => NginxSnippetGen.render(),
         'encoding-converter': () => EncodingConverter.render(),
-        'uuid-generator': () => UuidGenerator.render()
+        'uuid-generator': () => UuidGenerator.render(),
+        'tera-term-macro': () => TeraTermMacroGen.render(),
+        'rdp-config-gen': () => RdpConfigGen.render(),
+        'op-bookmarks': () => OpBookmarks.render()
     },
 
     init() {
@@ -73,6 +76,9 @@ const MainContentComponent = {
             case 'nginx-snippet': NginxSnippetGen.init(); break;
             case 'encoding-converter': EncodingConverter.init(); break;
             case 'uuid-generator': UuidGenerator.init(); break;
+            case 'tera-term-macro': TeraTermMacroGen.init(); break;
+            case 'rdp-config-gen': RdpConfigGen.init(); break;
+            case 'op-bookmarks': OpBookmarks.init(); break;
         }
     },
 

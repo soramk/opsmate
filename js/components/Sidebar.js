@@ -73,6 +73,18 @@ const SidebarComponent = {
                     name: 'DC電力・熱量計算',
                     icon: 'server',
                     description: 'ラック電力・熱量変換計算'
+                },
+                {
+                    id: 'tera-term-macro',
+                    name: 'Tera Term マクロ生成',
+                    icon: 'terminal-square',
+                    description: 'ログイン自動化 .ttl マクロ生成'
+                },
+                {
+                    id: 'rdp-config-gen',
+                    name: 'RDP 設定ファイル生成',
+                    icon: 'monitor-play',
+                    description: 'リモートデスクトップ用 .rdp ファイル生成'
                 }
             ]
         },
@@ -155,6 +167,12 @@ const SidebarComponent = {
                     name: 'ファイル転送時間計算',
                     icon: 'clock',
                     description: '帯域とデータ量から転送時間を推定'
+                },
+                {
+                    id: 'op-bookmarks',
+                    name: '運用ブックマーク',
+                    icon: 'bookmark',
+                    description: '管理画面やWikiのURL保存・整理'
                 },
                 {
                     id: 'http-status',
