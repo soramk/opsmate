@@ -7,24 +7,24 @@ const SidebarComponent = {
     // Tool definitions
     tools: {
         network: {
-            title: 'ネットワーク管理',
+            title: 'ネットワーク',
             icon: 'network',
             items: [
                 { id: 'subnet-calculator', name: 'IPサブネット計算機', icon: 'network', description: 'IPv4サブネット分割・ホスト数計算' },
-                { id: 'network-diagram', name: 'ネットワーク構成図', icon: 'share-2', description: 'アイコン選択による簡単描画とMermaid編集' },
-                { id: 'filter-wizard', name: 'フィルタウィザード', icon: 'filter', description: 'tcpdump / Wireshark フィルタ生成' },
-                { id: 'dns-generator', name: 'DNSレコード生成', icon: 'globe', description: 'A/MX/TXT/SRV等の構文生成' },
-                { id: 'ipv6-toolkit', name: 'IPv6 ツールキット', icon: 'globe-2', description: 'IPv6計算・短縮・展開' },
-                { id: 'cidr-reference', name: 'CIDRリファレンス', icon: 'table', description: 'CIDR一覧・サブネット分割' },
                 { id: 'vlsm-calculator', name: 'VLSM計算機', icon: 'git-branch', description: '可変長サブネット分割' },
+                { id: 'cidr-reference', name: 'CIDRリファレンス', icon: 'table', description: 'CIDR一覧・サブネット分割' },
+                { id: 'ip-list-gen', name: 'IPアドレスリスト生成', icon: 'list-ordered', description: 'CIDRから全IPを展開出力' },
+                { id: 'ipv6-toolkit', name: 'IPv6 ツールキット', icon: 'globe-2', description: 'IPv6計算・短縮・展開' },
                 { id: 'mac-converter', name: 'MACアドレス変換', icon: 'barcode', description: '各種形式への変換' },
                 { id: 'port-reference', name: 'ポート番号検索', icon: 'list', description: '主要なTCP/UDPポート検索' },
-                { id: 'ip-list-gen', name: 'IPアドレスリスト生成', icon: 'list-ordered', description: 'CIDRから全IPを展開出力' },
-                { id: 'snmp-reference', name: 'SNMP OID 検索', icon: 'search', description: '主要機器のOIDリファレンス' }
+                { id: 'dns-generator', name: 'DNSレコード生成', icon: 'globe', description: 'A/MX/TXT/SRV等の構文生成' },
+                { id: 'snmp-reference', name: 'SNMP OID 検索', icon: 'search', description: '主要機器のOIDリファレンス' },
+                { id: 'filter-wizard', name: 'フィルタウィザード', icon: 'filter', description: 'tcpdump / Wireshark フィルタ生成' },
+                { id: 'http-status', name: 'HTTPステータス', icon: 'info', description: 'ステータスコード一覧' }
             ]
         },
         infra: {
-            title: 'インフラ・サーバー',
+            title: 'インフラ ・ クラウド',
             icon: 'server',
             items: [
                 { id: 'ssh-config-gen', name: 'SSH Config生成', icon: 'terminal', description: 'SSH設定テンプレート生成' },
@@ -36,52 +36,58 @@ const SidebarComponent = {
                 { id: 'docker-compose-gen', name: 'Docker Compose 生成', icon: 'container', description: '各種サービスのテンプレート' },
                 { id: 'cloud-cli-gen', name: 'クラウドCLI生成', icon: 'cloud', description: 'AWS/Azure/GCPコマンド生成' },
                 { id: 'k8s-yaml-gen', name: 'Kubernetes YAML', icon: 'box', description: 'K8sマニフェスト生成' },
-                { id: 'datacenter-calc', name: 'DC電力・熱量計算', icon: 'zap', description: 'ラック電力・熱量変換計算' },
                 { id: 'tera-term-macro', name: 'Tera Term マクロ', icon: 'terminal-square', description: 'ログイン自動化マクロ生成' },
-                { id: 'rdp-config-gen', name: 'RDP 設定生成', icon: 'monitor-play', description: 'リモートデスクトップ設定生成' }
+                { id: 'rdp-config-gen', name: 'RDP 設定生成', icon: 'monitor-play', description: 'リモートデスクトップ設定生成' },
+                { id: 'datacenter-calc', name: 'DC電力・熱量計算', icon: 'zap', description: 'ラック電力・熱量変換計算' }
+            ]
+        },
+        analysis: {
+            title: '性能 ・ 分析 ・ 計画',
+            icon: 'gauge',
+            items: [
+                { id: 'response-time-calc', name: 'レスポンス分析', icon: 'timer', description: 'P50/P99パーセンタイル' },
+                { id: 'sla-calculator', name: 'SLA稼働率計算', icon: 'percent', description: '稼働率↔ダウンタイム計算' },
+                { id: 'capacity-planner', name: 'キャパシティ計画', icon: 'trending-up', description: 'リソース増加予測' },
+                { id: 'bdp-calculator', name: 'BDP・スループット', icon: 'gauge', description: '帯域遅延積の推定' },
+                { id: 'transfer-calculator', name: '転送時間計算', icon: 'clock', description: '転送時間の推定' },
+                { id: 'syslog-highlighter', name: 'Syslogカラー解析', icon: 'align-left', description: 'Severity色分け表示' },
+                { id: 'log-masker', name: 'ログ匿名化', icon: 'eye-off', description: 'ログの自動マスク' },
+                { id: 'maintenance-calc', name: 'メンテナンスウィンドウ', icon: 'wrench', description: '複数TZでの作業時間計算' }
             ]
         },
         dev: {
-            title: 'データ処理・開発',
+            title: 'データ解析 ・ 変換',
             icon: 'braces',
             items: [
                 { id: 'json-formatter', name: 'JSON 整形', icon: 'braces', description: 'JSON整形・検証' },
-                { id: 'jwt-decoder', name: 'JWT デコーダー', icon: 'shield-check', description: 'JWTトークンのデコード' },
                 { id: 'yaml-json', name: 'YAML ↔ JSON 変換', icon: 'repeat', description: 'YAMLとJSONの相互変換' },
-                { id: 'url-toolkit', name: 'URL 解析・構築', icon: 'link', description: 'URL分解・再構築' },
+                { id: 'jwt-decoder', name: 'JWT デコーダー', icon: 'shield-check', description: 'JWTトークンのデコード' },
                 { id: 'regex-tester', name: '正規表現テスター', icon: 'regex', description: '正規表現テスター' },
+                { id: 'encoding-converter', name: '文字エンコード変換', icon: 'file-code-2', description: 'Base64 / URL / Hex 変換' },
+                { id: 'base-converter', name: '進数・ビット計算', icon: 'binary', description: '進数変換とビット操作' },
+                { id: 'hash-gen', name: 'ハッシュ生成', icon: 'hash', description: 'SHA-256 / SHA-1 生成' },
+                { id: 'uuid-generator', name: 'UUID / ULID 生成', icon: 'fingerprint', description: 'UUID 一括生成' },
+                { id: 'url-toolkit', name: 'URL 解析・構築', icon: 'link', description: 'URL分解・再構築' },
+                { id: 'text-utility', name: 'テキスト一括処理', icon: 'type', description: 'ソート、重複排除など' },
+                { id: 'config-diff', name: 'Config 差分比較', icon: 'file-diff', description: 'Config差分比較' },
+                { id: 'unix-timestamp', name: 'Unix時間変換', icon: 'calendar-clock', description: 'Unix時刻の相互変換' },
+                { id: 'bulk-cmd-gen', name: '一括コマンド生成', icon: 'layers', description: '実行コマンドの量産' }
+            ]
+        },
+        ops: {
+            title: '運用記録 ・ 文書',
+            icon: 'file-text',
+            items: [
+                { id: 'incident-timeline', name: 'インシデントTL', icon: 'list-ordered', description: '障害対応の時系列記録' },
+                { id: 'wbs-generator', name: 'WBSジェネレーター', icon: 'gantt-chart', description: 'WBSテンプレート生成' },
+                { id: 'network-diagram', name: 'ネットワーク構成図', icon: 'share-2', description: 'アイコン選択による簡単描画' },
                 { id: 'mdtable-gen', name: 'Markdownテーブル', icon: 'table-2', description: 'MD形式の表作成' },
                 { id: 'excel-formula', name: 'Excel関数ビルダー', icon: 'function-square', description: '文字操作・VLOOKUP等' },
                 { id: 'git-cmd-builder', name: 'Gitコマンド', icon: 'git-branch', description: 'Gitコマンド生成' },
-                { id: 'hash-gen', name: 'ハッシュ生成', icon: 'hash', description: 'SHA-256 / SHA-1 生成' },
-                { id: 'encoding-converter', name: '文字エンコード変換', icon: 'file-code-2', description: 'Base64 / URL / Hex 変換' },
-                { id: 'base-converter', name: '進数・ビット計算', icon: 'binary', description: '進数変換とビット操作' },
-                { id: 'uuid-generator', name: 'UUID / ULID 生成', icon: 'fingerprint', description: 'UUID 一括生成' }
-            ]
-        },
-        utils: {
-            title: 'ユーティリティ',
-            icon: 'wrench',
-            items: [
-                { id: 'config-diff', name: 'Config 差分比較', icon: 'file-diff', description: 'Config差分比較' },
-                { id: 'text-utility', name: 'テキスト一括処理', icon: 'type', description: 'ソート、重複排除など' },
-                { id: 'unix-timestamp', name: 'Unix時間変換', icon: 'calendar-clock', description: 'Unix時刻の相互変換' },
-                { id: 'cron-master', name: 'Cron 設定', icon: 'alarm-clock', description: 'Cron設定生成' },
-                { id: 'password-generator', name: 'パスワード生成', icon: 'key', description: '強固なパスワード生成' },
-                { id: 'transfer-calculator', name: '転送時間計算', icon: 'clock', description: '転送時間の推定' },
-                { id: 'bdp-calculator', name: 'BDP・スループット', icon: 'gauge', description: '帯域遅延積の推定' },
-                { id: 'sla-calculator', name: 'SLA稼働率計算', icon: 'percent', description: '稼働率↔ダウンタイム計算' },
-                { id: 'capacity-planner', name: 'キャパシティ計画', icon: 'trending-up', description: 'リソース増加予測' },
-                { id: 'response-time-calc', name: 'レスポンス分析', icon: 'timer', description: 'P50/P99パーセンタイル' },
-                { id: 'incident-timeline', name: 'インシデントTL', icon: 'list-ordered', description: '障害対応の時系列記録' },
-                { id: 'maintenance-calc', name: 'メンテナンスウィンドウ', icon: 'wrench', description: '複数TZでの作業時間計算' },
-                { id: 'op-bookmarks', name: '運用ブックマーク', icon: 'bookmark', description: 'URLの整理・保存' },
-                { id: 'bulk-cmd-gen', name: '一括コマンド生成', icon: 'layers', description: '実行コマンドの量産' },
-                { id: 'log-masker', name: 'ログ匿名化', icon: 'eye-off', description: 'ログの自動マスク' },
-                { id: 'syslog-highlighter', name: 'Syslogカラー解析', icon: 'align-left', description: 'Severity色分け表示' },
                 { id: 'quick-note', name: 'クイックメモ', icon: 'sticky-note', description: '作業中のメモ帳' },
-                { id: 'wbs-generator', name: 'WBSジェネレーター', icon: 'gantt-chart', description: 'WBSテンプレート生成' },
-                { id: 'http-status', name: 'HTTPステータス', icon: 'globe', description: 'ステータスコード一覧' }
+                { id: 'op-bookmarks', name: '運用ブックマーク', icon: 'bookmark', description: 'URLの整理・保存' },
+                { id: 'password-generator', name: 'パスワード生成', icon: 'key', description: '強固なパスワード生成' },
+                { id: 'cron-master', name: 'Cron 設定', icon: 'alarm-clock', description: 'Cron設定生成' }
             ]
         }
     },
