@@ -58,7 +58,7 @@ const ExcelFormulaBuilder = {
                         </button>
                     </div>
                     <pre id="excel-output" class="code-output p-4 rounded-lg font-mono text-sm overflow-auto"></pre>
-                    <div id="excel-desc" class="text-xs mt-3 p-3 rounded-lg" style="color: var(--text-secondary); background: var(--bg-secondary);"></div>
+                    <div id="excel-desc" class="text-xs mt-3 p-3 rounded-lg"></div>
                 </div>
 
                 <!-- Quick Reference -->
@@ -70,31 +70,31 @@ const ExcelFormulaBuilder = {
                         </h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('=TRIM(CLEAN(A1))')">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">空白・制御文字を除去</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">=TRIM(CLEAN(A1))</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('=TRIM(CLEAN(A1))')">
+                            <div class="text-xs mb-1">空白・制御文字を除去</div>
+                            <code class="text-xs">=TRIM(CLEAN(A1))</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('=SUBSTITUTE(A1,CHAR(10),\", \")')">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">改行をカンマに置換</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">=SUBSTITUTE(A1,CHAR(10),", ")</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('=SUBSTITUTE(A1,CHAR(10),\", \")')">
+                            <div class="text-xs mb-1">改行をカンマに置換</div>
+                            <code class="text-xs">=SUBSTITUTE(A1,CHAR(10),", ")</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('=TEXT(A1,\"yyyy/mm/dd\")')">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">日付を文字列に変換</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">=TEXT(A1,"yyyy/mm/dd")</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('=TEXT(A1,\"yyyy/mm/dd\")')">
+                            <div class="text-xs mb-1">日付を文字列に変換</div>
+                            <code class="text-xs">=TEXT(A1,"yyyy/mm/dd")</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('=IFERROR(VLOOKUP(A1,B:C,2,FALSE),\"\")')">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">VLOOKUPエラー処理付き</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">=IFERROR(VLOOKUP(A1,B:C,2,FALSE),"")</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('=IFERROR(VLOOKUP(A1,B:C,2,FALSE),\"\")')">
+                            <div class="text-xs mb-1">VLOOKUPエラー処理付き</div>
+                            <code class="text-xs">=IFERROR(VLOOKUP(A1,B:C,2,FALSE),"")</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('=LEFT(A1,FIND(\"@\",A1)-1)')">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">メールアドレスからユーザー名抽出</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">=LEFT(A1,FIND("@",A1)-1)</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('=LEFT(A1,FIND(\"@\",A1)-1)')">
+                            <div class="text-xs mb-1">メールアドレスからユーザー名抽出</div>
+                            <code class="text-xs">=LEFT(A1,FIND("@",A1)-1)</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('=MID(A1,FIND(\"/\",A1)+1,100)')">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">区切り文字以降を抽出</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">=MID(A1,FIND("/",A1)+1,100)</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('=MID(A1,FIND(\"/\",A1)+1,100)')">
+                            <div class="text-xs mb-1">区切り文字以降を抽出</div>
+                            <code class="text-xs">=MID(A1,FIND("/",A1)+1,100)</code>
                         </div>
-                        </div>
+                    </div>
 
                     </div>
                 </div>

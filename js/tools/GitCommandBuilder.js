@@ -40,20 +40,21 @@ const GitCommandBuilder = {
                     <div class="panel-header"><h2 class="panel-title" style="color: var(--text-secondary);">よく使うコマンド</h2></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git status -s')">
-                            <div class="text-xs" style="color: var(--text-muted);">ステータス確認</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">git status -s</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('git status -s')">
+                            <div class="text-xs">ステータス確認</div>
+                            <code class="text-xs">git status -s</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git log --oneline -10')">
-                            <div class="text-xs" style="color: var(--text-muted);">直近10件の履歴</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">git log --oneline -10</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('git log --oneline -10')">
+                            <div class="text-xs">直近10件の履歴</div>
+                            <code class="text-xs">git log --oneline -10</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git fetch --all --prune')">
-                            <div class="text-xs" style="color: var(--text-muted);">全リモート取得</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">git fetch --all --prune</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('git fetch --all --prune')">
+                            <div class="text-xs">全リモート取得</div>
+                            <code class="text-xs">git fetch --all --prune</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git reset HEAD~1')">
-                            <div class="text-xs" style="color: var(--text-muted);">直前コミット取消</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">git reset HEAD~1</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" onclick="OpsMateHelpers.copyToClipboard('git reset HEAD~1')">
+                            <div class="text-xs">直前コミット取消</div>
+                            <code class="text-xs">git reset HEAD~1</code>
                         </div>
                     </div>
                 </div>

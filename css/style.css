@@ -2289,28 +2289,34 @@ textarea {
 }
 
 /* Override slate colors in light mode */
-[data-theme="light"] .text-slate-200,
-[data-theme="light"] .text-slate-300,
-[data-theme="light"] .text-slate-400 {
+[data-mode="light"] .text-slate-200,
+[data-mode="light"] .text-slate-300,
+[data-mode="light"] .text-slate-400 {
     color: var(--text-secondary) !important;
 }
 
-[data-theme="light"] .bg-slate-800,
-[data-theme="light"] .bg-slate-900,
-[data-theme="light"] .bg-slate-950 {
+[data-mode="light"] .bg-slate-800,
+[data-mode="light"] .bg-slate-900,
+[data-mode="light"] .bg-slate-950 {
     background-color: var(--bg-secondary) !important;
 }
 
-[data-theme="light"] .border-slate-700,
-[data-theme="light"] .border-slate-800 {
+[data-mode="light"] .border-slate-700,
+[data-mode="light"] .border-slate-800 {
     border-color: var(--border-color) !important;
 }
 
-/* Code Output Area - Always dark theme for terminal-like readability */
+/* Code Output Area */
 .code-output {
-    background: #0f172a !important;
-    color: #4ade80 !important;
-    border: 1px solid #334155 !important;
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+    border: 1px solid var(--border-color);
+}
+
+[data-mode="light"] .code-output {
+    background: #f1f5f9 !important;
+    color: #000000 !important;
+    border-color: #cbd5e1 !important;
 }
 
 /* Quick Reference Items - Base styles */
@@ -2323,16 +2329,16 @@ textarea {
 }
 
 /* Quick Reference - Light mode overrides */
-[data-theme="light"] .quick-ref-item {
+[data-mode="light"] .quick-ref-item {
     background: #f8fafc !important;
     border-color: #e2e8f0 !important;
 }
 
-[data-theme="light"] .quick-ref-item code {
-    color: #047857 !important;
+[data-mode="light"] .quick-ref-item code {
+    color: #059669 !important;
     font-weight: 600;
 }
 
-[data-theme="light"] .quick-ref-item>div:first-child {
-    color: #64748b !important;
+[data-mode="light"] .quick-ref-item>div:first-child {
+    color: #475569 !important;
 }

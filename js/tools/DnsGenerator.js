@@ -80,21 +80,21 @@ const DnsGenerator = {
                         </h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">SPF (TXT)</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">v=spf1 include:_spf.google.com ~all</code>
+                        <div class="quick-ref-item p-3 rounded-lg border">
+                            <div class="text-xs mb-1">SPF (TXT)</div>
+                            <code class="text-xs">v=spf1 include:_spf.google.com ~all</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">DMARC (TXT)</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com</code>
+                        <div class="quick-ref-item p-3 rounded-lg border">
+                            <div class="text-xs mb-1">DMARC (TXT)</div>
+                            <code class="text-xs">v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">Google Workspace MX</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">ASPMX.L.GOOGLE.COM (優先度: 1)</code>
+                        <div class="quick-ref-item p-3 rounded-lg border">
+                            <div class="text-xs mb-1">Google Workspace MX</div>
+                            <code class="text-xs">ASPMX.L.GOOGLE.COM (優先度: 1)</code>
                         </div>
-                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
-                            <div class="text-xs mb-1" style="color: var(--text-muted);">Let's Encrypt CAA</div>
-                            <code class="text-xs" style="color: var(--accent-primary);">0 issue "letsencrypt.org"</code>
+                        <div class="quick-ref-item p-3 rounded-lg border">
+                            <div class="text-xs mb-1">Let's Encrypt CAA</div>
+                            <code class="text-xs">0 issue "letsencrypt.org"</code>
                         </div>
                     </div>
                 </div>
