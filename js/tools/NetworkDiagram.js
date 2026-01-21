@@ -29,30 +29,48 @@ const NetworkDiagram = {
         return `
             <div class="tool-panel">
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                        <div class="panel-header py-2 bg-slate-800/50">
-                            <div class="flex flex-wrap gap-2 px-4" id="diagram-toolbar">
-                                <button class="toolbar-btn" data-type="node" data-shape="round" title="丸型ノード (Router系)">
-                                    <i data-lucide="circle" class="w-4 h-4"></i>
+                    <!-- Editor Area -->
+                    <div class="panel-card flex flex-col min-h-[500px]">
+                        <div class="panel-header">
+                            <h2 class="panel-title">
+                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                                Mermaid 構文
+                            </h2>
+                            <div class="flex gap-2">
+                                <button class="btn btn-secondary btn-sm" id="diagram-sample-btn">
+                                    <i data-lucide="file-code" class="w-4 h-4"></i> サンプル
                                 </button>
-                                <button class="toolbar-btn" data-type="node" data-shape="square" title="四角型ノード (PC/Server系)">
-                                    <i data-lucide="square" class="w-4 h-4"></i>
-                                </button>
-                                <button class="toolbar-btn" data-type="node" data-shape="rhombus" title="菱形ノード (Switch系)">
-                                    <i data-lucide="diamond" class="w-4 h-4"></i>
-                                </button>
-                                <button class="toolbar-btn" data-type="edge" data-style="straight" title="直接接続 (---)">
-                                    <i data-lucide="minus" class="w-4 h-4"></i>
-                                </button>
-                                <button class="toolbar-btn" data-type="edge" data-style="arrow" title="矢印接続 (-->)">
-                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </button>
-                                <button class="toolbar-btn" data-type="subgraph" title="サブグラフ (VLAN/Subnet)">
-                                    <i data-lucide="box" class="w-4 h-4"></i>
+                                <button class="btn btn-secondary btn-sm" id="diagram-clear-btn">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i> クリア
                                 </button>
                             </div>
                         </div>
+                        <!-- Compact Inline Toolbar -->
+                        <div class="flex items-center gap-1 px-4 py-2 bg-slate-800/30 border-b border-slate-800" id="diagram-toolbar">
+                            <span class="text-xs text-slate-500 mr-2">追加:</span>
+                            <button class="toolbar-btn" data-type="node" data-shape="round" title="丸型ノード (Router系)">
+                                <i data-lucide="circle" class="w-4 h-4"></i>
+                            </button>
+                            <button class="toolbar-btn" data-type="node" data-shape="square" title="四角型ノード (PC/Server系)">
+                                <i data-lucide="square" class="w-4 h-4"></i>
+                            </button>
+                            <button class="toolbar-btn" data-type="node" data-shape="rhombus" title="菱形ノード (Switch系)">
+                                <i data-lucide="diamond" class="w-4 h-4"></i>
+                            </button>
+                            <span class="w-px h-5 bg-slate-700 mx-1"></span>
+                            <button class="toolbar-btn" data-type="edge" data-style="straight" title="直接接続 (---)">
+                                <i data-lucide="minus" class="w-4 h-4"></i>
+                            </button>
+                            <button class="toolbar-btn" data-type="edge" data-style="arrow" title="矢印接続 (-->)">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                            <span class="w-px h-5 bg-slate-700 mx-1"></span>
+                            <button class="toolbar-btn" data-type="subgraph" title="サブグラフ (VLAN/Subnet)">
+                                <i data-lucide="box" class="w-4 h-4"></i>
+                            </button>
+                        </div>
                         <div class="flex-grow">
-                            <textarea id="diagram-editor" class="form-textarea h-full font-mono text-sm p-4 w-full" style="min-height: 400px;" spellcheck="false" placeholder="ここに Mermaid 構文を入力するか、ツールバーを使用してノードを追加してください"></textarea>
+                            <textarea id="diagram-editor" class="form-textarea h-full font-mono text-sm p-4 w-full border-t-0 rounded-t-none" style="min-height: 350px;" spellcheck="false" placeholder="ここに Mermaid 構文を入力するか、上のアイコンでノードを追加"></textarea>
                         </div>
                     </div>
 
@@ -68,7 +86,7 @@ const NetworkDiagram = {
                             </button>
                         </div>
                         <div class="flex-grow bg-slate-900/50 rounded-lg flex items-center justify-center p-4 overflow-auto border border-slate-800" id="diagram-preview">
-                            <div class="mermaid" id="mermaid-container"></div>
+                            <div id="mermaid-container" class="mermaid-render-area w-full flex justify-center"></div>
                         </div>
                         <div id="diagram-error" class="text-rose-500 text-xs mt-2 px-2 hidden"></div>
                     </div>
@@ -126,6 +144,7 @@ const NetworkDiagram = {
                 startOnLoad: false,
                 theme: 'dark',
                 securityLevel: 'loose',
+                suppressErrorNotifications: true,
                 themeVariables: {
                     primaryColor: '#10b981',
                     lineColor: '#34d399',
