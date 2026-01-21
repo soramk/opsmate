@@ -56,7 +56,8 @@ const MainContentComponent = {
         'mdtable-gen': () => MarkdownTableGen.render(),
         'excel-formula': () => ExcelFormulaBuilder.render(),
         'quick-note': () => QuickNote.render(),
-        'git-cmd-builder': () => GitCommandBuilder.render()
+        'git-cmd-builder': () => GitCommandBuilder.render(),
+        'wbs-generator': () => WbsGenerator.render()
     },
 
     init() {
@@ -133,6 +134,7 @@ const MainContentComponent = {
             case 'excel-formula': ExcelFormulaBuilder.init(); break;
             case 'quick-note': QuickNote.init(); break;
             case 'git-cmd-builder': GitCommandBuilder.init(); break;
+            case 'wbs-generator': WbsGenerator.init(); break;
         }
     },
 

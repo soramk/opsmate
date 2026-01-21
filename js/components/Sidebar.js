@@ -80,6 +80,7 @@ const SidebarComponent = {
                 { id: 'log-masker', name: 'ログ匿名化', icon: 'eye-off', description: 'ログの自動マスク' },
                 { id: 'syslog-highlighter', name: 'Syslogカラー解析', icon: 'align-left', description: 'Severity色分け表示' },
                 { id: 'quick-note', name: 'クイックメモ', icon: 'sticky-note', description: '作業中のメモ帳' },
+                { id: 'wbs-generator', name: 'WBSジェネレーター', icon: 'gantt-chart', description: 'WBSテンプレート生成' },
                 { id: 'http-status', name: 'HTTPステータス', icon: 'globe', description: 'ステータスコード一覧' }
             ]
         }
