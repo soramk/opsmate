@@ -29,24 +29,30 @@ const NetworkDiagram = {
         return `
             <div class="tool-panel">
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                    <!-- Editor Area -->
-                    <div class="panel-card flex flex-col min-h-[500px]">
-                        <div class="panel-header">
-                            <h2 class="panel-title">
-                                <i data-lucide="file-text" class="w-5 h-5"></i>
-                                Mermaid 構文
-                            </h2>
-                            <div class="flex gap-2">
-                                <button class="btn btn-secondary btn-sm" id="diagram-sample-btn">
-                                    サンプル読み込み
+                        <div class="panel-header py-2 bg-slate-800/50">
+                            <div class="flex flex-wrap gap-2 px-4" id="diagram-toolbar">
+                                <button class="toolbar-btn" data-type="node" data-shape="round" title="丸型ノード (Router系)">
+                                    <i data-lucide="circle" class="w-4 h-4"></i>
                                 </button>
-                                <button class="btn btn-secondary btn-sm" id="diagram-clear-btn">
-                                    クリア
+                                <button class="toolbar-btn" data-type="node" data-shape="square" title="四角型ノード (PC/Server系)">
+                                    <i data-lucide="square" class="w-4 h-4"></i>
+                                </button>
+                                <button class="toolbar-btn" data-type="node" data-shape="rhombus" title="菱形ノード (Switch系)">
+                                    <i data-lucide="diamond" class="w-4 h-4"></i>
+                                </button>
+                                <button class="toolbar-btn" data-type="edge" data-style="straight" title="直接接続 (---)">
+                                    <i data-lucide="minus" class="w-4 h-4"></i>
+                                </button>
+                                <button class="toolbar-btn" data-type="edge" data-style="arrow" title="矢印接続 (-->)">
+                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                                <button class="toolbar-btn" data-type="subgraph" title="サブグラフ (VLAN/Subnet)">
+                                    <i data-lucide="box" class="w-4 h-4"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="flex-grow">
-                            <textarea id="diagram-editor" class="form-textarea h-full font-mono text-sm p-4 w-full" style="min-height: 400px;" spellcheck="false"></textarea>
+                            <textarea id="diagram-editor" class="form-textarea h-full font-mono text-sm p-4 w-full" style="min-height: 400px;" spellcheck="false" placeholder="ここに Mermaid 構文を入力するか、ツールバーを使用してノードを追加してください"></textarea>
                         </div>
                     </div>
 
@@ -161,6 +167,45 @@ const NetworkDiagram = {
         if (saveBtn) {
             saveBtn.addEventListener('click', () => this.saveAsSvg());
         }
+
+        // Toolbar Events
+        document.querySelectorAll('.toolbar-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                const shape = btn.dataset.shape;
+                const style = btn.dataset.style;
+                this.injectCode(type, shape, style);
+            });
+        });
+    },
+
+    injectCode(type, shape, style) {
+        const editor = document.getElementById('diagram-editor');
+        if (!editor) return;
+
+        let snippet = '';
+        const cursor = editor.selectionStart;
+        const textValue = editor.value;
+
+        if (type === 'node') {
+            const label = prompt('ノード名を入力してください', 'NewNode');
+            if (!label) return;
+            if (shape === 'round') snippet = `  ${label}((${label}))\n`;
+            else if (shape === 'square') snippet = `  ${label}[${label}]\n`;
+            else if (shape === 'rhombus') snippet = `  ${label}{${label}}\n`;
+        } else if (type === 'edge') {
+            if (style === 'straight') snippet = ' --- ';
+            else snippet = ' --> ';
+        } else if (type === 'subgraph') {
+            const name = prompt('サブグラフ名（VLAN/Subnetなど）を入力してください', 'Subnet');
+            if (!name) return;
+            snippet = `\n  subgraph ${name}\n    \n  end\n`;
+        }
+
+        editor.value = textValue.substring(0, cursor) + snippet + textValue.substring(cursor);
+        this.updatePreview(editor.value);
+        editor.focus();
+        editor.setSelectionRange(cursor + snippet.length, cursor + snippet.length);
     },
 
     async updatePreview(code) {
