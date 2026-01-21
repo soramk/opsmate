@@ -49,7 +49,14 @@ const MainContentComponent = {
         'docker-compose-gen': () => DockerComposeGen.render(),
         'cloud-cli-gen': () => CloudCliGen.render(),
         'vlsm-calculator': () => VlsmCalculator.render(),
-        'maintenance-calc': () => MaintenanceCalc.render()
+        'maintenance-calc': () => MaintenanceCalc.render(),
+        'k8s-yaml-gen': () => K8sYamlGen.render(),
+        'capacity-planner': () => CapacityPlanner.render(),
+        'response-time-calc': () => ResponseTimeCalc.render(),
+        'mdtable-gen': () => MarkdownTableGen.render(),
+        'excel-formula': () => ExcelFormulaBuilder.render(),
+        'quick-note': () => QuickNote.render(),
+        'git-cmd-builder': () => GitCommandBuilder.render()
     },
 
     init() {
@@ -119,6 +126,13 @@ const MainContentComponent = {
             case 'cloud-cli-gen': CloudCliGen.init(); break;
             case 'vlsm-calculator': VlsmCalculator.init(); break;
             case 'maintenance-calc': MaintenanceCalc.init(); break;
+            case 'k8s-yaml-gen': K8sYamlGen.init(); break;
+            case 'capacity-planner': CapacityPlanner.init(); break;
+            case 'response-time-calc': ResponseTimeCalc.init(); break;
+            case 'mdtable-gen': MarkdownTableGen.init(); break;
+            case 'excel-formula': ExcelFormulaBuilder.init(); break;
+            case 'quick-note': QuickNote.init(); break;
+            case 'git-cmd-builder': GitCommandBuilder.init(); break;
         }
     },
 

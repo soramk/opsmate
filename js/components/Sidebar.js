@@ -35,6 +35,7 @@ const SidebarComponent = {
                 { id: 'iac-generator', name: 'IaC スニペット生成', icon: 'code-2', description: 'Terraform / Ansible コード生成' },
                 { id: 'docker-compose-gen', name: 'Docker Compose 生成', icon: 'container', description: '各種サービスのテンプレート' },
                 { id: 'cloud-cli-gen', name: 'クラウドCLI生成', icon: 'cloud', description: 'AWS/Azure/GCPコマンド生成' },
+                { id: 'k8s-yaml-gen', name: 'Kubernetes YAML', icon: 'box', description: 'K8sマニフェスト生成' },
                 { id: 'datacenter-calc', name: 'DC電力・熱量計算', icon: 'zap', description: 'ラック電力・熱量変換計算' },
                 { id: 'tera-term-macro', name: 'Tera Term マクロ', icon: 'terminal-square', description: 'ログイン自動化マクロ生成' },
                 { id: 'rdp-config-gen', name: 'RDP 設定生成', icon: 'monitor-play', description: 'リモートデスクトップ設定生成' }
@@ -49,6 +50,9 @@ const SidebarComponent = {
                 { id: 'yaml-json', name: 'YAML ↔ JSON 変換', icon: 'repeat', description: 'YAMLとJSONの相互変換' },
                 { id: 'url-toolkit', name: 'URL 解析・構築', icon: 'link', description: 'URL分解・再構築' },
                 { id: 'regex-tester', name: '正規表現テスター', icon: 'regex', description: '正規表現テスター' },
+                { id: 'mdtable-gen', name: 'Markdownテーブル', icon: 'table-2', description: 'MD形式の表作成' },
+                { id: 'excel-formula', name: 'Excel関数ビルダー', icon: 'function-square', description: '文字操作・VLOOKUP等' },
+                { id: 'git-cmd-builder', name: 'Gitコマンド', icon: 'git-branch', description: 'Gitコマンド生成' },
                 { id: 'hash-gen', name: 'ハッシュ生成', icon: 'hash', description: 'SHA-256 / SHA-1 生成' },
                 { id: 'encoding-converter', name: '文字エンコード変換', icon: 'file-code-2', description: 'Base64 / URL / Hex 変換' },
                 { id: 'base-converter', name: '進数・ビット計算', icon: 'binary', description: '進数変換とビット操作' },
@@ -67,12 +71,15 @@ const SidebarComponent = {
                 { id: 'transfer-calculator', name: '転送時間計算', icon: 'clock', description: '転送時間の推定' },
                 { id: 'bdp-calculator', name: 'BDP・スループット', icon: 'gauge', description: '帯域遅延積の推定' },
                 { id: 'sla-calculator', name: 'SLA稼働率計算', icon: 'percent', description: '稼働率↔ダウンタイム計算' },
-                { id: 'incident-timeline', name: 'インシデントタイムライン', icon: 'list-ordered', description: '障害対応の時系列記録' },
+                { id: 'capacity-planner', name: 'キャパシティ計画', icon: 'trending-up', description: 'リソース増加予測' },
+                { id: 'response-time-calc', name: 'レスポンス分析', icon: 'timer', description: 'P50/P99パーセンタイル' },
+                { id: 'incident-timeline', name: 'インシデントTL', icon: 'list-ordered', description: '障害対応の時系列記録' },
                 { id: 'maintenance-calc', name: 'メンテナンスウィンドウ', icon: 'wrench', description: '複数TZでの作業時間計算' },
                 { id: 'op-bookmarks', name: '運用ブックマーク', icon: 'bookmark', description: 'URLの整理・保存' },
                 { id: 'bulk-cmd-gen', name: '一括コマンド生成', icon: 'layers', description: '実行コマンドの量産' },
                 { id: 'log-masker', name: 'ログ匿名化', icon: 'eye-off', description: 'ログの自動マスク' },
                 { id: 'syslog-highlighter', name: 'Syslogカラー解析', icon: 'align-left', description: 'Severity色分け表示' },
+                { id: 'quick-note', name: 'クイックメモ', icon: 'sticky-note', description: '作業中のメモ帳' },
                 { id: 'http-status', name: 'HTTPステータス', icon: 'globe', description: 'ステータスコード一覧' }
             ]
         }
