@@ -98,17 +98,17 @@ const SlaCalculator = {
                         </h2>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm">
+                        <table class="data-table">
                             <thead>
-                                <tr class="border-b border-slate-700">
-                                    <th class="text-left py-2 px-3 text-slate-400">SLA</th>
-                                    <th class="text-left py-2 px-3 text-slate-400">呼称</th>
-                                    <th class="text-left py-2 px-3 text-slate-400">年間</th>
-                                    <th class="text-left py-2 px-3 text-slate-400">月間</th>
-                                    <th class="text-left py-2 px-3 text-slate-400">日間</th>
+                                <tr>
+                                    <th>SLA</th>
+                                    <th>呼称</th>
+                                    <th>年間</th>
+                                    <th>月間</th>
+                                    <th>日間</th>
                                 </tr>
                             </thead>
-                            <tbody id="sla-table" class="text-slate-300">
+                            <tbody id="sla-table">
                             </tbody>
                         </table>
                     </div>
@@ -177,12 +177,12 @@ const SlaCalculator = {
     renderTable() {
         const tbody = document.getElementById('sla-table');
         tbody.innerHTML = this.slaData.map(row => `
-            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
-                <td class="py-2 px-3 font-mono text-emerald-400">${row.percent}%</td>
-                <td class="py-2 px-3">${row.name}</td>
-                <td class="py-2 px-3">${row.year}</td>
-                <td class="py-2 px-3">${row.month}</td>
-                <td class="py-2 px-3">${row.day}</td>
+            <tr>
+                <td class="font-mono text-accent">${row.percent}%</td>
+                <td>${row.name}</td>
+                <td>${row.year}</td>
+                <td>${row.month}</td>
+                <td>${row.day}</td>
             </tr>
         `).join('');
     }

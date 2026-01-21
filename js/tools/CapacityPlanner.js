@@ -73,14 +73,14 @@ const CapacityPlanner = {
                         <div class="result-card h-full">
                             <div class="result-label">閾値到達まで</div>
                             <div class="result-value text-3xl" id="cap-days-to-threshold"></div>
-                            <div class="text-xs text-slate-500 mt-2" id="cap-threshold-date"></div>
+                            <div class="text-xs mt-2" style="color: var(--text-muted);" id="cap-threshold-date"></div>
                         </div>
                     </div>
                     <div class="panel-card">
                         <div class="result-card h-full">
                             <div class="result-label">100%到達まで</div>
                             <div class="result-value text-3xl" id="cap-days-to-full"></div>
-                            <div class="text-xs text-slate-500 mt-2" id="cap-full-date"></div>
+                            <div class="text-xs mt-2" style="color: var(--text-muted);" id="cap-full-date"></div>
                         </div>
                     </div>
                 </div>
@@ -174,32 +174,32 @@ const CapacityPlanner = {
         }
 
         forecast.innerHTML = `
-            <table class="w-full text-sm">
+            <table class="data-table">
                 <thead>
-                    <tr class="border-b border-slate-700 text-left">
-                        <th class="py-2 px-3 text-slate-400">月</th>
-                        <th class="py-2 px-3 text-slate-400">予測使用量</th>
-                        <th class="py-2 px-3 text-slate-400">使用率</th>
-                        <th class="py-2 px-3 text-slate-400">状態</th>
+                    <tr>
+                        <th>月</th>
+                        <th>予測使用量</th>
+                        <th>使用率</th>
+                        <th>状態</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${months.map(m => `
-                        <tr class="border-b border-slate-800">
-                            <td class="py-2 px-3 text-slate-300">${m.month}</td>
-                            <td class="py-2 px-3 font-mono text-slate-200">${m.value.toFixed(1)} ${unit}</td>
-                            <td class="py-2 px-3">
+                        <tr>
+                            <td>${m.month}</td>
+                            <td class="font-mono">${m.value.toFixed(1)} ${unit}</td>
+                            <td>
                                 <div class="flex items-center gap-2">
-                                    <div class="w-20 h-2 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="w-20 h-2 rounded-full overflow-hidden" style="background: var(--bg-tertiary);">
                                         <div class="h-full ${m.status === 'full' ? 'bg-rose-500' : m.status === 'warning' ? 'bg-amber-500' : 'bg-emerald-500'}" style="width: ${m.pct}%"></div>
                                     </div>
-                                    <span class="text-xs text-slate-400">${m.pct.toFixed(1)}%</span>
+                                    <span class="text-xs text-muted">${m.pct.toFixed(1)}%</span>
                                 </div>
                             </td>
-                            <td class="py-2 px-3">
-                                ${m.status === 'full' ? '<span class="text-rose-400 text-xs font-bold">容量超過</span>' :
-                m.status === 'warning' ? '<span class="text-amber-400 text-xs">閾値超過</span>' :
-                    '<span class="text-emerald-400 text-xs">正常</span>'}
+                            <td>
+                                ${m.status === 'full' ? '<span class="text-rose-500 text-xs font-bold">容量超過</span>' :
+                m.status === 'warning' ? '<span class="text-amber-500 text-xs">閾値超過</span>' :
+                    '<span class="text-emerald-500 text-xs">正常</span>'}
                             </td>
                         </tr>
                     `).join('')}

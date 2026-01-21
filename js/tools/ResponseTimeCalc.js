@@ -132,9 +132,9 @@ const ResponseTimeCalc = {
         });
 
         percentilesEl.innerHTML = pValues.map(pv => `
-            <div class="bg-slate-900 p-3 rounded-lg">
-                <div class="text-xs text-slate-500">P${pv.p}</div>
-                <div class="text-lg font-mono ${pv.val > slo ? 'text-amber-400' : 'text-emerald-400'}">${pv.val.toFixed(0)} ms</div>
+            <div class="p-3 rounded-lg" style="background: var(--bg-secondary);">
+                <div class="text-xs" style="color: var(--text-muted);">P${pv.p}</div>
+                <div class="text-lg font-mono ${pv.val > slo ? 'text-amber-500' : 'text-emerald-500'}">${pv.val.toFixed(0)} ms</div>
             </div>
         `).join('');
 
@@ -147,25 +147,25 @@ const ResponseTimeCalc = {
         const stdDev = Math.sqrt(variance);
 
         statsEl.innerHTML = `
-            <div class="bg-slate-900 p-3 rounded-lg">
-                <div class="text-xs text-slate-500">サンプル数</div>
-                <div class="text-lg font-mono text-slate-200">${values.length.toLocaleString()}</div>
+            <div class="p-3 rounded-lg" style="background: var(--bg-secondary);">
+                <div class="text-xs" style="color: var(--text-muted);">サンプル数</div>
+                <div class="text-lg font-mono" style="color: var(--text-primary);">${values.length.toLocaleString()}</div>
             </div>
-            <div class="bg-slate-900 p-3 rounded-lg">
-                <div class="text-xs text-slate-500">平均値</div>
-                <div class="text-lg font-mono text-slate-200">${mean.toFixed(1)} ms</div>
+            <div class="p-3 rounded-lg" style="background: var(--bg-secondary);">
+                <div class="text-xs" style="color: var(--text-muted);">平均値</div>
+                <div class="text-lg font-mono" style="color: var(--text-primary);">${mean.toFixed(1)} ms</div>
             </div>
-            <div class="bg-slate-900 p-3 rounded-lg">
-                <div class="text-xs text-slate-500">最小値</div>
-                <div class="text-lg font-mono text-emerald-400">${min.toFixed(0)} ms</div>
+            <div class="p-3 rounded-lg" style="background: var(--bg-secondary);">
+                <div class="text-xs" style="color: var(--text-muted);">最小値</div>
+                <div class="text-lg font-mono text-emerald-500">${min.toFixed(0)} ms</div>
             </div>
-            <div class="bg-slate-900 p-3 rounded-lg">
-                <div class="text-xs text-slate-500">最大値</div>
-                <div class="text-lg font-mono text-rose-400">${max.toFixed(0)} ms</div>
+            <div class="p-3 rounded-lg" style="background: var(--bg-secondary);">
+                <div class="text-xs" style="color: var(--text-muted);">最大値</div>
+                <div class="text-lg font-mono text-rose-500">${max.toFixed(0)} ms</div>
             </div>
-            <div class="bg-slate-900 p-3 rounded-lg col-span-2">
-                <div class="text-xs text-slate-500">標準偏差</div>
-                <div class="text-lg font-mono text-slate-200">${stdDev.toFixed(1)} ms</div>
+            <div class="p-3 rounded-lg col-span-2" style="background: var(--bg-secondary);">
+                <div class="text-xs" style="color: var(--text-muted);">標準偏差</div>
+                <div class="text-lg font-mono" style="color: var(--text-primary);">${stdDev.toFixed(1)} ms</div>
             </div>
         `;
 
@@ -174,13 +174,13 @@ const ResponseTimeCalc = {
         const sloRate = (withinSlo / values.length) * 100;
 
         sloEl.innerHTML = `
-            <div class="text-4xl font-bold ${sloRate >= 99 ? 'text-emerald-400' : sloRate >= 95 ? 'text-amber-400' : 'text-rose-400'}">
+            <div class="text-4xl font-bold ${sloRate >= 99 ? 'text-emerald-500' : sloRate >= 95 ? 'text-amber-500' : 'text-rose-500'}">
                 ${sloRate.toFixed(2)}%
             </div>
-            <div class="text-sm text-slate-500 mt-2">
+            <div class="text-sm mt-2" style="color: var(--text-muted);">
                 ${withinSlo.toLocaleString()} / ${values.length.toLocaleString()} リクエストが ${slo}ms 以内
             </div>
-            <div class="w-full h-3 bg-slate-800 rounded-full mt-4 overflow-hidden">
+            <div class="w-full h-3 rounded-full mt-4 overflow-hidden" style="background: var(--bg-tertiary);">
                 <div class="h-full ${sloRate >= 99 ? 'bg-emerald-500' : sloRate >= 95 ? 'bg-amber-500' : 'bg-rose-500'}" style="width: ${sloRate}%"></div>
             </div>
         `;

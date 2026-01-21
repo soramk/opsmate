@@ -34,26 +34,26 @@ const GitCommandBuilder = {
                             <i data-lucide="copy" class="w-4 h-4"></i> コピー
                         </button>
                     </div>
-                    <pre id="git-output" class="bg-slate-950 p-4 rounded-lg font-mono text-sm text-emerald-400"></pre>
+                    <pre id="git-output" class="code-output p-4 rounded-lg font-mono text-sm"></pre>
                 </div>
                 <div class="panel-card mt-6">
-                    <div class="panel-header"><h2 class="panel-title text-slate-300">よく使うコマンド</h2></div>
+                    <div class="panel-header"><h2 class="panel-title" style="color: var(--text-secondary);">よく使うコマンド</h2></div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="bg-slate-900 p-3 rounded-lg cursor-pointer border border-slate-800 hover:border-emerald-500/50" onclick="OpsMateHelpers.copyToClipboard('git status -s')">
-                            <div class="text-xs text-slate-500">ステータス確認</div>
-                            <code class="text-xs text-emerald-400">git status -s</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git status -s')">
+                            <div class="text-xs" style="color: var(--text-muted);">ステータス確認</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">git status -s</code>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-lg cursor-pointer border border-slate-800 hover:border-emerald-500/50" onclick="OpsMateHelpers.copyToClipboard('git log --oneline -10')">
-                            <div class="text-xs text-slate-500">直近10件の履歴</div>
-                            <code class="text-xs text-emerald-400">git log --oneline -10</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git log --oneline -10')">
+                            <div class="text-xs" style="color: var(--text-muted);">直近10件の履歴</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">git log --oneline -10</code>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-lg cursor-pointer border border-slate-800 hover:border-emerald-500/50" onclick="OpsMateHelpers.copyToClipboard('git fetch --all --prune')">
-                            <div class="text-xs text-slate-500">全リモート取得</div>
-                            <code class="text-xs text-emerald-400">git fetch --all --prune</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git fetch --all --prune')">
+                            <div class="text-xs" style="color: var(--text-muted);">全リモート取得</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">git fetch --all --prune</code>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-lg cursor-pointer border border-slate-800 hover:border-emerald-500/50" onclick="OpsMateHelpers.copyToClipboard('git reset HEAD~1')">
-                            <div class="text-xs text-slate-500">直前コミット取消</div>
-                            <code class="text-xs text-emerald-400">git reset HEAD~1</code>
+                        <div class="quick-ref-item p-3 rounded-lg cursor-pointer border" style="background: var(--bg-secondary); border-color: var(--border-color);" onclick="OpsMateHelpers.copyToClipboard('git reset HEAD~1')">
+                            <div class="text-xs" style="color: var(--text-muted);">直前コミット取消</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">git reset HEAD~1</code>
                         </div>
                     </div>
                 </div>

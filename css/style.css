@@ -23,6 +23,7 @@
     --accent-primary: #10b981;
     --accent-secondary: #34d399;
     --accent-glow: rgba(16, 185, 129, 0.3);
+    --accent-primary-bg: rgba(16, 185, 129, 0.1);
 
     --text-primary: #f1f5f9;
     --text-secondary: #94a3b8;
@@ -2303,4 +2304,16 @@ textarea {
 [data-theme="light"] .border-slate-700,
 [data-theme="light"] .border-slate-800 {
     border-color: var(--border-color) !important;
+}
+
+/* Code Output Area */
+.code-output {
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+    border: 1px solid var(--border-color);
+}
+
+/* Quick Reference Items */
+.quick-ref-item:hover {
+    border-color: var(--accent-primary) !important;
 }

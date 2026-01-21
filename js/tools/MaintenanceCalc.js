@@ -76,7 +76,7 @@ const MaintenanceCalc = {
                             <i data-lucide="copy" class="w-4 h-4"></i> コピー
                         </button>
                     </div>
-                    <pre id="maint-template" class="bg-slate-950 p-4 rounded-lg font-mono text-xs text-slate-300 whitespace-pre-wrap"></pre>
+                    <pre id="maint-template" class="code-output p-4 rounded-lg font-mono text-xs whitespace-pre-wrap"></pre>
                 </div>
 
                 ${helpSection}
@@ -136,14 +136,14 @@ const MaintenanceCalc = {
             const isBase = tz.id === baseTz;
 
             return `
-                <div class="flex items-center justify-between p-3 rounded-lg ${isBase ? 'bg-emerald-500/10 border border-emerald-500/30' : 'bg-slate-900 border border-slate-800'}">
+                <div class="flex items-center justify-between p-3 rounded-lg border" style="background: ${isBase ? 'var(--accent-primary-bg)' : 'var(--bg-secondary)'}; border-color: ${isBase ? 'var(--accent-primary)' : 'var(--border-color)'};">
                     <div>
-                        <div class="text-sm font-medium ${isBase ? 'text-emerald-400' : 'text-slate-300'}">${tz.name}</div>
-                        <div class="text-xs text-slate-500">${tz.offset}</div>
+                        <div class="text-sm font-medium" style="color: ${isBase ? 'var(--accent-primary)' : 'var(--text-primary)'};">${tz.name}</div>
+                        <div class="text-xs" style="color: var(--text-muted);">${tz.offset}</div>
                     </div>
                     <div class="text-right">
-                        <div class="text-lg font-mono ${isBase ? 'text-emerald-400' : 'text-slate-200'}">${startLocal} - ${endLocal}</div>
-                        <div class="text-xs text-slate-500">${dateLocal}</div>
+                        <div class="text-lg font-mono" style="color: ${isBase ? 'var(--accent-primary)' : 'var(--text-primary)'};">${startLocal} - ${endLocal}</div>
+                        <div class="text-xs" style="color: var(--text-muted);">${dateLocal}</div>
                     </div>
                 </div>
             `;

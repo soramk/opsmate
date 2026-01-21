@@ -55,8 +55,8 @@ const SyslogHighlighter = {
                             <input type="text" id="syslog-filter" class="form-input text-xs py-1" placeholder="キーワードでフィルタ...">
                         </div>
                     </div>
-                    <div id="syslog-output" class="bg-slate-950 rounded-lg p-4 font-mono text-sm overflow-auto max-h-[600px] whitespace-pre-wrap leading-relaxed">
-                        <p class="text-muted italic">ログを解析するとここに色分け表示されます</p>
+                    <div id="syslog-output" class="rounded-lg p-4 font-mono text-sm overflow-auto max-h-[600px] whitespace-pre-wrap leading-relaxed" style="background: var(--bg-tertiary);">
+                        <p class="text-muted italic" style="color: var(--text-muted);">ログを解析するとここに色分け表示されます</p>
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@ const SyslogHighlighter = {
         if (clearBtn) {
             clearBtn.addEventListener('click', () => {
                 input.value = '';
-                output.innerHTML = '<p class="text-muted italic">ログを解析するとここに色分け表示されます</p>';
+                output.innerHTML = '<p style="color: var(--text-muted); font-style: italic;">ログを解析するとここに色分け表示されます</p>';
             });
         }
 
@@ -119,7 +119,7 @@ const SyslogHighlighter = {
                      </div>`;
         });
 
-        output.innerHTML = html || '<p class="text-muted italic">一致するログがありません</p>';
+        output.innerHTML = html || '<p style="color: var(--text-muted); font-style: italic;">一致するログがありません</p>';
     },
 
     detectSeverity(line) {
@@ -150,24 +150,24 @@ const SyslogHighlighter = {
     },
 
     getSeverityColorClass(severity) {
-        if (severity === null) return 'text-slate-300';
+        if (severity === null) return '';
         switch (severity) {
             case 0: // Emergency
             case 1: // Alert
             case 2: // Critical
-                return 'text-rose-500 font-bold bg-rose-500/10';
+                return 'text-rose-600 font-bold bg-rose-500/10';
             case 3: // Error
-                return 'text-orange-500 font-medium bg-orange-500/10';
+                return 'text-orange-600 font-medium bg-orange-500/10';
             case 4: // Warning
-                return 'text-amber-400 bg-amber-400/5';
+                return 'text-amber-600 bg-amber-400/5';
             case 5: // Notice
-                return 'text-emerald-400';
+                return 'text-emerald-600';
             case 6: // Info
-                return 'text-blue-400';
+                return 'text-blue-600';
             case 7: // Debug
-                return 'text-slate-400 opacity-80';
+                return 'opacity-70';
             default:
-                return 'text-slate-300';
+                return '';
         }
     },
 
