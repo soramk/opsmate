@@ -68,7 +68,7 @@ const CertHelper = {
                             <i data-lucide="copy" class="w-4 h-4"></i>
                         </button>
                     </div>
-                    <div id="ch-output" class="bg-slate-900 p-4 rounded-lg font-mono text-sm break-all min-h-[60px] flex items-center text-emerald-400">
+                    <div id="ch-output" class="code-output p-4 rounded-lg font-mono text-sm break-all min-h-[60px] flex items-center">
                         openssl s_client -connect example.com:443
                     </div>
                 </div>

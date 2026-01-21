@@ -52,7 +52,7 @@ const K8sYamlGen = {
                             <i data-lucide="copy" class="w-4 h-4"></i> コピー
                         </button>
                     </div>
-                    <pre id="k8s-output" class="bg-slate-950 p-4 rounded-lg font-mono text-sm text-emerald-400 overflow-auto max-h-[500px]"></pre>
+                    <pre id="k8s-output" class="code-output p-4 rounded-lg font-mono text-sm overflow-auto max-h-[500px]"></pre>
                 </div>
 
                 ${helpSection}

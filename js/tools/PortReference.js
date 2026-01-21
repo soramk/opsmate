@@ -94,6 +94,8 @@ const PortReference = {
         { port: 9100, protocol: 'TCP', service: 'Node Exporter', category: '監視', description: 'Prometheus Node' },
         { port: 9200, protocol: 'TCP', service: 'Elasticsearch', category: 'データベース', description: 'Elasticsearch API' },
         { port: 9300, protocol: 'TCP', service: 'ES Transport', category: 'データベース', description: 'ES内部通信' },
+        { port: 10050, protocol: 'TCP', service: 'Zabbix Agent', category: '監視', description: 'Zabbixエージェント' },
+        { port: 10051, protocol: 'TCP', service: 'Zabbix Server', category: '監視', description: 'Zabbixサーバー' },
         { port: 10250, protocol: 'TCP', service: 'kubelet', category: 'コンテナ', description: 'Kubelet API' },
         { port: 11211, protocol: 'TCP/UDP', service: 'Memcached', category: 'データベース', description: 'Memcached' },
         { port: 15672, protocol: 'TCP', service: 'RabbitMQ UI', category: 'メッセージング', description: 'RabbitMQ管理UI' },

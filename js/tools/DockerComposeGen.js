@@ -3,24 +3,24 @@
  */
 
 const DockerComposeGen = {
-    render() {
-        const helpSection = OpsMateHelpers.renderHelpSection({
-            toolId: 'docker-compose-gen',
-            title: 'Docker Compose 生成の使い方',
-            description: 'よく使うサービス構成のdocker-compose.ymlスニペットを素早く生成します。',
-            steps: [
-                'ベーステンプレート（DB, キャッシュ, 監視など）を選択します',
-                'サービス名やポート番号をカスタマイズします',
-                '生成されたYAMLをコピーして使用します'
-            ],
-            tips: [
-                '複数のテンプレートを組み合わせて使う場合は、services部分を手動でマージしてください',
-                'networksやvolumesは必要に応じて追加してください',
-                '本番環境では環境変数をファイル(.env)で管理することを推奨します'
-            ]
-        });
+  render() {
+    const helpSection = OpsMateHelpers.renderHelpSection({
+      toolId: 'docker-compose-gen',
+      title: 'Docker Compose 生成の使い方',
+      description: 'よく使うサービス構成のdocker-compose.ymlスニペットを素早く生成します。',
+      steps: [
+        'ベーステンプレート（DB, キャッシュ, 監視など）を選択します',
+        'サービス名やポート番号をカスタマイズします',
+        '生成されたYAMLをコピーして使用します'
+      ],
+      tips: [
+        '複数のテンプレートを組み合わせて使う場合は、services部分を手動でマージしてください',
+        'networksやvolumesは必要に応じて追加してください',
+        '本番環境では環境変数をファイル(.env)で管理することを推奨します'
+      ]
+    });
 
-        return `
+    return `
             <div class="tool-panel">
                 <div class="panel-card">
                     <div class="panel-header">
@@ -66,22 +66,22 @@ const DockerComposeGen = {
                             <i data-lucide="copy" class="w-4 h-4"></i> コピー
                         </button>
                     </div>
-                    <pre id="dc-output" class="bg-slate-950 p-4 rounded-lg font-mono text-sm text-emerald-400 overflow-auto max-h-[500px]"></pre>
+                    <pre id="dc-output" class="code-output p-4 rounded-lg font-mono text-sm overflow-auto max-h-[500px]"></pre>
                 </div>
 
                 ${helpSection}
             </div>
         `;
-    },
+  },
 
-    currentTemplate: 'nginx',
+  currentTemplate: 'nginx',
 
-    templates: {
-        nginx: {
-            name: 'nginx',
-            port: 80,
-            tag: 'alpine',
-            yaml: (n, p, t) => `version: '3.8'
+  templates: {
+    nginx: {
+      name: 'nginx',
+      port: 80,
+      tag: 'alpine',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -93,12 +93,12 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./html:/usr/share/nginx/html:ro
     restart: unless-stopped`
-        },
-        postgres: {
-            name: 'postgres',
-            port: 5432,
-            tag: '15-alpine',
-            yaml: (n, p, t) => `version: '3.8'
+    },
+    postgres: {
+      name: 'postgres',
+      port: 5432,
+      tag: '15-alpine',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -116,12 +116,12 @@ services:
 
 volumes:
   ${n}_data:`
-        },
-        mysql: {
-            name: 'mysql',
-            port: 3306,
-            tag: '8.0',
-            yaml: (n, p, t) => `version: '3.8'
+    },
+    mysql: {
+      name: 'mysql',
+      port: 3306,
+      tag: '8.0',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -140,12 +140,12 @@ services:
 
 volumes:
   ${n}_data:`
-        },
-        redis: {
-            name: 'redis',
-            port: 6379,
-            tag: '7-alpine',
-            yaml: (n, p, t) => `version: '3.8'
+    },
+    redis: {
+      name: 'redis',
+      port: 6379,
+      tag: '7-alpine',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -160,12 +160,12 @@ services:
 
 volumes:
   ${n}_data:`
-        },
-        mongodb: {
-            name: 'mongodb',
-            port: 27017,
-            tag: '6',
-            yaml: (n, p, t) => `version: '3.8'
+    },
+    mongodb: {
+      name: 'mongodb',
+      port: 27017,
+      tag: '6',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -182,12 +182,12 @@ services:
 
 volumes:
   ${n}_data:`
-        },
-        prometheus: {
-            name: 'prometheus',
-            port: 9090,
-            tag: 'latest',
-            yaml: (n, p, t) => `version: '3.8'
+    },
+    prometheus: {
+      name: 'prometheus',
+      port: 9090,
+      tag: 'latest',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -205,12 +205,12 @@ services:
 
 volumes:
   ${n}_data:`
-        },
-        grafana: {
-            name: 'grafana',
-            port: 3000,
-            tag: 'latest',
-            yaml: (n, p, t) => `version: '3.8'
+    },
+    grafana: {
+      name: 'grafana',
+      port: 3000,
+      tag: 'latest',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -226,12 +226,12 @@ services:
 
 volumes:
   ${n}_data:`
-        },
-        elasticsearch: {
-            name: 'elasticsearch',
-            port: 9200,
-            tag: '8.11.0',
-            yaml: (n, p, t) => `version: '3.8'
+    },
+    elasticsearch: {
+      name: 'elasticsearch',
+      port: 9200,
+      tag: '8.11.0',
+      yaml: (n, p, t) => `version: '3.8'
 
 services:
   ${n}:
@@ -249,42 +249,42 @@ services:
 
 volumes:
   ${n}_data:`
-        }
-    },
-
-    init() {
-        document.querySelectorAll('.template-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                this.currentTemplate = btn.dataset.template;
-                this.loadTemplate();
-            });
-        });
-
-        document.getElementById('dc-name').addEventListener('input', () => this.generate());
-        document.getElementById('dc-port').addEventListener('input', () => this.generate());
-        document.getElementById('dc-tag').addEventListener('input', () => this.generate());
-
-        this.loadTemplate();
-    },
-
-    loadTemplate() {
-        const tpl = this.templates[this.currentTemplate];
-        document.getElementById('dc-name').value = tpl.name;
-        document.getElementById('dc-port').value = tpl.port;
-        document.getElementById('dc-tag').value = tpl.tag;
-        this.generate();
-    },
-
-    generate() {
-        const tpl = this.templates[this.currentTemplate];
-        const name = document.getElementById('dc-name').value || tpl.name;
-        const port = document.getElementById('dc-port').value || tpl.port;
-        const tag = document.getElementById('dc-tag').value || tpl.tag;
-
-        document.getElementById('dc-output').textContent = tpl.yaml(name, port, tag);
     }
+  },
+
+  init() {
+    document.querySelectorAll('.template-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.currentTemplate = btn.dataset.template;
+        this.loadTemplate();
+      });
+    });
+
+    document.getElementById('dc-name').addEventListener('input', () => this.generate());
+    document.getElementById('dc-port').addEventListener('input', () => this.generate());
+    document.getElementById('dc-tag').addEventListener('input', () => this.generate());
+
+    this.loadTemplate();
+  },
+
+  loadTemplate() {
+    const tpl = this.templates[this.currentTemplate];
+    document.getElementById('dc-name').value = tpl.name;
+    document.getElementById('dc-port').value = tpl.port;
+    document.getElementById('dc-tag').value = tpl.tag;
+    this.generate();
+  },
+
+  generate() {
+    const tpl = this.templates[this.currentTemplate];
+    const name = document.getElementById('dc-name').value || tpl.name;
+    const port = document.getElementById('dc-port').value || tpl.port;
+    const tag = document.getElementById('dc-tag').value || tpl.tag;
+
+    document.getElementById('dc-output').textContent = tpl.yaml(name, port, tag);
+  }
 };
 
 window.DockerComposeGen = DockerComposeGen;

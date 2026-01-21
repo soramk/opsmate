@@ -63,7 +63,7 @@ const CloudCliGen = {
                             <i data-lucide="copy" class="w-4 h-4"></i> コピー
                         </button>
                     </div>
-                    <pre id="cloud-output" class="bg-slate-950 p-4 rounded-lg font-mono text-sm text-emerald-400 overflow-auto"></pre>
+                    <pre id="cloud-output" class="code-output p-4 rounded-lg font-mono text-sm overflow-auto"></pre>
                 </div>
 
                 ${helpSection}

@@ -88,7 +88,7 @@ const IacGenerator = {
                                 <i data-lucide="copy" class="w-4 h-4"></i>
                             </button>
                     </div>
-                    <pre id="iac-output" class="bg-slate-950 p-4 rounded-lg font-mono text-sm overflow-auto max-h-[500px] text-emerald-400"></pre>
+                    <pre id="iac-output" class="code-output p-4 rounded-lg font-mono text-sm overflow-auto max-h-[500px]"></pre>
                 </div>
 
                 ${helpSection}
