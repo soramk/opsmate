@@ -137,26 +137,26 @@ const VlsmCalculator = {
         resultEl.innerHTML = `
             <table class="w-full text-sm">
                 <thead>
-                    <tr class="border-b border-slate-700 text-left">
-                        <th class="py-2 px-2 text-slate-400">名前</th>
-                        <th class="py-2 px-2 text-slate-400">要求</th>
-                        <th class="py-2 px-2 text-slate-400">CIDR</th>
-                        <th class="py-2 px-2 text-slate-400">ネットワーク</th>
-                        <th class="py-2 px-2 text-slate-400">使用可能範囲</th>
-                        <th class="py-2 px-2 text-slate-400">ブロードキャスト</th>
-                        <th class="py-2 px-2 text-slate-400">使用可能数</th>
+                    <tr class="border-b" style="border-color: var(--border-color);">
+                        <th class="py-2 px-2 text-left" style="color: var(--text-muted);">名前</th>
+                        <th class="py-2 px-2 text-left" style="color: var(--text-muted);">要求</th>
+                        <th class="py-2 px-2 text-left" style="color: var(--text-muted);">CIDR</th>
+                        <th class="py-2 px-2 text-left" style="color: var(--text-muted);">ネットワーク</th>
+                        <th class="py-2 px-2 text-left" style="color: var(--text-muted);">使用可能範囲</th>
+                        <th class="py-2 px-2 text-left" style="color: var(--text-muted);">ブロードキャスト</th>
+                        <th class="py-2 px-2 text-left" style="color: var(--text-muted);">使用可能数</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${results.map(r => `
-                        <tr class="border-b border-slate-800 hover:bg-slate-800/50">
-                            <td class="py-2 px-2 text-slate-300">${r.name}</td>
-                            <td class="py-2 px-2 text-slate-400">${r.requested}</td>
-                            <td class="py-2 px-2 font-mono text-emerald-400">${r.cidr}</td>
-                            <td class="py-2 px-2 font-mono text-slate-200">${r.network}</td>
-                            <td class="py-2 px-2 font-mono text-slate-300">${r.firstUsable} - ${r.lastUsable}</td>
-                            <td class="py-2 px-2 font-mono text-slate-400">${r.broadcast}</td>
-                            <td class="py-2 px-2 text-emerald-400">${r.usable}</td>
+                        <tr class="border-b" style="border-color: var(--border-color);">
+                            <td class="py-2 px-2" style="color: var(--text-primary);">${r.name}</td>
+                            <td class="py-2 px-2" style="color: var(--text-secondary);">${r.requested}</td>
+                            <td class="py-2 px-2 font-mono" style="color: var(--accent-primary);">${r.cidr}</td>
+                            <td class="py-2 px-2 font-mono" style="color: var(--text-primary);">${r.network}</td>
+                            <td class="py-2 px-2 font-mono" style="color: var(--text-secondary);">${r.firstUsable} - ${r.lastUsable}</td>
+                            <td class="py-2 px-2 font-mono" style="color: var(--text-muted);">${r.broadcast}</td>
+                            <td class="py-2 px-2" style="color: var(--accent-primary);">${r.usable}</td>
                         </tr>
                     `).join('')}
                 </tbody>

@@ -2246,3 +2246,61 @@ textarea {
     border-color: var(--accent-primary);
     font-weight: 600;
 }
+
+/* Data Table Styles (Theme Aware) */
+.data-table {
+    width: 100%;
+    font-size: 0.875rem;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+.data-table th {
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
+.data-table td {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tr:hover td {
+    background: var(--bg-hover);
+}
+
+.data-table .text-accent {
+    color: var(--accent-primary);
+}
+
+.data-table .text-secondary {
+    color: var(--text-secondary);
+}
+
+.data-table .text-muted {
+    color: var(--text-muted);
+}
+
+/* Override slate colors in light mode */
+[data-theme="light"] .text-slate-200,
+[data-theme="light"] .text-slate-300,
+[data-theme="light"] .text-slate-400 {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] .bg-slate-800,
+[data-theme="light"] .bg-slate-900,
+[data-theme="light"] .bg-slate-950 {
+    background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="light"] .border-slate-700,
+[data-theme="light"] .border-slate-800 {
+    border-color: var(--border-color) !important;
+}
