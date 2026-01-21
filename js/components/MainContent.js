@@ -42,7 +42,14 @@ const MainContentComponent = {
         'log-masker': () => LogMasker.render(),
         'url-toolkit': () => UrlToolkit.render(),
         'cert-helper': () => CertHelper.render(),
-        'snmp-reference': () => SnmpReference.render()
+        'snmp-reference': () => SnmpReference.render(),
+        'sla-calculator': () => SlaCalculator.render(),
+        'dns-generator': () => DnsGenerator.render(),
+        'incident-timeline': () => IncidentTimeline.render(),
+        'docker-compose-gen': () => DockerComposeGen.render(),
+        'cloud-cli-gen': () => CloudCliGen.render(),
+        'vlsm-calculator': () => VlsmCalculator.render(),
+        'maintenance-calc': () => MaintenanceCalc.render()
     },
 
     init() {
@@ -105,6 +112,13 @@ const MainContentComponent = {
             case 'url-toolkit': UrlToolkit.init(); break;
             case 'cert-helper': CertHelper.init(); break;
             case 'snmp-reference': SnmpReference.init(); break;
+            case 'sla-calculator': SlaCalculator.init(); break;
+            case 'dns-generator': DnsGenerator.init(); break;
+            case 'incident-timeline': IncidentTimeline.init(); break;
+            case 'docker-compose-gen': DockerComposeGen.init(); break;
+            case 'cloud-cli-gen': CloudCliGen.init(); break;
+            case 'vlsm-calculator': VlsmCalculator.init(); break;
+            case 'maintenance-calc': MaintenanceCalc.init(); break;
         }
     },
 

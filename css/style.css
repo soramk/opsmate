@@ -2220,3 +2220,29 @@ textarea {
     border-color: var(--accent-primary);
     font-weight: 600;
 }
+
+/* Template Buttons */
+.template-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.template-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+
+.template-btn.active {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+    font-weight: 600;
+}
