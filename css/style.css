@@ -2195,3 +2195,28 @@ textarea {
     border-color: var(--accent-primary);
     box-shadow: 0 0 0 2px var(--accent-glow);
 }
+
+/* Vendor Filter Buttons */
+.vendor-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 0.375rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.vendor-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.vendor-btn.active {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+    font-weight: 600;
+}
