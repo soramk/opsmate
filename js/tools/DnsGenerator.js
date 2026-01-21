@@ -68,7 +68,7 @@ const DnsGenerator = {
                             <i data-lucide="copy" class="w-4 h-4"></i> コピー
                         </button>
                     </div>
-                    <pre id="dns-output" class="bg-slate-950 p-4 rounded-lg font-mono text-sm text-emerald-400 overflow-auto"></pre>
+                    <pre id="dns-output" class="code-output p-4 rounded-lg font-mono text-sm overflow-auto"></pre>
                 </div>
 
                 <!-- Common Records -->
@@ -80,21 +80,21 @@ const DnsGenerator = {
                         </h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="bg-slate-900 p-3 rounded-lg">
-                            <div class="text-xs text-slate-500 mb-1">SPF (TXT)</div>
-                            <code class="text-xs text-emerald-400">v=spf1 include:_spf.google.com ~all</code>
+                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
+                            <div class="text-xs mb-1" style="color: var(--text-muted);">SPF (TXT)</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">v=spf1 include:_spf.google.com ~all</code>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-lg">
-                            <div class="text-xs text-slate-500 mb-1">DMARC (TXT)</div>
-                            <code class="text-xs text-emerald-400">v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com</code>
+                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
+                            <div class="text-xs mb-1" style="color: var(--text-muted);">DMARC (TXT)</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com</code>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-lg">
-                            <div class="text-xs text-slate-500 mb-1">Google Workspace MX</div>
-                            <code class="text-xs text-emerald-400">ASPMX.L.GOOGLE.COM (優先度: 1)</code>
+                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
+                            <div class="text-xs mb-1" style="color: var(--text-muted);">Google Workspace MX</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">ASPMX.L.GOOGLE.COM (優先度: 1)</code>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-lg">
-                            <div class="text-xs text-slate-500 mb-1">Let's Encrypt CAA</div>
-                            <code class="text-xs text-emerald-400">0 issue "letsencrypt.org"</code>
+                        <div class="quick-ref-item p-3 rounded-lg border" style="background: var(--bg-secondary); border-color: var(--border-color);">
+                            <div class="text-xs mb-1" style="color: var(--text-muted);">Let's Encrypt CAA</div>
+                            <code class="text-xs" style="color: var(--accent-primary);">0 issue "letsencrypt.org"</code>
                         </div>
                     </div>
                 </div>

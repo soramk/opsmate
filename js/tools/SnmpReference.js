@@ -209,16 +209,16 @@ const SnmpReference = {
         }
 
         container.innerHTML = filtered.map(item => `
-            <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 hover:border-emerald-500/50 transition-colors group">
+            <div class="rounded-lg p-4 transition-colors group border" style="background: var(--bg-secondary); border-color: var(--border-color);">
                 <div class="flex justify-between items-center mb-2">
-                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">${item.vendor}</span>
+                    <span class="text-xs font-bold px-2 py-0.5 rounded" style="background: var(--accent-primary-bg); color: var(--accent-primary); border: 1px solid var(--accent-primary);">${item.vendor}</span>
                     <button class="opacity-0 group-hover:opacity-100 btn btn-secondary btn-xs h-7 px-3" onclick="OpsMateHelpers.copyToClipboard('${item.oid}')">
                         <i data-lucide="copy" class="w-3.5 h-3.5 mr-1"></i> コピー
                     </button>
                 </div>
-                <div class="text-base font-bold text-slate-100 mb-1">${item.name}</div>
-                <div class="text-sm font-mono text-emerald-400 bg-slate-950/50 p-2 rounded border border-slate-800 break-all mb-2 selection:bg-emerald-500/30">${item.oid}</div>
-                <div class="text-xs text-slate-400 leading-relaxed">${item.desc}</div>
+                <div class="text-base font-bold mb-1" style="color: var(--text-primary);">${item.name}</div>
+                <div class="text-sm font-mono p-2 rounded break-all mb-2 selection:bg-emerald-500/30" style="color: var(--accent-primary); background: var(--bg-tertiary); border: 1px solid var(--border-color);">${item.oid}</div>
+                <div class="text-xs leading-relaxed" style="color: var(--text-secondary);">${item.desc}</div>
             </div>
         `).join('');
 

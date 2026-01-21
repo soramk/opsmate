@@ -81,7 +81,7 @@ const FilterWizard = {
                                 <i data-lucide="copy" class="w-4 h-4"></i>
                             </button>
                         </div>
-                        <div class="bg-slate-900 p-4 rounded-lg font-mono text-sm break-all min-h-[60px] flex items-center" id="fw-output-tcpdump">
+                        <div class="code-output p-4 rounded-lg font-mono text-sm break-all min-h-[60px] flex items-center" id="fw-output-tcpdump">
                             tcpdump -ni any
                         </div>
                     </div>
@@ -93,7 +93,7 @@ const FilterWizard = {
                                 <i data-lucide="copy" class="w-4 h-4"></i>
                             </button>
                         </div>
-                        <div class="bg-slate-900 p-4 rounded-lg font-mono text-sm break-all min-h-[60px] flex items-center" id="fw-output-wireshark">
+                        <div class="code-output p-4 rounded-lg font-mono text-sm break-all min-h-[60px] flex items-center" id="fw-output-wireshark">
                             eth
                         </div>
                     </div>
