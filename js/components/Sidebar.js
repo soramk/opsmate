@@ -16,6 +16,18 @@ const SidebarComponent = {
                     description: 'IPv4サブネット分割・ホスト数計算'
                 },
                 {
+                    id: 'network-diagram',
+                    name: 'ネットワーク構成図',
+                    icon: 'share-2',
+                    description: 'Mermaid構文によるテキストベースの構成図描画'
+                },
+                {
+                    id: 'filter-wizard',
+                    name: 'フィルタウィザード',
+                    icon: 'filter',
+                    description: 'tcpdump / Wireshark フィルタ生成'
+                },
+                {
                     id: 'ipv6-toolkit',
                     name: 'IPv6 ツールキット',
                     icon: 'globe-2',
@@ -97,6 +109,12 @@ const SidebarComponent = {
                     name: 'RDP 設定ファイル生成',
                     icon: 'monitor-play',
                     description: 'リモートデスクトップ用 .rdp ファイル生成'
+                },
+                {
+                    id: 'iac-generator',
+                    name: 'IaC スニペット生成',
+                    icon: 'code-2',
+                    description: 'Terraform / Ansible コード生成'
                 }
             ]
         },
@@ -199,6 +217,12 @@ const SidebarComponent = {
                     description: '帯域とデータ量から転送時間を推定'
                 },
                 {
+                    id: 'bdp-calculator',
+                    name: 'BDP・スループット計算',
+                    icon: 'gauge',
+                    description: '帯域遅延積とTCPスループット推定'
+                },
+                {
                     id: 'op-bookmarks',
                     name: '運用ブックマーク',
                     icon: 'bookmark',
@@ -215,6 +239,12 @@ const SidebarComponent = {
                     name: 'ログ匿名化・マスク',
                     icon: 'eye-off',
                     description: 'ログ内のIPや個人情報を自動マスク'
+                },
+                {
+                    id: 'syslog-highlighter',
+                    name: 'Syslogカラー解析',
+                    icon: 'align-left',
+                    description: 'SyslogのSeverity色分け表示とフィルタ'
                 },
                 {
                     id: 'http-status',

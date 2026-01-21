@@ -73,9 +73,13 @@ const OpBookmarks = {
                             保存されたブックマーク
                         </h2>
                         <div class="flex gap-2">
+                             <button class="btn btn-secondary btn-sm" id="bm-import-btn">
+                                <i data-lucide="upload" class="w-4 h-4"></i> インポート
+                            </button>
                              <button class="btn btn-secondary btn-sm" id="bm-export-btn">
                                 <i data-lucide="download" class="w-4 h-4"></i> エクスポート
                             </button>
+                            <input type="file" id="bm-import-input" style="display: none;" accept=".json">
                         </div>
                     </div>
 
@@ -112,6 +116,14 @@ const OpBookmarks = {
 
         if (exportBtn) {
             exportBtn.addEventListener('click', () => this.exportBookmarks());
+        }
+
+        const importBtn = document.getElementById('bm-import-btn');
+        const importInput = document.getElementById('bm-import-input');
+
+        if (importBtn && importInput) {
+            importBtn.addEventListener('click', () => importInput.click());
+            importInput.addEventListener('change', (e) => this.handleImport(e));
         }
     },
 
@@ -244,6 +256,50 @@ const OpBookmarks = {
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+    },
+
+    handleImport(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const imported = JSON.parse(e.target.result);
+                if (!Array.isArray(imported)) {
+                    throw new Error('Invalid format');
+                }
+
+                // Merge bookmarks (avoid exact duplicates by URL and click ID update)
+                const existingUrls = new Set(this.bookmarks.map(bm => bm.url));
+                let importCount = 0;
+
+                imported.forEach(bm => {
+                    if (!existingUrls.has(bm.url)) {
+                        this.bookmarks.push({
+                            ...bm,
+                            id: Date.now() + Math.random() // Ensure unique ID
+                        });
+                        importCount++;
+                    }
+                });
+
+                if (importCount > 0) {
+                    this.saveToStorage();
+                    this.renderBookmarks();
+                    this.updateCategoryOptions();
+                    OpsMateHelpers.showToast(`${importCount}件のブックマークをインポートしました`, 'success');
+                } else {
+                    OpsMateHelpers.showToast('インポートする新しいブックマークはありませんでした', 'info');
+                }
+            } catch (err) {
+                console.error('Import error:', err);
+                OpsMateHelpers.showToast('ファイルの読み込みに失敗しました。正しいJSON形式か確認してください。', 'error');
+            }
+            // Reset input
+            event.target.value = '';
+        };
+        reader.readAsText(file);
     }
 };
 

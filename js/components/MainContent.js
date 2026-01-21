@@ -7,6 +7,11 @@ const MainContentComponent = {
         'subnet-calculator': () => SubnetCalculator.render(),
         'mac-converter': () => MacConverter.render(),
         'transfer-calculator': () => TransferCalculator.render(),
+        'network-diagram': () => NetworkDiagram.render(),
+        'filter-wizard': () => FilterWizard.render(),
+        'syslog-highlighter': () => SyslogHighlighter.render(),
+        'bdp-calculator': () => BdpCalculator.render(),
+        'iac-generator': () => IacGenerator.render(),
         'base-converter': () => BaseConverter.render(),
         'unix-timestamp': () => UnixTimestamp.render(),
         'password-generator': () => PasswordGenerator.render(),
@@ -63,6 +68,11 @@ const MainContentComponent = {
             case 'subnet-calculator': SubnetCalculator.init(); break;
             case 'mac-converter': MacConverter.init(); break;
             case 'transfer-calculator': TransferCalculator.init(); break;
+            case 'network-diagram': NetworkDiagram.init(); break;
+            case 'filter-wizard': FilterWizard.init(); break;
+            case 'syslog-highlighter': SyslogHighlighter.init(); break;
+            case 'bdp-calculator': BdpCalculator.init(); break;
+            case 'iac-generator': IacGenerator.init(); break;
             case 'base-converter': BaseConverter.init(); break;
             case 'unix-timestamp': UnixTimestamp.init(); break;
             case 'password-generator': PasswordGenerator.init(); break;
