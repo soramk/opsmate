@@ -41,7 +41,8 @@ const MainContentComponent = {
         'yaml-json': () => YamlJsonConverter.render(),
         'log-masker': () => LogMasker.render(),
         'url-toolkit': () => UrlToolkit.render(),
-        'cert-tool': () => CertTool.render()
+        'cert-helper': () => CertHelper.render(),
+        'snmp-reference': () => SnmpReference.render()
     },
 
     init() {
@@ -102,7 +103,8 @@ const MainContentComponent = {
             case 'yaml-json': YamlJsonConverter.init(); break;
             case 'log-masker': LogMasker.init(); break;
             case 'url-toolkit': UrlToolkit.init(); break;
-            case 'cert-tool': CertTool.init(); break;
+            case 'cert-helper': CertHelper.init(); break;
+            case 'snmp-reference': SnmpReference.init(); break;
         }
     },
 

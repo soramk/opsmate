@@ -56,6 +56,12 @@ const SidebarComponent = {
                     name: 'IPアドレスリスト生成',
                     icon: 'list-ordered',
                     description: 'CIDR/範囲から全IPを展開出力'
+                },
+                {
+                    id: 'snmp-reference',
+                    name: 'SNMP OID 検索',
+                    icon: 'search',
+                    description: '主要機器のOIDリファレンス'
                 }
             ]
         },
@@ -87,7 +93,7 @@ const SidebarComponent = {
                     description: 'プロキシ、SSL、CORS等の設定生成'
                 },
                 {
-                    id: 'cert-tool',
+                    id: 'cert-helper',
                     name: 'SSL/TLS 証明書ヘルパー',
                     icon: 'lock',
                     description: '証明書確認・opensslコマンド生成'
