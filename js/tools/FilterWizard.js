@@ -71,6 +71,17 @@ const FilterWizard = {
                             <input type="text" id="fw-interface" class="form-input" placeholder="例: eth0, any">
                         </div>
                     </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="form-group">
+                            <label class="form-label">開始時間 (Wireshark用)</label>
+                            <input type="text" id="fw-start-time" class="form-input" placeholder="例: 2026-01-01 12:00:00">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">終了時間 (Wireshark用)</label>
+                            <input type="text" id="fw-end-time" class="form-input" placeholder="例: 2026-01-01 13:00:00">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -105,7 +116,7 @@ const FilterWizard = {
     },
 
     init() {
-        const inputs = ['fw-host', 'fw-port', 'fw-proto', 'fw-dir', 'fw-interface'];
+        const inputs = ['fw-host', 'fw-port', 'fw-proto', 'fw-dir', 'fw-interface', 'fw-start-time', 'fw-end-time'];
         inputs.forEach(id => {
             const el = document.getElementById(id);
             if (el) {
@@ -121,6 +132,8 @@ const FilterWizard = {
         const proto = document.getElementById('fw-proto').value;
         const dir = document.getElementById('fw-dir').value;
         const intf = document.getElementById('fw-interface').value.trim() || 'any';
+        const startTime = document.getElementById('fw-start-time').value.trim();
+        const endTime = document.getElementById('fw-end-time').value.trim();
 
         // Tcpdump Logic
         let tcpdumpParts = [];
@@ -150,8 +163,6 @@ const FilterWizard = {
             wsParts.push(`${hDir} == ${host}`);
         }
         if (port) {
-            const pDir = dir === 'src' ? 'tcp.srcport' : (dir === 'dst' ? 'tcp.dstport' : 'tcp.port');
-            // If UDP or other we should ideally handle it, but simplified for now
             const pProto = proto === 'udp' ? 'udp' : 'tcp';
             const fDir = dir === 'src' ? `${pProto}.srcport` : (dir === 'dst' ? `${pProto}.dstport` : `${pProto}.port`);
             wsParts.push(`${fDir} == ${port}`);
@@ -163,6 +174,14 @@ const FilterWizard = {
             else if (proto === 'arp') wsParts.push('arp');
             else if (proto === 'tcp' && !port) wsParts.push('tcp');
             else if (proto === 'udp' && !port) wsParts.push('udp');
+        }
+
+        // Time Filters for Wireshark
+        if (startTime) {
+            wsParts.push(`frame.time >= "${startTime}"`);
+        }
+        if (endTime) {
+            wsParts.push(`frame.time <= "${endTime}"`);
         }
 
         document.getElementById('fw-output-wireshark').innerText = wsParts.length > 0 ? wsParts.join(' && ') : 'eth';
