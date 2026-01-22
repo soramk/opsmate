@@ -72,52 +72,52 @@ const OverheadCalculator = {
                             <div class="form-group">
                                 <label class="form-label mb-3">Encapsulation / Options</label>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="VLAN (802.1Q)" data-bytes="4">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="VLAN (802.1Q)" data-bytes="4">
                                         <div class="text-sm">
-                                            <div class="font-medium">VLAN (4B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">VLAN (4B)</div>
                                         </div>
                                     </label>
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="QinQ (Double Tag)" data-bytes="4">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="QinQ (Double Tag)" data-bytes="4">
                                         <div class="text-sm">
-                                            <div class="font-medium">QinQ (+4B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">QinQ (+4B)</div>
                                         </div>
                                     </label>
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="PPPoE" data-bytes="8">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="PPPoE" data-bytes="8">
                                         <div class="text-sm">
-                                            <div class="font-medium">PPPoE (8B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">PPPoE (8B)</div>
                                         </div>
                                     </label>
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="MPLS (Single Label)" data-bytes="4">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="MPLS (Single Label)" data-bytes="4">
                                         <div class="text-sm">
-                                            <div class="font-medium">MPLS (4B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">MPLS (4B)</div>
                                         </div>
                                     </label>
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="GRE (over IPv4)" data-bytes="24">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="GRE (over IPv4)" data-bytes="24">
                                         <div class="text-sm">
-                                            <div class="font-medium">GRE (24B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">GRE (24B)</div>
                                         </div>
                                     </label>
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="VXLAN" data-bytes="50">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="VXLAN" data-bytes="50">
                                         <div class="text-sm">
-                                            <div class="font-medium">VXLAN (50B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">VXLAN (50B)</div>
                                         </div>
                                     </label>
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="IPsec ESP (Est.)" data-bytes="56">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="IPsec ESP (Est.)" data-bytes="56">
                                         <div class="text-sm">
-                                            <div class="font-medium">IPsec ESP (~56B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">IPsec ESP (~56B)</div>
                                         </div>
                                     </label>
-                                    <label class="flex items-center p-3 rounded-lg border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-slate-600 bg-slate-700" data-label="WireGuard" data-bytes="60">
+                                    <label class="flex items-center p-3 rounded-lg border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                                        <input type="checkbox" class="oc-opt mr-3 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-label="WireGuard" data-bytes="60">
                                         <div class="text-sm">
-                                            <div class="font-medium">WireGuard (60B)</div>
+                                            <div class="font-medium text-[var(--text-primary)]">WireGuard (60B)</div>
                                         </div>
                                     </label>
                                 </div>
@@ -125,25 +125,25 @@ const OverheadCalculator = {
                         </div>
 
                         <div class="flex flex-col">
-                            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex-grow">
+                            <div class="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl p-8 flex-grow">
                                 <div class="text-center mb-8">
-                                    <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider mb-2">Recommended MSS</h3>
-                                    <div class="text-6xl font-mono font-bold text-emerald-400" id="oc-res-mss">1460</div>
+                                    <h3 class="text-[var(--text-secondary)] text-sm font-medium uppercase tracking-wider mb-2">Recommended MSS</h3>
+                                    <div class="text-6xl font-mono font-bold text-[var(--accent-primary)]" id="oc-res-mss">1460</div>
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-4 mb-8">
-                                    <div class="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 text-center">
-                                        <div class="text-xs text-slate-500 uppercase mb-1">Total Overhead</div>
-                                        <div class="text-2xl font-mono text-slate-200" id="oc-res-overhead">40 B</div>
+                                    <div class="bg-[var(--bg-secondary)] rounded-xl p-4 border border-[var(--border-color)] text-center">
+                                        <div class="text-xs text-[var(--text-muted)] uppercase mb-1">Total Overhead</div>
+                                        <div class="text-2xl font-mono text-[var(--text-primary)]" id="oc-res-overhead">40 B</div>
                                     </div>
-                                    <div class="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 text-center">
-                                        <div class="text-xs text-slate-500 uppercase mb-1">Efficiency</div>
-                                        <div class="text-2xl font-mono text-slate-200" id="oc-res-eff">97.3%</div>
+                                    <div class="bg-[var(--bg-secondary)] rounded-xl p-4 border border-[var(--border-color)] text-center">
+                                        <div class="text-xs text-[var(--text-muted)] uppercase mb-1">Efficiency</div>
+                                        <div class="text-2xl font-mono text-[var(--text-primary)]" id="oc-res-eff">97.3%</div>
                                     </div>
                                 </div>
 
                                 <div class="space-y-3">
-                                    <div class="text-xs text-slate-500 uppercase font-semibold">Header Breakdown</div>
+                                    <div class="text-xs text-[var(--text-muted)] uppercase font-semibold">Header Breakdown</div>
                                     <div id="oc-breakdown" class="space-y-2">
                                         <!-- Breakdown dynamic -->
                                     </div>
@@ -207,9 +207,9 @@ const OverheadCalculator = {
 
         const breakdownContainer = document.getElementById('oc-breakdown');
         breakdownContainer.innerHTML = breakdown.map(item => `
-            <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-800/30">
-                <span class="text-slate-400">${item.label}</span>
-                <span class="font-mono text-slate-200">${item.bytes} B</span>
+            <div class="flex justify-between items-center text-sm p-2 rounded bg-[var(--bg-secondary)]">
+                <span class="text-[var(--text-secondary)]">${item.label}</span>
+                <span class="font-mono text-[var(--text-primary)]">${item.bytes} B</span>
             </div>
         `).join('');
     }

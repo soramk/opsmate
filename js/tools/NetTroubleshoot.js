@@ -67,7 +67,7 @@ const NetTroubleshoot = {
 
                 <div class="panel-card mt-6">
                     <div class="panel-header">
-                        <h2 class="panel-title text-emerald-400">
+                        <h2 class="panel-title text-[var(--accent-primary)]">
                              <i data-lucide="terminal" class="w-5 h-5"></i>
                             Command One-liner
                         </h2>

@@ -55,7 +55,7 @@ const RaidCalculator = {
                             <div class="form-group">
                                 <label class="form-label">ディスク本数 (<span id="raid-count-val">4</span> 本)</label>
                                 <input type="range" id="raid-count" class="form-range" min="1" max="64" value="4">
-                                <div class="flex justify-between text-xs text-slate-500 mt-1">
+                                <div class="flex justify-between text-xs text-[var(--text-muted)] mt-1">
                                     <span>2</span>
                                     <span>64</span>
                                 </div>
@@ -79,27 +79,27 @@ const RaidCalculator = {
                         </div>
 
                         <div class="flex flex-col">
-                            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex-grow">
+                            <div class="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl p-8 flex-grow">
                                 <div class="text-center mb-8">
-                                    <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider mb-2">Usable Capacity</h3>
-                                    <div class="text-6xl font-mono font-bold text-emerald-400" id="raid-res-usable">2000</div>
-                                    <div class="text-slate-500 font-mono mt-1" id="raid-res-unit">GB</div>
+                                    <h3 class="text-[var(--text-secondary)] text-sm font-medium uppercase tracking-wider mb-2">Usable Capacity</h3>
+                                    <div class="text-6xl font-mono font-bold text-[var(--accent-primary)]" id="raid-res-usable">2000</div>
+                                    <div class="text-[var(--text-muted)] font-mono mt-1" id="raid-res-unit">GB</div>
                                 </div>
 
                                 <div class="space-y-4">
-                                    <div class="flex justify-between items-center p-3 rounded-lg bg-slate-800/50">
-                                        <span class="text-slate-400">Total Raw Capacity</span>
-                                        <span class="font-mono text-slate-200" id="raid-res-raw">4000 GB</span>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                        <span class="text-[var(--text-secondary)]">Total Raw Capacity</span>
+                                        <span class="font-mono text-[var(--text-primary)]" id="raid-res-raw">4000 GB</span>
                                     </div>
-                                    <div class="flex justify-between items-center p-3 rounded-lg bg-slate-800/50">
-                                        <span class="text-slate-400">Fault Tolerance</span>
-                                        <span class="font-mono text-slate-200" id="raid-res-fault">0 Disks</span>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                        <span class="text-[var(--text-secondary)]">Fault Tolerance</span>
+                                        <span class="font-mono text-[var(--text-primary)]" id="raid-res-fault">0 Disks</span>
                                     </div>
-                                    <div class="flex justify-between items-center p-3 rounded-lg bg-slate-800/50">
-                                        <span class="text-slate-400">Space Efficiency</span>
-                                        <span class="font-mono text-slate-200" id="raid-res-eff">50%</span>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                                        <span class="text-[var(--text-secondary)]">Space Efficiency</span>
+                                        <span class="font-mono text-[var(--text-primary)]" id="raid-res-eff">50%</span>
                                     </div>
-                                    <div id="raid-error" class="text-red-400 text-sm hidden">
+                                    <div id="raid-error" class="text-[var(--error-color)] text-sm hidden">
                                         <i data-lucide="alert-circle" class="w-4 h-4 inline mr-1"></i>
                                         <span id="raid-error-msg"></span>
                                     </div>

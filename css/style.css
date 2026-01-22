@@ -1062,6 +1062,20 @@ textarea {
     margin-top: 0.5rem;
 }
 
+/* Code Output Utility */
+.code-output {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--accent-primary);
+    width: 100%;
+}
+
+.code-textarea {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+}
+
 /* ========================================
    Toast Notifications
    ======================================== */

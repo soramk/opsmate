@@ -59,7 +59,7 @@ const JsonDiff = {
                     <div class="panel-header">
                         <h2 class="panel-title">差分詳細</h2>
                     </div>
-                    <div id="jd-output" class="space-y-2 font-mono text-sm overflow-auto max-h-[600px] p-4 bg-slate-900 rounded-lg border border-slate-800">
+                    <div id="jd-output" class="space-y-2 font-mono text-sm overflow-auto max-h-[600px] p-4 bg-[var(--bg-primary)] rounded-lg border border-[var(--border-color)]">
                         <!-- Diff items dynamic -->
                     </div>
                 </div>
@@ -96,7 +96,7 @@ const JsonDiff = {
             const diffs = this.getDiff(left, right);
 
             if (diffs.length === 0) {
-                output.innerHTML = `<div class="text-slate-500 italic">差分は見つかりませんでした。データは完全に一致しています。</div>`;
+                output.innerHTML = `<div class="text-[var(--text-muted)] italic">差分は見つかりませんでした。データは完全に一致しています。</div>`;
             } else {
                 output.innerHTML = diffs.map(d => this.formatDiffItem(d)).join('');
             }
@@ -141,22 +141,22 @@ const JsonDiff = {
 
         switch (d.type) {
             case 'added':
-                color = 'text-emerald-400';
+                color = 'text-[var(--success-color)]';
                 content = `+ Added: ${JSON.stringify(d.value)}`;
                 break;
             case 'removed':
-                color = 'text-red-400';
+                color = 'text-[var(--error-color)]';
                 content = `- Removed: ${JSON.stringify(d.value)}`;
                 break;
             case 'changed':
-                color = 'text-amber-400';
+                color = 'text-[var(--warning-color)]';
                 content = `~ Changed: ${JSON.stringify(d.oldValue)} -> ${JSON.stringify(d.newValue)}`;
                 break;
         }
 
         return `
-            <div class="flex items-start space-x-4 border-b border-slate-800/50 pb-2">
-                <span class="text-slate-500 w-1/3 break-all">${d.path}</span>
+            <div class="flex items-start space-x-4 border-b border-[var(--border-color)] pb-2">
+                <span class="text-[var(--text-muted)] w-1/3 break-all">${d.path}</span>
                 <span class="${color} w-2/3 break-all">${content}</span>
             </div>
         `;
@@ -164,4 +164,3 @@ const JsonDiff = {
 };
 
 window.JsonDiff = JsonDiff;
-sedimentary

@@ -67,9 +67,9 @@ const PostMortemGen = {
                         </div>
 
                         <div class="flex flex-col">
-                            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex-grow">
+                            <div class="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl p-6 flex-grow">
                                 <div class="flex justify-between items-center mb-4">
-                                    <h3 class="text-slate-400 text-sm font-medium uppercase">Report Preview</h3>
+                                    <h3 class="text-[var(--text-secondary)] text-sm font-medium uppercase">Report Preview</h3>
                                     <button class="btn btn-secondary btn-sm" id="pm-copy-btn" style="display: none;">
                                         <i data-lucide="copy" class="w-4 h-4"></i> 全てコピー
                                     </button>

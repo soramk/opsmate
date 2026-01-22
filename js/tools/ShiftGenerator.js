@@ -58,15 +58,15 @@ const ShiftGenerator = {
                         </div>
 
                         <div class="flex flex-col">
-                            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex-grow overflow-auto max-h-[500px]">
+                            <div class="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-2xl p-6 flex-grow overflow-auto max-h-[500px]">
                                 <div class="flex justify-between items-center mb-4">
-                                    <h3 class="text-slate-400 text-sm font-medium uppercase">Schedule Preview</h3>
+                                    <h3 class="text-[var(--text-secondary)] text-sm font-medium uppercase">Schedule Preview</h3>
                                     <button class="btn btn-secondary btn-sm" id="sg-copy-btn" style="display: none;">
                                         <i data-lucide="copy" class="w-4 h-4"></i> MDコピー
                                     </button>
                                 </div>
                                 <div id="sg-result-table" class="text-sm">
-                                    <div class="text-center text-slate-600 py-10">
+                                    <div class="text-center text-[var(--text-muted)] py-10">
                                         パラメーターを入力して生成してください
                                     </div>
                                 </div>
@@ -112,10 +112,10 @@ const ShiftGenerator = {
         let html = `
             <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="border-b border-slate-700">
-                        <th class="py-2 px-4 text-slate-500 font-medium">日付</th>
-                        <th class="py-2 px-4 text-slate-500 font-medium">曜日</th>
-                        <th class="py-2 px-4 text-slate-500 font-medium">担当者</th>
+                    <tr class="border-b border-[var(--border-color)]">
+                        <th class="py-2 px-4 text-[var(--text-secondary)] font-medium">日付</th>
+                        <th class="py-2 px-4 text-[var(--text-secondary)] font-medium">曜日</th>
+                        <th class="py-2 px-4 text-[var(--text-secondary)] font-medium">担当者</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -132,14 +132,14 @@ const ShiftGenerator = {
             const member = members[i % members.length];
 
             const isWeekend = currentDate.getDay() === 0 || currentDate.getDay() === 6;
-            const rowClass = isWeekend ? 'bg-slate-800/20' : '';
-            const dayClass = currentDate.getDay() === 0 ? 'text-red-400' : (currentDate.getDay() === 6 ? 'text-blue-400' : '');
+            const rowClass = isWeekend ? 'bg-[var(--bg-secondary)]/50' : '';
+            const dayClass = currentDate.getDay() === 0 ? 'text-[var(--error-color)]' : (currentDate.getDay() === 6 ? 'text-[var(--info-color)]' : '');
 
             html += `
-                <tr class="border-b border-slate-800/50 ${rowClass}">
-                    <td class="py-2 px-4 font-mono">${dateStr}</td>
+                <tr class="border-b border-[var(--border-color)]/50 ${rowClass}">
+                    <td class="py-2 px-4 font-mono text-[var(--text-primary)]">${dateStr}</td>
                     <td class="py-2 px-4 ${dayClass}">${dayStr}</td>
-                    <td class="py-2 px-4 text-emerald-400 font-medium">${member}</td>
+                    <td class="py-2 px-4 text-[var(--accent-primary)] font-medium">${member}</td>
                 </tr>
             `;
         }

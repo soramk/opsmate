@@ -69,7 +69,7 @@ const SystemHelper = {
 
                 <div class="panel-card mt-6">
                     <div class="panel-header">
-                        <h2 class="panel-title text-emerald-400">
+                        <h2 class="panel-title text-[var(--accent-primary)]">
                              <i data-lucide="terminal" class="w-5 h-5"></i>
                             Admin Command
                         </h2>
@@ -162,7 +162,7 @@ const SystemHelper = {
                 </div>
             `;
         } else {
-            html = `<div class="col-span-2 text-sm text-slate-500">このカテゴリは追加のパラメータなしで利用可能です。</div>`;
+            html = `<div class="col-span-2 text-sm text-[var(--text-muted)]">このカテゴリは追加のパラメータなしで利用可能です。</div>`;
         }
 
         container.innerHTML = html;

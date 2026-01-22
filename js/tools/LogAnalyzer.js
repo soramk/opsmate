@@ -52,7 +52,7 @@ const LogAnalyzer = {
                 <div class="panel-card" id="la-result-panel" style="display: none;">
                     <div class="panel-header">
                         <h2 class="panel-title">解析結果</h2>
-                        <div class="text-xs text-slate-500">Total Lines: <span id="la-total-lines">0</span></div>
+                        <div class="text-xs text-[var(--text-muted)]">Total Lines: <span id="la-total-lines">0</span></div>
                     </div>
                     
                     <div id="la-stats-container" class="space-y-4">
@@ -105,10 +105,10 @@ const LogAnalyzer = {
             return `
                 <div class="space-y-1">
                     <div class="flex justify-between text-sm">
-                        <span class="font-medium text-slate-200">${k}</span>
-                        <span class="font-mono text-slate-400">${count.toLocaleString()} occurrences</span>
+                        <span class="font-medium text-[var(--text-primary)]">${k}</span>
+                        <span class="font-mono text-[var(--text-secondary)]">${count.toLocaleString()} occurrences</span>
                     </div>
-                    <div class="w-full bg-slate-800 rounded-full h-4 overflow-hidden">
+                    <div class="w-full bg-[var(--bg-tertiary)] rounded-full h-4 overflow-hidden border border-[var(--border-color)]">
                         <div class="h-full ${colorClass} transition-all duration-500" style="width: ${percentage}%"></div>
                     </div>
                 </div>

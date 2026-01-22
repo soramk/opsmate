@@ -76,7 +76,7 @@ const PermissionWizard = {
 
                 <div class="panel-card mt-6">
                     <div class="panel-header">
-                        <h2 class="panel-title text-emerald-400">
+                        <h2 class="panel-title text-[var(--accent-primary)]">
                              <i data-lucide="terminal" class="w-5 h-5"></i>
                             Generated Command
                         </h2>
@@ -96,20 +96,20 @@ const PermissionWizard = {
 
     renderLinuxGroup(title, prefix) {
         return `
-            <div class="bg-slate-800/30 p-4 rounded-xl border border-slate-700/50">
-                <div class="text-sm font-semibold text-slate-400 mb-3">${title}</div>
+            <div class="bg-[var(--bg-secondary)] p-4 rounded-xl border border-[var(--border-color)]">
+                <div class="text-sm font-semibold text-[var(--text-secondary)] mb-3">${title}</div>
                 <div class="space-y-2">
                     <label class="flex items-center cursor-pointer">
-                        <input type="checkbox" class="linux-bit mr-2 h-4 w-4 rounded border-slate-600 bg-slate-700" data-prefix="${prefix}" data-val="4" ${prefix === 'u' ? 'checked' : ''}>
-                        <span class="text-sm">Read (r)</span>
+                        <input type="checkbox" class="linux-bit mr-2 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-prefix="${prefix}" data-val="4" ${prefix === 'u' ? 'checked' : ''}>
+                        <span class="text-sm text-[var(--text-primary)]">Read (r)</span>
                     </label>
                     <label class="flex items-center cursor-pointer">
-                        <input type="checkbox" class="linux-bit mr-2 h-4 w-4 rounded border-slate-600 bg-slate-700" data-prefix="${prefix}" data-val="2" ${prefix === 'u' ? 'checked' : ''}>
-                        <span class="text-sm">Write (w)</span>
+                        <input type="checkbox" class="linux-bit mr-2 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-prefix="${prefix}" data-val="2" ${prefix === 'u' ? 'checked' : ''}>
+                        <span class="text-sm text-[var(--text-primary)]">Write (w)</span>
                     </label>
                     <label class="flex items-center cursor-pointer">
-                        <input type="checkbox" class="linux-bit mr-2 h-4 w-4 rounded border-slate-600 bg-slate-700" data-prefix="${prefix}" data-val="1">
-                        <span class="text-sm">Execute (x)</span>
+                        <input type="checkbox" class="linux-bit mr-2 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-prefix="${prefix}" data-val="1">
+                        <span class="text-sm text-[var(--text-primary)]">Execute (x)</span>
                     </label>
                 </div>
             </div>
@@ -118,9 +118,9 @@ const PermissionWizard = {
 
     renderWinCheck(label, code) {
         return `
-             <label class="flex items-center p-2 rounded border border-slate-700 hover:bg-slate-800/50 cursor-pointer transition-colors">
-                <input type="checkbox" class="win-perm mr-2 h-4 w-4 rounded border-slate-600 bg-slate-700" data-code="${code}" ${code === 'R' ? 'checked' : ''}>
-                <span class="text-xs">${label}</span>
+             <label class="flex items-center p-2 rounded border border-[var(--border-color)] hover:bg-[var(--bg-hover)] cursor-pointer transition-colors">
+                <input type="checkbox" class="win-perm mr-2 h-4 w-4 rounded border-[var(--border-color)] bg-[var(--bg-primary)]" data-code="${code}" ${code === 'R' ? 'checked' : ''}>
+                <span class="text-xs text-[var(--text-primary)]">${label}</span>
             </label>
         `;
     },
