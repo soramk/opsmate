@@ -1,68 +1,73 @@
-# OpsMate - Network Engineer's Toolkit
+# OpsMate - IT Ops & Network Engineer's Toolkit
 
-> **Client-side Only, Secure, Fast**
+> **100% Client-side, High Performance, Secure**
 
-ネットワークエンジニア・インフラ運用担当者のための高速・安全なブラウザベースツールキット。
+OpsMateは、ネットワークエンジニアやインフラ運用担当者の日常業務を強力にサポートするために開発された、オールインワンのブラウザベース・ツールキットです。
+すべての処理はブラウザ上で行われるため、機密性の高い設定情報やログデータが外部サーバーに送信されることはありません。
 
-## 特徴
+## 🌟 主な特徴
 
-- 🔒 **100% クライアントサイド処理** - データはサーバーに送信されません
-- 🌙 **ダークモードUI** - 長時間の作業でも目に優しい
-- 📱 **レスポンシブデザイン** - PC・スマホ両対応
-- ⚡ **高速** - インストール不要、ブラウザで即座に使用可能
+- 🔒 **セキュリティ第一** - 完全にクライアントサイドのみで動作。データ流出のリスクなし。
+- 🌙 **柔軟なテーマ** - ダークモード、ライトモードに加え、複数のプライマリカラーを選択可能。
+- ⚡ **高速アクセス** - インストール不要。インデックスファイルを開くだけですぐに使用可能。
+- 📱 **レスポンシブ** - 大画面のPCから、現場でのスマートフォン確認まで幅広く対応。
+- 🛠️ **多機能** - ネットワーク計算から、OS管理、ログ解析、文書作成まで幅広く網羅。
 
-## 機能
+## 🛠 実装済みツール一覧
 
-### Phase 1 (実装済み)
+OpsMateは以下の5つの主要カテゴリに分かれた多数のツールを提供しています。
 
-- **IP Subnet Calculator** - サブネット計算、ネットワーク/ブロードキャストアドレス
-- **MAC Address Converter** - Cisco/Linux/Windows形式への変換
-- **Transfer Time Calculator** - ファイル転送時間の計算
+### 1. ネットワーク (Network)
 
-### Phase 2 (Coming Soon)
+- **IPサブネット計算機** - IPv4サブネット分割、ホスト範囲、ワイルドカード計算
+- **MTU / MSS 計算機** - VLAN/GRE/IPsec/VXLAN等のオーバーヘッドを考慮したMSS算出
+- **疎通確認コマンド生成** - nc, Test-NetConnection, mtr 等のワンライナー生成
+- **MACアドレス変換** - Cisco, Linux, Windows 形式の相互変換
+- **その他**: IPv6ツールキット、ポート番号検索、DNSレコード生成、フィルタウィザード、SNMP OID検索など
 
-- Base Converter - 進数変換・ビット計算
-- Unix Timestamp Converter - Unix時間変換
-- Config Diff Tool - Config差分比較
-- Password Generator - パスワード生成
-- Data Center Calculator - 電力・熱量計算
+### 2. インフラ ・ クラウド (Infra & Cloud)
 
-## 使い方
+- **システム管理** - Windows/Linux(Debian, RHEL, Arch)のサービス・パッケージ管理コマンド
+- **権限ウィザード** - Linux(chmod) および Windows(icacls) の権限設定コマンド生成
+- **RAID計算機** - RAIDレベルごとの実効容量、耐障害性、ディスク効率の算出
+- **SSL/TLS 証明書** - opensslコマンド生成や証明書情報の確認
+- **その他**: SSH Config生成、Nginxスニペット、Docker/K8s YAML生成、IaCスニペットなど
 
-1. `index.html` をブラウザで開く
-2. サイドバーからツールを選択
-3. 入力して計算・変換
+### 3. 性能 ・ 分析 ・ 計画 (Analysis & Planning)
 
-## ディレクトリ構造
+- **ログ統計解析** - pastedされたログからキーワードの出現頻度を抽出・グラフ表示
+- **SLA稼働率計算** - 99.9%などの稼働率から許容ダウンタイムを算出
+- **転送時間計算** - データ量と帯域幅から所要時間を推定
+- **その他**: レスポンス分析(P99等)、BDP計算、キャパシティ計画、メンテナンスウィンドウ計算など
 
-```
-opsmate/
-├── index.html          # メインエントリーポイント
-├── css/
-│   └── style.css       # カスタムスタイル
-├── js/
-│   ├── app.js          # メインアプリケーション
-│   ├── components/     # UIコンポーネント
-│   │   ├── Sidebar.js
-│   │   ├── Header.js
-│   │   └── MainContent.js
-│   ├── tools/          # 各ツールモジュール
-│   │   ├── SubnetCalculator.js
-│   │   ├── MacConverter.js
-│   │   └── TransferCalculator.js
-│   └── utils/
-│       └── helpers.js  # ユーティリティ関数
-└── assets/             # 静的アセット
-    └── icons/
-```
+### 4. データ解析 ・ 変換 (Data Processing)
 
-## 技術スタック
+- **JSON 構造比較** - 2つのJSONオブジェクトを構造的に比較し差分を抽出
+- **Config 差分比較** - ネットワーク機器等の設定情報のテキストベース比較
+- **進数・ビット計算** - 2進数、10進数、16進数の変換とビットフラグ操作
+- **その他**: 正規表現テスター、ハッシュ生成、Unix時間変換、一括コマンド量産(Bulk Gen)など
 
-- HTML5 / CSS3 / JavaScript (Vanilla)
-- Tailwind CSS (CDN)
-- Lucide Icons
-- JetBrains Mono フォント
+### 5. 運用記録 ・ 文書 (Operations & Docs)
 
-## ライセンス
+- **シフト生成** - 運用メンバーのローテーション、オンコールスケジュールのMarkdown生成
+- **ポストモーテム報告書** - 障害報告書のテンプレート入力とMarkdown出力
+- **パスワード生成** - セキュアなパスワードのカスタマイズ生成
+- **その他**: インシデントタイムライン記録、WBS生成、Excel関数ビルダー、Gitコマンドビルダなど
+
+## 🚀 使い方
+
+1. `index.html` を使い慣れたブラウザで開きます。
+2. 左側のアイコンメニュー（1番目のペイン）でカテゴリを選択します。
+3. カテゴリ内のツールリスト（2番目のペイン）から使用したいツールを選択します。
+4. 入力を行い、必要に応じて結果をコピー（Copyボタン）して利用してください。
+
+## 🏗 技術スタック
+
+- **Core**: HTML5 / CSS3 / JavaScript (Vanilla)
+- **UI Icons**: Lucide Icons
+- **Typography**: JetBrains Mono / Inter / Noto Sans JP
+- **Styling**: Vanilla CSS (CSS Variablesを活用したマルチテーマ、マルチモード対応)
+
+## 📄 ライセンス
 
 MIT License
