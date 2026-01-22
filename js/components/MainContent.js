@@ -6,7 +6,9 @@ const MainContentComponent = {
     toolLoaders: {
         'subnet-calculator': () => SubnetCalculator.render(),
         'mac-converter': () => MacConverter.render(),
+        'overhead-calculator': () => OverheadCalculator.render(),
         'transfer-calculator': () => TransferCalculator.render(),
+        'net-trouble': () => NetTroubleshoot.render(),
         'network-diagram': () => NetworkDiagram.render(),
         'filter-wizard': () => FilterWizard.render(),
         'syslog-highlighter': () => SyslogHighlighter.render(),
@@ -57,7 +59,14 @@ const MainContentComponent = {
         'excel-formula': () => ExcelFormulaBuilder.render(),
         'quick-note': () => QuickNote.render(),
         'git-cmd-builder': () => GitCommandBuilder.render(),
-        'wbs-generator': () => WbsGenerator.render()
+        'wbs-generator': () => WbsGenerator.render(),
+        'raid-calc': () => RaidCalculator.render(),
+        'log-analyzer': () => LogAnalyzer.render(),
+        'shift-gen': () => ShiftGenerator.render(),
+        'json-diff': () => JsonDiff.render(),
+        'post-mortem': () => PostMortemGen.render(),
+        'perm-wizard': () => PermissionWizard.render(),
+        'sys-helper': () => SystemHelper.render()
     },
 
     init() {
@@ -83,7 +92,9 @@ const MainContentComponent = {
         switch (toolId) {
             case 'subnet-calculator': SubnetCalculator.init(); break;
             case 'mac-converter': MacConverter.init(); break;
+            case 'overhead-calculator': OverheadCalculator.init(); break;
             case 'transfer-calculator': TransferCalculator.init(); break;
+            case 'net-trouble': NetTroubleshoot.init(); break;
             case 'network-diagram': NetworkDiagram.init(); break;
             case 'filter-wizard': FilterWizard.init(); break;
             case 'syslog-highlighter': SyslogHighlighter.init(); break;
@@ -135,6 +146,13 @@ const MainContentComponent = {
             case 'quick-note': QuickNote.init(); break;
             case 'git-cmd-builder': GitCommandBuilder.init(); break;
             case 'wbs-generator': WbsGenerator.init(); break;
+            case 'raid-calc': RaidCalculator.init(); break;
+            case 'log-analyzer': LogAnalyzer.init(); break;
+            case 'shift-gen': ShiftGenerator.init(); break;
+            case 'json-diff': JsonDiff.init(); break;
+            case 'post-mortem': PostMortemGen.init(); break;
+            case 'perm-wizard': PermissionWizard.init(); break;
+            case 'sys-helper': SystemHelper.init(); break;
         }
     },
 

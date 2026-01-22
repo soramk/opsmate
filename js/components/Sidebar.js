@@ -18,6 +18,8 @@ const SidebarComponent = {
                 { id: 'mac-converter', name: 'MACアドレス変換', icon: 'barcode', description: '各種形式への変換' },
                 { id: 'port-reference', name: 'ポート番号検索', icon: 'list', description: '主要なTCP/UDPポート検索' },
                 { id: 'dns-generator', name: 'DNSレコード生成', icon: 'globe', description: 'A/MX/TXT/SRV等の構文生成' },
+                { id: 'net-trouble', name: '疎通確認コマンド', icon: 'activity', description: 'Port/Ping/Trace one-liners' },
+                { id: 'overhead-calculator', name: 'MTU / MSS 計算機', icon: 'calculator', description: 'カプセル化オーバーヘッド計算' },
                 { id: 'snmp-reference', name: 'SNMP OID 検索', icon: 'search', description: '主要機器のOIDリファレンス' },
                 { id: 'filter-wizard', name: 'フィルタウィザード', icon: 'filter', description: 'tcpdump / Wireshark フィルタ生成' },
                 { id: 'http-status', name: 'HTTPステータス', icon: 'info', description: 'ステータスコード一覧' }
@@ -32,12 +34,15 @@ const SidebarComponent = {
                 { id: 'systemd-unit-gen', name: 'Systemdユニット生成', icon: 'cog', description: 'サービスユニットファイルの生成' },
                 { id: 'nginx-snippet', name: 'Nginx設定スニペット', icon: 'file-code', description: 'プロキシ、SSL等の設定生成' },
                 { id: 'cert-helper', name: 'SSL/TLS 証明書', icon: 'lock', description: '証明書確認・opensslコマンド生成' },
+                { id: 'perm-wizard', name: '権限ウィザード', icon: 'shield', description: 'Linux/Windows 権限設定' },
+                { id: 'sys-helper', name: 'システム管理', icon: 'cpu', description: 'OS管理コマンド (Service/Proc)' },
                 { id: 'iac-generator', name: 'IaC スニペット生成', icon: 'code-2', description: 'Terraform / Ansible コード生成' },
                 { id: 'docker-compose-gen', name: 'Docker Compose 生成', icon: 'container', description: '各種サービスのテンプレート' },
                 { id: 'cloud-cli-gen', name: 'クラウドCLI生成', icon: 'cloud', description: 'AWS/Azure/GCPコマンド生成' },
                 { id: 'k8s-yaml-gen', name: 'Kubernetes YAML', icon: 'box', description: 'K8sマニフェスト生成' },
                 { id: 'tera-term-macro', name: 'Tera Term マクロ', icon: 'terminal-square', description: 'ログイン自動化マクロ生成' },
                 { id: 'rdp-config-gen', name: 'RDP 設定生成', icon: 'monitor-play', description: 'リモートデスクトップ設定生成' },
+                { id: 'raid-calc', name: 'RAID 計算機', icon: 'database', description: '実効容量と冗長性の算出' },
                 { id: 'datacenter-calc', name: 'DC電力・熱量計算', icon: 'zap', description: 'ラック電力・熱量変換計算' }
             ]
         },
@@ -51,6 +56,7 @@ const SidebarComponent = {
                 { id: 'bdp-calculator', name: 'BDP・スループット', icon: 'gauge', description: '帯域遅延積の推定' },
                 { id: 'transfer-calculator', name: '転送時間計算', icon: 'clock', description: '転送時間の推定' },
                 { id: 'syslog-highlighter', name: 'Syslogカラー解析', icon: 'align-left', description: 'Severity色分け表示' },
+                { id: 'log-analyzer', name: 'ログ統計解析', icon: 'bar-chart-2', description: 'キーワード出現頻度の集計' },
                 { id: 'log-masker', name: 'ログ匿名化', icon: 'eye-off', description: 'ログの自動マスク' },
                 { id: 'maintenance-calc', name: 'メンテナンスウィンドウ', icon: 'wrench', description: '複数TZでの作業時間計算' }
             ]
@@ -70,6 +76,7 @@ const SidebarComponent = {
                 { id: 'url-toolkit', name: 'URL 解析・構築', icon: 'link', description: 'URL分解・再構築' },
                 { id: 'text-utility', name: 'テキスト一括処理', icon: 'type', description: 'ソート、重複排除など' },
                 { id: 'config-diff', name: 'Config 差分比較', icon: 'file-diff', description: 'Config差分比較' },
+                { id: 'json-diff', name: 'JSON 構造比較', icon: 'file-json', description: 'JSONオブジェクトの構造比較' },
                 { id: 'unix-timestamp', name: 'Unix時間変換', icon: 'calendar-clock', description: 'Unix時刻の相互変換' },
                 { id: 'bulk-cmd-gen', name: '一括コマンド生成', icon: 'layers', description: '実行コマンドの量産' }
             ]
@@ -79,7 +86,9 @@ const SidebarComponent = {
             icon: 'file-text',
             items: [
                 { id: 'incident-timeline', name: 'インシデントTL', icon: 'list-ordered', description: '障害対応の時系列記録' },
+                { id: 'post-mortem', name: '報告書作成', icon: 'file-warning', description: 'ポストモーテム報告書生成' },
                 { id: 'wbs-generator', name: 'WBSジェネレーター', icon: 'gantt-chart', description: 'WBSテンプレート生成' },
+                { id: 'shift-gen', name: 'シフト生成', icon: 'calendar', description: '運用当番ローテーション作成' },
                 { id: 'network-diagram', name: 'ネットワーク構成図', icon: 'share-2', description: 'アイコン選択による簡単描画' },
                 { id: 'mdtable-gen', name: 'Markdownテーブル', icon: 'table-2', description: 'MD形式の表作成' },
                 { id: 'excel-formula', name: 'Excel関数ビルダー', icon: 'function-square', description: '文字操作・VLOOKUP等' },
