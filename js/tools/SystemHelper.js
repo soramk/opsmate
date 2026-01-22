@@ -34,21 +34,30 @@ const SystemHelper = {
                         </h2>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
                         <div class="form-group">
                             <label class="form-label">ターゲット OS</label>
                             <select id="sh-os" class="form-select">
-                                <option value="linux">Linux (Ubuntu/RHEL/CentOS)</option>
-                                <option value="windows">Windows (Cmd/PowerShell)</option>
+                                <option value="linux">Linux</option>
+                                <option value="windows">Windows</option>
+                            </select>
+                        </div>
+                        <div id="sh-distro-group" class="form-group">
+                            <label class="form-label">ディストリビューション</label>
+                            <select id="sh-distro" class="form-select">
+                                <option value="debian">Debian / Ubuntu (apt)</option>
+                                <option value="rhel">RHEL / CentOS / Alma (dnf/yum)</option>
+                                <option value="arch">Arch Linux (pacman)</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">操作カテゴリ</label>
                             <select id="sh-cat" class="form-select">
-                                <option value="service">サービス管理 (Start/Stop/Restart)</option>
+                                <option value="service">サービス管理 (systemd)</option>
+                                <option value="pkg">パッケージ管理 (Install/Update)</option>
                                 <option value="process">プロセス管理 (List/Kill)</option>
                                 <option value="system">システム情報 (Resource/Info)</option>
-                                <option value="disk">ディスク・ファイルシステム (du/df)</option>
+                                <option value="disk">ディスク・ファイルシステム</option>
                             </select>
                         </div>
                     </div>
@@ -79,9 +88,15 @@ const SystemHelper = {
     },
 
     init() {
-        const ids = ['sh-os', 'sh-cat'];
+        const ids = ['sh-os', 'sh-distro', 'sh-cat'];
         ids.forEach(id => {
-            document.getElementById(id).addEventListener('change', () => this.renderParams());
+            document.getElementById(id).addEventListener('change', () => {
+                if (id === 'sh-os') {
+                    const isLinux = document.getElementById('sh-os').value === 'linux';
+                    document.getElementById('sh-distro-group').style.display = isLinux ? 'block' : 'none';
+                }
+                this.renderParams();
+            });
         });
 
         document.getElementById('sh-copy-btn').addEventListener('click', () => {
@@ -112,6 +127,23 @@ const SystemHelper = {
                         <option value="stop">停止 (Stop)</option>
                         <option value="restart">再起動 (Restart)</option>
                         <option value="enable">自動起動有効 (Enable)</option>
+                    </select>
+                </div>
+            `;
+        } else if (cat === 'pkg') {
+            html = `
+                <div class="form-group text-sm">
+                    <label class="form-label">パッケージ名</label>
+                    <input type="text" id="sh-name" class="form-input" value="vim" placeholder="vim, git, nginx等">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">アクション</label>
+                    <select id="sh-act" class="form-select">
+                        <option value="install">インストール (Install)</option>
+                        <option value="update">リポジトリ更新 (Update Repo)</option>
+                        <option value="upgrade">パッケージ更新 (Upgrade)</option>
+                        <option value="remove">削除 (Remove)</option>
+                        <option value="search">検索 (Search)</option>
                     </select>
                 </div>
             `;
@@ -152,8 +184,29 @@ const SystemHelper = {
         const act = document.getElementById('sh-act')?.value || '';
 
         if (os === 'linux') {
+            const distro = document.getElementById('sh-distro').value;
             if (cat === 'service') {
                 cmd = `systemctl ${act} ${name}`;
+            } else if (cat === 'pkg') {
+                if (distro === 'debian') {
+                    if (act === 'install') cmd = `sudo apt update && sudo apt install -y ${name}`;
+                    else if (act === 'update') cmd = `sudo apt update`;
+                    else if (act === 'upgrade') cmd = `sudo apt upgrade -y`;
+                    else if (act === 'remove') cmd = `sudo apt remove -y ${name}`;
+                    else if (act === 'search') cmd = `apt search ${name}`;
+                } else if (distro === 'rhel') {
+                    if (act === 'install') cmd = `sudo dnf install -y ${name}`;
+                    else if (act === 'update') cmd = `sudo dnf makecache`;
+                    else if (act === 'upgrade') cmd = `sudo dnf upgrade -y`;
+                    else if (act === 'remove') cmd = `sudo dnf remove -y ${name}`;
+                    else if (act === 'search') cmd = `dnf search ${name}`;
+                } else if (distro === 'arch') {
+                    if (act === 'install') cmd = `sudo pacman -S ${name}`;
+                    else if (act === 'update') cmd = `sudo pacman -Sy`;
+                    else if (act === 'upgrade') cmd = `sudo pacman -Syu`;
+                    else if (act === 'remove') cmd = `sudo pacman -Rs ${name}`;
+                    else if (act === 'search') cmd = `pacman -Ss ${name}`;
+                }
             } else if (cat === 'process') {
                 cmd = act === 'list' ? `ps aux | grep ${name}` : `kill -9 $(pgrep ${name})`;
             } else if (cat === 'system') {
@@ -165,6 +218,12 @@ const SystemHelper = {
             if (cat === 'service') {
                 if (act === 'status') cmd = `sc.exe query "${name}"`;
                 else cmd = `net ${act} "${name}"`;
+            } else if (cat === 'pkg') {
+                if (act === 'install') cmd = `winget install ${name}`;
+                else if (act === 'update') cmd = `winget update`;
+                else if (act === 'upgrade') cmd = `winget upgrade --all`;
+                else if (act === 'remove') cmd = `winget uninstall ${name}`;
+                else if (act === 'search') cmd = `winget search ${name}`;
             } else if (cat === 'process') {
                 cmd = act === 'list' ? `tasklist /v | findstr /i "${name}"` : `taskkill /f /im "${name}.exe"`;
             } else if (cat === 'system') {
