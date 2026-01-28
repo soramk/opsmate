@@ -43,7 +43,6 @@ const SidebarComponent = {
                 { id: 'tera-term-macro', name: 'Tera Term マクロ', icon: 'terminal-square', description: 'ログイン自動化マクロ生成' },
                 { id: 'rdp-config-gen', name: 'RDP 設定生成', icon: 'monitor-play', description: 'リモートデスクトップ設定生成' },
                 { id: 'raid-calc', name: 'RAID 計算機', icon: 'database', description: '実効容量と冗長性の算出' },
-                { id: 'raid-calc', name: 'RAID 計算機', icon: 'database', description: '実効容量と冗長性の算出' },
                 { id: 'datacenter-calc', name: 'DC電力・熱量計算', icon: 'zap', description: 'ラック電力・熱量変換計算' },
                 { id: 'win-admin-shortcuts', name: 'Windows管理ショートカット', icon: 'command', description: '管理者ツールショートカット作成' }
             ]
