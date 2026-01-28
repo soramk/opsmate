@@ -66,7 +66,9 @@ const MainContentComponent = {
         'json-diff': () => JsonDiff.render(),
         'post-mortem': () => PostMortemGen.render(),
         'perm-wizard': () => PermissionWizard.render(),
-        'sys-helper': () => SystemHelper.render()
+        'perm-wizard': () => PermissionWizard.render(),
+        'sys-helper': () => SystemHelper.render(),
+        'win-admin-shortcuts': () => WinAdminShortcuts.render()
     },
 
     init() {
@@ -152,7 +154,9 @@ const MainContentComponent = {
             case 'json-diff': JsonDiff.init(); break;
             case 'post-mortem': PostMortemGen.init(); break;
             case 'perm-wizard': PermissionWizard.init(); break;
+            case 'perm-wizard': PermissionWizard.init(); break;
             case 'sys-helper': SystemHelper.init(); break;
+            case 'win-admin-shortcuts': WinAdminShortcuts.init(); break;
         }
     },
 
